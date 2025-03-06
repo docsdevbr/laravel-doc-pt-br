@@ -22,7 +22,7 @@ An `ExampleTest.php` file is provided in both the `Feature` and `Unit` test dire
 <a name="environment"></a>
 ## Environment
 
-When running tests, Laravel will automatically set the [configuration environment](comecando/configuracao.md#configuracao-do-ambiente) to `testing` because of the environment variables defined in the `phpunit.xml` file. Laravel also automatically configures the session and cache to the `array` driver so that no session or cache data will be persisted while testing.
+When running tests, Laravel will automatically set the [configuration environment](configuration.md#environment-configuration) to `testing` because of the environment variables defined in the `phpunit.xml` file. Laravel also automatically configures the session and cache to the `array` driver so that no session or cache data will be persisted while testing.
 
 You are free to define other testing environment configuration values as necessary. The `testing` environment variables may be configured in your application's `phpunit.xml` file, but make sure to clear your configuration cache using the `config:clear` Artisan command before running your tests!
 
@@ -144,44 +144,46 @@ Occasionally, you may need to prepare certain resources used by your application
 
 Using the `ParallelTesting` facade, you may specify code to be executed on the `setUp` and `tearDown` of a process or test case. The given closures receive the `$token` and `$testCase` variables that contain the process token and the current test case, respectively:
 
-    <?php
+```php
+<?php
 
-    namespace App\Providers;
+namespace App\Providers;
 
-    use Illuminate\Support\Facades\Artisan;
-    use Illuminate\Support\Facades\ParallelTesting;
-    use Illuminate\Support\ServiceProvider;
-    use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\ParallelTesting;
+use Illuminate\Support\ServiceProvider;
+use PHPUnit\Framework\TestCase;
 
-    class AppServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
     {
-        /**
-         * Bootstrap any application services.
-         */
-        public function boot(): void
-        {
-            ParallelTesting::setUpProcess(function (int $token) {
-                // ...
-            });
+        ParallelTesting::setUpProcess(function (int $token) {
+            // ...
+        });
 
-            ParallelTesting::setUpTestCase(function (int $token, TestCase $testCase) {
-                // ...
-            });
+        ParallelTesting::setUpTestCase(function (int $token, TestCase $testCase) {
+            // ...
+        });
 
-            // Executed when a test database is created...
-            ParallelTesting::setUpTestDatabase(function (string $database, int $token) {
-                Artisan::call('db:seed');
-            });
+        // Executed when a test database is created...
+        ParallelTesting::setUpTestDatabase(function (string $database, int $token) {
+            Artisan::call('db:seed');
+        });
 
-            ParallelTesting::tearDownTestCase(function (int $token, TestCase $testCase) {
-                // ...
-            });
+        ParallelTesting::tearDownTestCase(function (int $token, TestCase $testCase) {
+            // ...
+        });
 
-            ParallelTesting::tearDownProcess(function (int $token) {
-                // ...
-            });
-        }
+        ParallelTesting::tearDownProcess(function (int $token) {
+            // ...
+        });
     }
+}
+```
 
 <a name="accessing-the-parallel-testing-token"></a>
 #### Accessing the Parallel Testing Token

@@ -56,7 +56,7 @@ Log::info('User authenticated.', ['auth_id' => Auth::id()]);
 
 The written log will contain the `auth_id` passed to the log entry, but it will also contain the context's `url` and `trace_id` as metadata:
 
-```
+```text
 User authenticated. {"auth_id":27} {"url":"https://example.com/login","trace_id":"e04e1a11-e75c-4db3-b5b5-cfef4ef56697"}
 ```
 
@@ -76,7 +76,7 @@ When the job is dispatched, any information currently stored in the context is c
 ```php
 class ProcessPodcast implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Queueable;
 
     // ...
 
@@ -96,7 +96,7 @@ class ProcessPodcast implements ShouldQueue
 
 The resulting log entry would contain the information that was added to the context during the request that originally dispatched the job:
 
-```
+```text
 Processing podcast. {"podcast_id":95} {"url":"https://example.com/login","trace_id":"e04e1a11-e75c-4db3-b5b5-cfef4ef56697"}
 ```
 
@@ -152,6 +152,43 @@ Context::when(
 );
 ```
 
+<a name="scoped-context"></a>
+#### Scoped Context
+
+The `scope` method provides a way to temporarily modify the context during the execution of a given callback and restore the context to its original state when the callback finishes executing. Additionally, you can pass extra data that should be merged into the context (as the second and third arguments) while the closure executes.
+
+```php
+use Illuminate\Support\Facades\Context;
+use Illuminate\Support\Facades\Log;
+
+Context::add('trace_id', 'abc-999');
+Context::addHidden('user_id', 123);
+
+Context::scope(
+    function () {
+        Context::add('action', 'adding_friend');
+
+        $userId = Context::getHidden('user_id');
+
+        Log::debug("Adding user [{$userId}] to friends list.");
+        // Adding user [987] to friends list.  {"trace_id":"abc-999","user_name":"taylor_otwell","action":"adding_friend"}
+    },
+    data: ['user_name' => 'taylor_otwell'],
+    hidden: ['user_id' => 987],
+);
+
+Context::all();
+// []
+
+Context::allHidden();
+// [
+//     'user_id' => 123,
+// ]
+```
+
+> [!WARNING]
+> If an object within the context is modified inside the scoped closure, that mutation will be reflected outside of the scope.
+
 <a name="stacks"></a>
 ### Stacks
 
@@ -183,6 +220,29 @@ DB::listen(function ($event) {
 });
 ```
 
+You may determine if a value is in a stack using the `stackContains` and `hiddenStackContains` methods:
+
+```php
+if (Context::stackContains('breadcrumbs', 'first_value')) {
+    //
+}
+
+if (Context::hiddenStackContains('secrets', 'first_value')) {
+    //
+}
+```
+
+The `stackContains` and `hiddenStackContains` methods also accept a closure as their second argument, allowing more control over the value comparison operation:
+
+```php
+use Illuminate\Support\Facades\Context;
+use Illuminate\Support\Str;
+
+return Context::stackContains('breadcrumbs', function ($value) {
+    return Str::startsWith($value, 'query_');
+});
+```
+
 <a name="retrieving-context"></a>
 ## Retrieving Context
 
@@ -206,6 +266,18 @@ The `pull` method may be used to retrieve information from the context and immed
 $value = Context::pull('key');
 ```
 
+If context data is stored in a [stack](#stacks), you may pop items from the stack using the `pop` method:
+
+```php
+Context::push('breadcrumbs', 'first_value', 'second_value');
+
+Context::pop('breadcrumbs')
+// second_value
+
+Context::get('breadcrumbs');
+// ['first_value']
+```
+
 If you would like to retrieve all of the information stored in the context, you may invoke the `all` method:
 
 ```php
@@ -215,12 +287,16 @@ $data = Context::all();
 <a name="determining-item-existence"></a>
 ### Determining Item Existence
 
-You may use the `has` method to determine if the context has any value stored for the given key:
+You may use the `has` and `missing` methods to determine if the context has any value stored for the given key:
 
 ```php
 use Illuminate\Support\Facades\Context;
 
 if (Context::has('key')) {
+    // ...
+}
+
+if (Context::missing('key')) {
     // ...
 }
 ```
@@ -282,6 +358,7 @@ Context::addHiddenIf(/* ... */);
 Context::pushHidden(/* ... */);
 Context::getHidden(/* ... */);
 Context::pullHidden(/* ... */);
+Context::popHidden(/* ... */);
 Context::onlyHidden(/* ... */);
 Context::allHidden(/* ... */);
 Context::hasHidden(/* ... */);

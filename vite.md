@@ -18,6 +18,7 @@
   - [Processing Static Assets With Vite](#blade-processing-static-assets)
   - [Refreshing on Save](#blade-refreshing-on-save)
   - [Aliases](#blade-aliases)
+- [Asset Prefetching](#asset-prefetching)
 - [Custom Base URLs](#custom-base-urls)
 - [Environment Variables](#environment-variables)
 - [Disabling Vite in Tests](#disabling-vite-in-tests)
@@ -27,6 +28,7 @@
   - [Subresource Integrity (SRI)](#subresource-integrity-sri)
   - [Arbitrary Attributes](#arbitrary-attributes)
 - [Advanced Customization](#advanced-customization)
+  - [Dev Server Cross-Origin Resource Sharing (CORS)](#cors)
   - [Correcting Dev Server URLs](#correcting-dev-server-urls)
 
 <a name="introduction"></a>
@@ -55,21 +57,21 @@ Have you started a new Laravel application using our Vite scaffolding but need t
 ## Installation & Setup
 
 > [!NOTE]
-> The following documentation discusses how to manually install and configure the Laravel Vite plugin. However, Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include all of this scaffolding and are the fastest way to get started with Laravel and Vite.
+> The following documentation discusses how to manually install and configure the Laravel Vite plugin. However, Laravel's [starter kits](starter-kits.md) already include all of this scaffolding and are the fastest way to get started with Laravel and Vite.
 
 <a name="installing-node"></a>
 ### Installing Node
 
 You must ensure that Node.js (16+) and NPM are installed before running Vite and the Laravel plugin:
 
-```sh
+```shell
 node -v
 npm -v
 ```
 
-You can easily install the latest version of Node and NPM using simple graphical installers from [the official Node website](https://nodejs.org/en/download/). Or, if you are using [Laravel Sail](sail.md), you may invoke Node and NPM through Sail:
+You can easily install the latest version of Node and NPM using simple graphical installers from [the official Node website](https://nodejs.org/en/download/). Or, if you are using [Laravel Sail](https://laravel.comsail), you may invoke Node and NPM through Sail:
 
-```sh
+```shell
 ./vendor/bin/sail node -v
 ./vendor/bin/sail npm -v
 ```
@@ -79,7 +81,7 @@ You can easily install the latest version of Node and NPM using simple graphical
 
 Within a fresh installation of Laravel, you will find a `package.json` file in the root of your application's directory structure. The default `package.json` file already includes everything you need to get started using Vite and the Laravel plugin. You may install your application's frontend dependencies via NPM:
 
-```sh
+```shell
 npm install
 ```
 
@@ -201,9 +203,9 @@ If your file changes are not being reflected in the browser while the developmen
 With your Vite entry points configured, you may now reference them in a `@vite()` Blade directive that you add to the `<head>` of your application's root template:
 
 ```blade
-<!doctype html>
+<!DOCTYPE html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -212,9 +214,9 @@ With your Vite entry points configured, you may now reference them in a `@vite()
 If you're importing your CSS via JavaScript, you only need to include the JavaScript entry point:
 
 ```blade
-<!doctype html>
+<!DOCTYPE html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite('resources/js/app.js')
 </head>
@@ -227,7 +229,7 @@ If needed, you may also specify the build path of your compiled assets when invo
 ```blade
 <!doctype html>
 <head>
-    {{-- Given build path is relative to public path. --}}
+    \{\{-- Given build path is relative to public path. --\}\}
 
     @vite('resources/js/app.js', 'vendor/courier/build')
 </head>
@@ -243,7 +245,7 @@ Sometimes it may be necessary to include the raw content of assets rather than l
 
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     <style>
         {!! Vite::content('resources/css/app.css') !!}
@@ -308,7 +310,7 @@ export default defineConfig({
 
 If you would like to build your frontend using the [Vue](https://vuejs.org/) framework, then you will also need to install the `@vitejs/plugin-vue` plugin:
 
-```sh
+```shell
 npm install --save-dev @vitejs/plugin-vue
 ```
 
@@ -345,14 +347,14 @@ export default defineConfig({
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Vue, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Vue, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Vue, and Vite configuration.These starter kits offer the fastest way to get started with Laravel, Vue, and Vite.
 
 <a name="react"></a>
 ### React
 
 If you would like to build your frontend using the [React](https://reactjs.org/) framework, then you will also need to install the `@vitejs/plugin-react` plugin:
 
-```sh
+```shell
 npm install --save-dev @vitejs/plugin-react
 ```
 
@@ -383,7 +385,7 @@ You will also need to include the additional `@viteReactRefresh` Blade directive
 The `@viteReactRefresh` directive must be called before the `@vite` directive.
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, React, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, React, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, React, and Vite configuration.These starter kits offer the fastest way to get started with Laravel, React, and Vite.
 
 <a name="inertia"></a>
 ### Inertia
@@ -398,26 +400,28 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 createInertiaApp({
   resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
   setup({ el, App, props, plugin }) {
-    return createApp({ render: () => h(App, props) })
+    createApp({ render: () => h(App, props) })
       .use(plugin)
       .mount(el)
   },
 });
 ```
 
+If you are using Vite's code splitting feature with Inertia, we recommend configuring [asset prefetching](#asset-prefetching).
+
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Inertia, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Inertia, and Vite configuration.These starter kits offer the fastest way to get started with Laravel, Inertia, and Vite.
 
 <a name="url-processing"></a>
 ### URL Processing
 
-When using Vite and referencing assets in your application's HTML, CSS, or JS, there are a couple of caveats to consider. First, if you reference assets with an absolute path, Vite will not include the asset in the build; therefore, you should ensure that the asset is available in your public directory.
+When using Vite and referencing assets in your application's HTML, CSS, or JS, there are a couple of caveats to consider. First, if you reference assets with an absolute path, Vite will not include the asset in the build; therefore, you should ensure that the asset is available in your public directory. You should avoid using absolute paths when using a [dedicated CSS entrypoint](#configuring-vite) because, during development, browsers will try to load these paths from the Vite development server, where the CSS is hosted, rather than from your public directory.
 
 When referencing relative asset paths, you should remember that the paths are relative to the file where they are referenced. Any assets referenced via a relative path will be re-written, versioned, and bundled by Vite.
 
 Consider the following project structure:
 
-```nothing
+```text
 public/
   taylor.png
 resources/
@@ -453,7 +457,7 @@ export default {
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Tailwind, PostCSS, and Vite configuration. Or, if you would like to use Tailwind and Laravel without using one of our starter kits, check out [Tailwind's installation guide for Laravel](https://tailwindcss.com/docs/guides/laravel).
+> Laravel's [starter kits](starter-kits.md) already include the proper Tailwind, PostCSS, and Vite configuration. Or, if you would like to use Tailwind and Laravel without using one of our starter kits, check out [Tailwind's installation guide for Laravel](https://tailwindcss.com/docs/guides/laravel).
 
 <a name="working-with-blade-and-routes"></a>
 ## Working With Blade and Routes
@@ -475,7 +479,7 @@ import.meta.glob([
 These assets will now be processed by Vite when running `npm run build`. You can then reference these assets in Blade templates using the `Vite::asset` method, which will return the versioned URL for a given asset:
 
 ```blade
-<img src="{{ Vite::asset('resources/images/logo.png') }}">
+<img src="\{\{ Vite::asset('resources/images/logo.png') \}\}">
 ```
 
 <a name="blade-refreshing-on-save"></a>
@@ -499,6 +503,7 @@ export default defineConfig({
 
 When the `refresh` option is `true`, saving files in the following directories will trigger the browser to perform a full page refresh while you are running `npm run dev`:
 
+- `app/Livewire/**`
 - `app/View/Components/**`
 - `lang/**`
 - `resources/lang/**`
@@ -545,20 +550,91 @@ export default defineConfig({
 <a name="blade-aliases"></a>
 ### Aliases
 
-It is common in JavaScript applications to [create aliases](#aliases) to regularly referenced directories. But, you may also create aliases to use in Blade by using the `macro` method on the `Illuminate\Support\Facades\Vite` class. Typically, "macros" should be defined within the `boot` method of a [service provider](arquitetura/provedores.md):
+It is common in JavaScript applications to [create aliases](#aliases) to regularly referenced directories. But, you may also create aliases to use in Blade by using the `macro` method on the `Illuminate\Support\Facades\Vite` class. Typically, "macros" should be defined within the `boot` method of a [service provider](providers.md):
+
+```php
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Vite::macro('image', fn (string $asset) => $this->asset("resources/images/{$asset}"));
+}
+```
+
+Once a macro has been defined, it can be invoked within your templates. For example, we can use the `image` macro defined above to reference an asset located at `resources/images/logo.png`:
+
+```blade
+<img src="\{\{ Vite::image('logo.png') \}\}" alt="Laravel Logo">
+```
+
+<a name="asset-prefetching"></a>
+## Asset Prefetching
+
+When building an SPA using Vite's code splitting feature, required assets are fetched on each page navigation. This behavior can lead to delayed UI rendering. If this is a problem for your frontend framework of choice, Laravel offers the ability to eagerly prefetch your application's JavaScript and CSS assets on initial page load.
+
+You can instruct Laravel to eagerly prefetch your assets by invoking the `Vite::prefetch` method in the `boot` method of a [service provider](providers.md):
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     */
+    public function register(): void
+    {
+        // ...
+    }
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-        Vite::macro('image', fn (string $asset) => $this->asset("resources/images/{$asset}"));
+        Vite::prefetch(concurrency: 3);
     }
+}
+```
 
-Once a macro has been defined, it can be invoked within your templates. For example, we can use the `image` macro defined above to reference an asset located at `resources/images/logo.png`:
+In the example above, assets will be prefetched with a maximum of `3` concurrent downloads on each page load. You can modify the concurrency to suit your application's needs or specify no concurrency limit if the application should download all assets at once:
 
-```blade
-<img src="{{ Vite::image('logo.png') }}" alt="Laravel Logo">
+```php
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Vite::prefetch();
+}
+```
+
+By default, prefetching will begin when the [page _load_ event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) fires. If you would like to customize when prefetching begins, you may specify an event that Vite will listen for:
+
+```php
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    Vite::prefetch(event: 'vite:prefetch');
+}
+```
+
+Given the code above, prefetching will now begin when you manually dispatch the `vite:prefetch` event on the `window` object. For example, you could have prefetching begin three seconds after the page loads:
+
+```html
+<script>
+    addEventListener('load', () => setTimeout(() => {
+        dispatchEvent(new Event('vite:prefetch'))
+    }, 3000))
+</script>
 ```
 
 <a name="custom-base-urls"></a>
@@ -572,7 +648,7 @@ ASSET_URL=https://cdn.example.com
 
 After configuring the asset URL, all re-written URLs to your assets will be prefixed with the configured value:
 
-```nothing
+```text
 https://cdn.example.com/build/assets/app.9dce8d17.js
 ```
 
@@ -673,19 +749,19 @@ To ensure you don't forget to rebuild the SSR entry point, we recommend augmenti
 
 Then, to build and start the SSR server, you may run the following commands:
 
-```sh
+```shell
 npm run build
 node bootstrap/ssr/ssr.js
 ```
 
 If you are using [SSR with Inertia](https://inertiajs.com/server-side-rendering), you may instead use the `inertia:start-ssr` Artisan command to start the SSR server:
 
-```sh
+```shell
 php artisan inertia:start-ssr
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Inertia SSR, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia SSR, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Inertia SSR, and Vite configuration.These starter kits offer the fastest way to get started with Laravel, Inertia SSR, and Vite.
 
 <a name="script-and-style-attributes"></a>
 ## Script and Style Tag Attributes
@@ -725,7 +801,7 @@ class AddContentSecurityPolicyHeaders
 
 After invoking the `useCspNonce` method, Laravel will automatically include the `nonce` attributes on all generated script and style tags.
 
-If you need to specify the nonce elsewhere, including the [Ziggy `@route` directive](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) included with Laravel's [starter kits](comecando/kits-para-iniciantes.md), you may retrieve it using the `cspNonce` method:
+If you need to specify the nonce elsewhere, including the [Ziggy `@route` directive](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) included with Laravel's [starter kits](starter-kits.md), you may retrieve it using the `cspNonce` method:
 
 ```blade
 @routes(nonce: Vite::cspNonce())
@@ -780,7 +856,7 @@ Vite::useIntegrityKey(false);
 <a name="arbitrary-attributes"></a>
 ### Arbitrary Attributes
 
-If you need to include additional attributes on your script and style tags, such as the [`data-turbo-track`](https://turbo.hotwired.dev/handbook/drive#reloading-when-assets-change) attribute, you may specify them via the `useScriptTagAttributes` and `useStyleTagAttributes` methods. Typically, this methods should be invoked from a [service provider](arquitetura/provedores.md):
+If you need to include additional attributes on your script and style tags, such as the [`data-turbo-track`](https://turbo.hotwired.dev/handbook/drive#reloading-when-assets-change) attribute, you may specify them via the `useScriptTagAttributes` and `useStyleTagAttributes` methods. Typically, this methods should be invoked from a [service provider](providers.md):
 
 ```php
 use Illuminate\Support\Facades\Vite;
@@ -821,9 +897,9 @@ Out of the box, Laravel's Vite plugin uses sensible conventions that should work
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
-    {{
+    \{\{
         Vite::useHotFile(storage_path('vite.hot')) // Customize the "hot" file...
             ->useBuildDirectory('bundle') // Customize the build directory...
             ->useManifestFilename('assets.json') // Customize the manifest filename...
@@ -831,7 +907,7 @@ Out of the box, Laravel's Vite plugin uses sensible conventions that should work
             ->createAssetPathsUsing(function (string $path, ?bool $secure) { // Customize the backend path generation for built assets...
                 return "https://cdn.example.com/{$path}";
             })
-    }}
+    \}\}
 </head>
 ```
 
@@ -852,6 +928,72 @@ export default defineConfig({
     build: {
       manifest: 'assets.json', // Customize the manifest filename...
     },
+});
+```
+
+<a name="cors"></a>
+### Dev Server Cross-Origin Resource Sharing (CORS)
+
+If you are experiencing Cross-Origin Resource Sharing (CORS) issues in the browser while fetching assets from the Vite dev server, you may need to grant your custom origin access to the dev server. Vite combined with the Laravel plugin allows the following origins without any additional configuration:
+
+- `::1`
+- `127.0.0.1`
+- `localhost`
+- `*.test`
+- `*.localhost`
+- `APP_URL` in the project's `.env`
+
+The easiest way to allow a custom origin for your project is to ensure that your application's `APP_URL` environment variable matches the origin you are visiting in your browser. For example, if you visiting `https://my-app.laravel`, you should update your `.env` to match:
+
+```env
+APP_URL=https://my-app.laravel
+```
+
+If you need more fine-grained control over the origins, such as supporting multiple origins, you should utilize [Vite's comprehensive and flexible built-in CORS server configuration](https://vite.dev/config/server-options.html#server-cors). For example, you may specify multiple origins in the `server.cors.origin` configuration option in the project's `vite.config.js` file:
+
+```js
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: 'resources/js/app.js',
+            refresh: true,
+        }),
+    ],
+    server: {  // [tl! add]
+        cors: {  // [tl! add]
+            origin: [  // [tl! add]
+                'https://backend.laravel',  // [tl! add]
+                'http://admin.laravel:8566',  // [tl! add]
+            ],  // [tl! add]
+        },  // [tl! add]
+    },  // [tl! add]
+});
+```
+
+You may also include regex patterns, which can be helpful if you would like to allow all origins for a given top-level domain, such as `*.laravel`:
+
+```js
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: 'resources/js/app.js',
+            refresh: true,
+        }),
+    ],
+    server: {  // [tl! add]
+        cors: {  // [tl! add]
+            origin: [ // [tl! add]
+                // Supports: SCHEME://DOMAIN.laravel[:PORT] [tl! add]
+                /^https?:\/\/.*\.laravel(:\d+)?$/, //[tl! add]
+            ], // [tl! add]
+        }, // [tl! add]
+    }, // [tl! add]
 });
 ```
 

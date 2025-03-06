@@ -37,7 +37,7 @@ For in-depth debugging of individual events, check out [Laravel Telescope](teles
 
 You may install Pulse using the Composer package manager:
 
-```sh
+```shell
 composer require laravel/pulse
 ```
 
@@ -63,7 +63,7 @@ Once Pulse's database migrations have been run, you may access the Pulse dashboa
 
 Many of Pulse's configuration options can be controlled using environment variables. To see the available options, register new recorders, or configure advanced options, you may publish the `config/pulse.php` configuration file:
 
-```sh
+```shell
 php artisan vendor:publish --tag=pulse-config
 ```
 
@@ -97,7 +97,7 @@ public function boot(): void
 
 The Pulse dashboard cards and layout may be configured by publishing the dashboard view. The dashboard view will be published to `resources/views/vendor/pulse/dashboard.blade.php`:
 
-```sh
+```shell
 php artisan vendor:publish --tag=pulse-dashboard
 ```
 
@@ -159,7 +159,7 @@ public function boot(): void
 ```
 
 > [!NOTE]
-> You may completely customize how the authenticated user is captured and retrieved by implementing the `Laravel\Pulse\Contracts\ResolvesUsers` contract and binding it in Laravel's [service container](arquitetura/conteiner.md#binding-a-singleton).
+> You may completely customize how the authenticated user is captured and retrieved by implementing the `Laravel\Pulse\Contracts\ResolvesUsers` contract and binding it in Laravel's [service container](container.md#binding-a-singleton).
 
 <a name="dashboard-cards"></a>
 ### Cards
@@ -256,7 +256,7 @@ php artisan pulse:check
 
 As the `pulse:check` command is a long-lived process, it will not see changes to your codebase without being restarted. You should gracefully restart the command by calling the `pulse:restart` command during your application's deployment process:
 
-```sh
+```shell
 php artisan pulse:restart
 ```
 
@@ -309,6 +309,20 @@ The `SlowJobs` recorder captures information about slow jobs occurring in your a
 
 You may optionally adjust the slow job threshold, [sample rate](#sampling), and ignored job patterns.
 
+You may have some jobs that you expect to take longer than others. In those cases, you may configure per-job thresholds:
+
+```php
+Recorders\SlowJobs::class => [
+    // ...
+    'threshold' => [
+        '#^App\\Jobs\\GenerateYearlyReports$#' => 5000,
+        'default' => env('PULSE_SLOW_JOBS_THRESHOLD', 1000),
+    ],
+],
+```
+
+If no regular expression patterns match the job's classname, then the `'default'` value will be used.
+
 <a name="slow-outgoing-requests-recorder"></a>
 #### Slow Outgoing Requests
 
@@ -316,10 +330,24 @@ The `SlowOutgoingRequests` recorder captures information about outgoing HTTP req
 
 You may optionally adjust the slow outgoing request threshold, [sample rate](#sampling), and ignored URL patterns.
 
+You may have some outgoing requests that you expect to take longer than others. In those cases, you may configure per-request thresholds:
+
+```php
+Recorders\SlowOutgoingRequests::class => [
+    // ...
+    'threshold' => [
+        '#backup.zip$#' => 5000,
+        'default' => env('PULSE_SLOW_OUTGOING_REQUESTS_THRESHOLD', 1000),
+    ],
+],
+```
+
+If no regular expression patterns match the request's URL, then the `'default'` value will be used.
+
 You may also configure URL grouping so that similar URLs are grouped as a single entry. For example, you may wish to remove unique IDs from URL paths or group by domain only. Groups are configured using a regular expression to "find and replace" parts of the URL. Some examples are included in the configuration file:
 
 ```php
-Recorders\OutgoingRequests::class => [
+Recorders\SlowOutgoingRequests::class => [
     // ...
     'groups' => [
         // '#^https://api\.github\.com/repos/.*$#' => 'api.github.com/repos/*',
@@ -338,12 +366,40 @@ The `SlowQueries` recorder captures any database queries in your application tha
 
 You may optionally adjust the slow query threshold, [sample rate](#sampling), and ignored query patterns. You may also configure whether to capture the query location. The captured location will be displayed on the Pulse dashboard which can help to track down the query origin; however, if the same query is made in multiple locations then it will appear multiple times for each unique location.
 
+You may have some queries that you expect to take longer than others. In those cases, you may configure per-query thresholds:
+
+```php
+Recorders\SlowQueries::class => [
+    // ...
+    'threshold' => [
+        '#^insert into `yearly_reports`#' => 5000,
+        'default' => env('PULSE_SLOW_QUERIES_THRESHOLD', 1000),
+    ],
+],
+```
+
+If no regular expression patterns match the query's SQL, then the `'default'` value will be used.
+
 <a name="slow-requests-recorder"></a>
 #### Slow Requests
 
 The `Requests` recorder captures information about requests made to your application for display on the [Slow Requests](#slow-requests-card) and [Application Usage](#application-usage-card) cards.
 
 You may optionally adjust the slow route threshold, [sample rate](#sampling), and ignored paths.
+
+You may have some requests that you expect to take longer than others. In those cases, you may configure per-request thresholds:
+
+```php
+Recorders\SlowRequests::class => [
+    // ...
+    'threshold' => [
+        '#^/admin/#' => 5000,
+        'default' => env('PULSE_SLOW_REQUESTS_THRESHOLD', 1000),
+    ],
+],
+```
+
+If no regular expression patterns match the request's URL, then the `'default'` value will be used.
 
 <a name="servers-recorder"></a>
 #### Servers
@@ -370,7 +426,7 @@ You may optionally adjust the [sample rate](#sampling) and ignored job patterns.
 
 The `UserRequests` recorder captures information about the users making requests to your application for display on the [Application Usage](#application-usage-card) card.
 
-You may optionally adjust the [sample rate](#sampling) and ignored job patterns.
+You may optionally adjust the [sample rate](#sampling) and ignored URL patterns.
 
 <a name="filtering"></a>
 ### Filtering
@@ -420,13 +476,13 @@ PULSE_DB_CONNECTION=pulse
 
 By default, Pulse will store entries directly to the [configured database connection](#using-a-different-database) after the HTTP response has been sent to the client or a job has been processed; however, you may use Pulse's Redis ingest driver to send entries to a Redis stream instead. This can be enabled by configuring the `PULSE_INGEST_DRIVER` environment variable:
 
-```
+```ini
 PULSE_INGEST_DRIVER=redis
 ```
 
 Pulse will use your default [Redis connection](redis.md#configuration) by default, but you may customize this via the `PULSE_REDIS_CONNECTION` environment variable:
 
-```
+```ini
 PULSE_REDIS_CONNECTION=pulse
 ```
 
@@ -441,7 +497,7 @@ php artisan pulse:work
 
 As the `pulse:work` command is a long-lived process, it will not see changes to your codebase without being restarted. You should gracefully restart the command by calling the `pulse:restart` command during your application's deployment process:
 
-```sh
+```shell
 php artisan pulse:restart
 ```
 
@@ -665,7 +721,7 @@ class TopSellers extends Card
     public function render()
     {
         return view('livewire.pulse.top-sellers', [
-            'topSellers' => $this->aggregate('user_sale', ['sum', 'count']);
+            'topSellers' => $this->aggregate('user_sale', ['sum', 'count'])
         ]);
     }
 }
@@ -673,11 +729,11 @@ class TopSellers extends Card
 
 The `aggregate` method returns a collection of PHP `stdClass` objects. Each object will contain the `key` property captured earlier, along with keys for each of the requested aggregates:
 
-```
+```blade
 @foreach ($topSellers as $seller)
-    {{ $seller->key }}
-    {{ $seller->sum }}
-    {{ $seller->count }}
+    \{\{ $seller->key \}\}
+    \{\{ $seller->sum \}\}
+    \{\{ $seller->count \}\}
 @endforeach
 ```
 
@@ -711,7 +767,7 @@ return view('livewire.pulse.top-sellers', [
 The `find` method returns an object containing `name`, `extra`, and `avatar` keys, which you may optionally pass directly to the `<x-pulse::user-card>` Blade component:
 
 ```blade
-<x-pulse::user-card :user="{{ $seller->user }}" :stats="{{ $seller->sum }}" />
+<x-pulse::user-card :user="\{\{ $seller->user \}\}" :stats="\{\{ $seller->sum \}\}" />
 ```
 
 <a name="custom-recorders"></a>

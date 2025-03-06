@@ -16,7 +16,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-Laravel Precognition allows you to anticipate the outcome of a future HTTP request. One of the primary use cases of Precognition is the ability to provide "live" validation for your frontend JavaScript application without having to duplicate your application's backend validation rules. Precognition pairs especially well with Laravel's Inertia-based [starter kits](comecando/kits-para-iniciantes.md).
+Laravel Precognition allows you to anticipate the outcome of a future HTTP request. One of the primary use cases of Precognition is the ability to provide "live" validation for your frontend JavaScript application without having to duplicate your application's backend validation rules. Precognition pairs especially well with Laravel's Inertia-based [starter kits](starter-kits.md).
 
 When Laravel receives a "precognitive request", it will execute all of the route's middleware and resolve the route's controller dependencies, including validating [form requests](validation.md#form-request-validation) - but it will not actually execute the route's controller method.
 
@@ -70,7 +70,7 @@ const submit = () => form.submit();
             @change="form.validate('name')"
         />
         <div v-if="form.invalid('name')">
-            {{ form.errors.name }}
+            \{\{ form.errors.name \}\}
         </div>
 
         <label for="email">Email</label>
@@ -81,7 +81,7 @@ const submit = () => form.submit();
             @change="form.validate('email')"
         />
         <div v-if="form.invalid('email')">
-            {{ form.errors.email }}
+            \{\{ form.errors.email \}\}
         </div>
 
         <button :disabled="form.processing">
@@ -109,7 +109,7 @@ Any validation errors returned during a validation request or a form submission 
 
 ```html
 <div v-if="form.invalid('email')">
-    {{ form.errors.email }}
+    \{\{ form.errors.email \}\}
 </div>
 ```
 
@@ -150,6 +150,21 @@ If you are validating a subset of a form's inputs with Precognition, it can be u
 >
 ```
 
+As we have seen, you can hook into an input's `change` event and validate individual inputs as the user interacts with them; however, you may need to validate inputs that the user has not yet interacted with. This is common when building a "wizard", where you want to validate all visible inputs, whether the user has interacted with them or not, before moving to the next step.
+
+To do this with Precognition, you should call the `validate` method passing the field names you wish to validate to the `only` configuration key. You may handle the validation result with `onSuccess` or `onValidationError` callbacks:
+
+```html
+<button
+    type="button"
+    @click="form.validate({
+        only: ['name', 'email', 'phone'],
+        onSuccess: (response) => nextStep(),
+        onValidationError: (response) => /* ... */,
+    })"
+>Next Step</button>
+```
+
 Of course, you may also execute code in reaction to the response to the form submission. The form's `submit` function returns an Axios request promise. This provides a convenient way to access the response payload, reset the form inputs on successful submission, or handle a failed request:
 
 ```js
@@ -176,7 +191,7 @@ You may determine if a form submission request is in-flight by inspecting the fo
 ### Using Vue and Inertia
 
 > [!NOTE]
-> If you would like a head start when developing your Laravel application with Vue and Inertia, consider using one of our [starter kits](comecando/kits-para-iniciantes.md). Laravel's starter kits provide backend and frontend authentication scaffolding for your new Laravel application.
+> If you would like a head start when developing your Laravel application with Vue and Inertia, consider using one of our [starter kits](starter-kits.md). Laravel's starter kits provide backend and frontend authentication scaffolding for your new Laravel application.
 
 Before using Precognition with Vue and Inertia, be sure to review our general documentation on [using Precognition with Vue](#using-vue). When using Vue with Inertia, you will need to install the Inertia compatible Precognition library via NPM:
 
@@ -247,7 +262,7 @@ export default function Form() {
 
     return (
         <form onSubmit={submit}>
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input
                 id="name"
                 value={form.data.name}
@@ -256,7 +271,7 @@ export default function Form() {
             />
             {form.invalid('name') && <div>{form.errors.name}</div>}
 
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
                 id="email"
                 value={form.data.email}
@@ -314,12 +329,27 @@ If you are validating a subset of a form's inputs with Precognition, it can be u
 <input
     id="avatar"
     type="file"
-    onChange={(e) =>
+    onChange={(e) => {
         form.setData('avatar', e.target.value);
 
         form.forgetError('avatar');
-    }
+    \}\}
 >
+```
+
+As we have seen, you can hook into an input's `blur` event and validate individual inputs as the user interacts with them; however, you may need to validate inputs that the user has not yet interacted with. This is common when building a "wizard", where you want to validate all visible inputs, whether the user has interacted with them or not, before moving to the next step.
+
+To do this with Precognition, you should call the `validate` method passing the field names you wish to validate to the `only` configuration key. You may handle the validation result with `onSuccess` or `onValidationError` callbacks:
+
+```jsx
+<button
+    type="button"
+    onClick={() => form.validate({
+        only: ['name', 'email', 'phone'],
+        onSuccess: (response) => nextStep(),
+        onValidationError: (response) => /* ... */,
+    })}
+>Next Step</button>
 ```
 
 Of course, you may also execute code in reaction to the response to the form submission. The form's `submit` function returns an Axios request promise. This provides a convenient way to access the response payload, reset the form's inputs on a successful form submission, or handle a failed request:
@@ -352,7 +382,7 @@ You may determine if a form submission request is in-flight by inspecting the fo
 ### Using React and Inertia
 
 > [!NOTE]
-> If you would like a head start when developing your Laravel application with React and Inertia, consider using one of our [starter kits](comecando/kits-para-iniciantes.md). Laravel's starter kits provide backend and frontend authentication scaffolding for your new Laravel application.
+> If you would like a head start when developing your Laravel application with React and Inertia, consider using one of our [starter kits](starter-kits.md). Laravel's starter kits provide backend and frontend authentication scaffolding for your new Laravel application.
 
 Before using Precognition with React and Inertia, be sure to review our general documentation on [using Precognition with React](#using-react). When using React with Inertia, you will need to install the Inertia compatible Precognition library via NPM:
 
@@ -501,6 +531,21 @@ You may also determine if an input has passed or failed validation by passing th
 > [!WARNING]
 > A form input will only appear as valid or invalid once it has changed and a validation response has been received.
 
+As we have seen, you can hook into an input's `change` event and validate individual inputs as the user interacts with them; however, you may need to validate inputs that the user has not yet interacted with. This is common when building a "wizard", where you want to validate all visible inputs, whether the user has interacted with them or not, before moving to the next step.
+
+To do this with Precognition, you should call the `validate` method passing the field names you wish to validate to the `only` configuration key. You may handle the validation result with `onSuccess` or `onValidationError` callbacks:
+
+```html
+<button
+    type="button"
+    @click="form.validate({
+        only: ['name', 'email', 'phone'],
+        onSuccess: (response) => nextStep(),
+        onValidationError: (response) => /* ... */,
+    })"
+>Next Step</button>
+```
+
 You may determine if a form submission request is in-flight by inspecting the form's `processing` property:
 
 ```html
@@ -517,9 +562,9 @@ In the user creation example discussed above, we are using Precognition to perfo
 ```html
 <form x-data="{
     form: $form('post', '/register', {
-        name: '{{ old('name') }}',
-        email: '{{ old('email') }}',
-    }).setErrors({{ Js::from($errors->messages()) }}),
+        name: '\{\{ old('name') \}\}',
+        email: '\{\{ old('email') \}\}',
+    }).setErrors(\{\{ Js::from($errors->messages()) \}\}),
 }">
 ```
 
@@ -630,7 +675,7 @@ protected function rules()
         'avatar' => [
             ...$this->isPrecognitive() ? [] : ['required'],
             'image',
-            'mimes:jpg,png'
+            'mimes:jpg,png',
             'dimensions:ratio=3/2',
         ],
         // ...
