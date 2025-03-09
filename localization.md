@@ -58,9 +58,9 @@ You may retrieve lines from language files using the `trans` helper function. Th
 
     echo trans('messages.welcome');
 
-Of course if you are using the [Blade templating engine](blade.md), you may use the `{{ }}` syntax to echo the language line or use the `@lang` directive:
+Of course if you are using the [Blade templating engine](blade.md), you may use the `\{\{ \}\}` syntax to echo the language line or use the `@lang` directive:
 
-    {{ trans('messages.welcome') }}
+    \{\{ trans('messages.welcome') \}\}
 
     @lang('messages.welcome')
 

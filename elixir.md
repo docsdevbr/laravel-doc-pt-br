@@ -315,7 +315,7 @@ elixir(function(mix) {
 
 After generating the versioned file, you may use Laravel's global `elixir` PHP helper function within your [views](views.md) to load the appropriately hashed asset. The `elixir` function will automatically determine the name of the hashed file:
 
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="\{\{ elixir('css/all.css') \}\}">
 
 #### Versioning Multiple Files
 
@@ -329,9 +329,9 @@ elixir(function(mix) {
 
 Once the files have been versioned, you may use the `elixir` helper function to generate links to the proper hashed files. Remember, you only need to pass the name of the un-hashed file to the `elixir` helper function. The helper will use the un-hashed name to determine the current hashed version of the file:
 
-    <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
+    <link rel="stylesheet" href="\{\{ elixir('css/all.css') \}\}">
 
-    <script src="{{ elixir('js/app.js') }}"></script>
+    <script src="\{\{ elixir('js/app.js') \}\}"></script>
 
 <a name="browser-sync"></a>
 ## BrowserSync

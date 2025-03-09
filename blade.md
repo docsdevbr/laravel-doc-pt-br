@@ -84,13 +84,13 @@ You may display data passed to your Blade views by wrapping the variable in "cur
 
 You may display the contents of the `name` variable like so:
 
-    Hello, {{ $name }}.
+    Hello, \{\{ $name \}\}.
 
 Of course, you are not limited to displaying the contents of the variables passed to the view. You may also echo the results of any PHP function. In fact, you can put any PHP code you wish inside of a Blade echo statement:
 
-    The current UNIX timestamp is {{ time() }}.
+    The current UNIX timestamp is \{\{ time() \}\}.
 
-> **Note:** Blade `{{ }}` statements are automatically sent through PHP's `htmlentities` function to prevent XSS attacks.
+> **Note:** Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlentities` function to prevent XSS attacks.
 
 #### Blade & JavaScript Frameworks
 
@@ -98,25 +98,25 @@ Since many JavaScript frameworks also use "curly" braces to indicate a given exp
 
     <h1>Laravel</h1>
 
-    Hello, @{{ name }}.
+    Hello, @\{\{ name \}\}.
 
-In this example, the `@` symbol will be removed by Blade; however, `{{ name }}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
+In this example, the `@` symbol will be removed by Blade; however, `\{\{ name \}\}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
 
 #### Echoing Data If It Exists
 
 Sometimes you may wish to echo a variable, but you aren't sure if the variable has been set. We can express this in verbose PHP code like so:
 
-    {{ isset($name) ? $name : 'Default' }}
+    \{\{ isset($name) ? $name : 'Default' \}\}
 
 However, instead of writing a ternary statement, Blade provides you with the following convenient short-cut:
 
-    {{ $name or 'Default' }}
+    \{\{ $name or 'Default' \}\}
 
 In this example, if the `$name` variable exists, its value will be displayed. However, if it does not exist, the word `Default` will be displayed.
 
 #### Displaying Unescaped Data
 
-By default, Blade `{{ }}` statements are automatically sent through PHP's `htmlentities` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
+By default, Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlentities` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
 
     Hello, {!! $name !!}.
 
@@ -160,15 +160,15 @@ You may also determine if a given layout section has any content using the `@has
 In addition to conditional statements, Blade provides simple directives for working with PHP's supported loop structures. Again, each of these directives functions identically to their PHP counterparts:
 
     @for ($i = 0; $i < 10; $i++)
-        The current value is {{ $i }}
+        The current value is \{\{ $i \}\}
     @endfor
 
     @foreach ($users as $user)
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
     @forelse ($users as $user)
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
     @empty
         <p>No users</p>
     @endforelse
@@ -184,7 +184,7 @@ When using loops you might need to end the loop or skip the current iteration:
             @continue
         @endif
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @if ($user->number == 5)
             @break
@@ -196,7 +196,7 @@ You may also include the condition with the directive declaration in one line:
     @foreach ($users as $user)
         @continue($user->type == 1)
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @break($user->number == 5)
     @endforeach
@@ -235,7 +235,7 @@ You may also pass a fourth argument to the `@each` directive. This argument dete
 
 Blade also allows you to define comments in your views. However, unlike HTML comments, Blade comments are not included in the HTML returned by your application:
 
-    {{-- This comment will not be present in the rendered HTML --}}
+    \{\{-- This comment will not be present in the rendered HTML --\}\}
 
 <a name="stacks"></a>
 ## Stacks
@@ -262,7 +262,7 @@ The `@inject` directive may be used to retrieve a service from the Laravel [serv
     @inject('metrics', 'App\Services\MetricsService')
 
     <div>
-        Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+        Monthly Revenue: \{\{ $metrics->monthlyRevenue() \}\}.
     </div>
 
 <a name="extending-blade"></a>

@@ -264,7 +264,7 @@ Anytime you define a HTML form in your application, you should include a hidden 
     <?php echo csrf_field(); ?>
 
     // Blade Template Syntax
-    {{ csrf_field() }}
+    \{\{ csrf_field() \}\}
 
 The `csrf_field` helper function generates the following HTML:
 
@@ -302,7 +302,7 @@ You may exclude URIs by defining their routes outside of the `web` middleware gr
 
 In addition to checking for the CSRF token as a POST parameter, the Laravel `VerifyCsrfToken` middleware will also check for the `X-CSRF-TOKEN` request header. You could, for example, store the token in a "meta" tag:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 Once you have created the `meta` tag, you can instruct a library like jQuery to add the token to all request headers. This provides simple, convenient CSRF protection for your AJAX based applications:
 
@@ -394,7 +394,7 @@ HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining 
 
     <form action="/foo/bar" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 To generate the hidden input field `_method`, you may also use the `method_field` helper function:
@@ -403,7 +403,7 @@ To generate the hidden input field `_method`, you may also use the `method_field
 
 Of course, using the Blade [templating engine](blade.md):
 
-    {{ method_field('PUT') }}
+    \{\{ method_field('PUT') \}\}
 
 <a name="accessing-the-current-route"></a>
 ## Accessing The Current Route
@@ -422,4 +422,4 @@ You may also use the `currentRouteName` and `currentRouteAction` helper methods 
 
     $action = Route::currentRouteAction();
 
-Please refer to the API documentation for both the [underlying class of the Route facade](http://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) and [Route instance](http://laravel.com/api/{{version}}/Illuminate/Routing/Route.html) to review all accessible methods.
+Please refer to the API documentation for both the [underlying class of the Route facade](http://laravel.com/api/{{ version }}/Illuminate/Routing/Router.html) and [Route instance](http://laravel.com/api/{{ version }}/Illuminate/Routing/Route.html) to review all accessible methods.

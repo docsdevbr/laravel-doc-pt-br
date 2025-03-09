@@ -182,10 +182,10 @@ Of course, the `can` method is simply the inverse of the `cannot` method:
 
 For convenience, Laravel provides the `@can` Blade directive to quickly check if the currently authenticated user has a given ability. For example:
 
-	<a href="/post/{{ $post->id }}">View Post</a>
+	<a href="/post/\{\{ $post->id \}\}">View Post</a>
 
 	@can('update-post', $post)
-		<a href="/post/{{ $post->id }}/edit">Edit Post</a>
+		<a href="/post/\{\{ $post->id \}\}/edit">Edit Post</a>
 	@endcan
 
 You may also combine the `@can` directive with `@else` directive:
