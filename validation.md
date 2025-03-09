@@ -146,7 +146,7 @@ So, in our example, the user will be redirected to our controller's `create` met
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         </div>
@@ -346,7 +346,7 @@ If you have multiple forms on a single page, you may wish to name the `MessageBa
 
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
-    {{ $errors->login->first('email') }}
+    \{\{ $errors->login->first('email') \}\}
 
 <a name="after-validation-hook"></a>
 ### After Validation Hook

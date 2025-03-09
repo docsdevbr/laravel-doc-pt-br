@@ -383,7 +383,7 @@ When allowing the dynamic `__call` method to share variables with a view, these 
 
 The `maximumVotes` variable may be accessed in the template like so:
 
-    {{ $maximumVotes }}
+    \{\{ $maximumVotes \}\}
 
 #### `@php` Blade Directive
 

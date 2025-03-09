@@ -49,7 +49,7 @@ Before broadcasting any events, you will first need to register the `App\Provide
 
 [Laravel Echo](#installing-laravel-echo) will need access to the current session's CSRF token. You should verify that your application's `head` HTML element defines a `meta` tag containing the CSRF token:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 <a name="driver-prerequisites"></a>
 ### Driver Prerequisites
@@ -92,7 +92,7 @@ When the Redis broadcaster publishes an event, it will be published on the event
 
 If you are going to pair the Redis broadcaster with a Socket.IO server, you will need to include the Socket.IO JavaScript client library in your application's `head` HTML element. When the Socket.IO server is started, it will automatically expose the client JavaScript library at a standard URL. For example, if you are running the Socket.IO server on the same domain as your web application, you may access the client library like so:
 
-    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+    <script src="//\{\{ Request::getHost() \}\}:6001/socket.io/socket.io.js"></script>
 
 Next, you will need to instantiate Echo with the `socket.io` connector and a `host`.
 
