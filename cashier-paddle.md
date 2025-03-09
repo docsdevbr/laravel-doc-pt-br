@@ -343,7 +343,7 @@ previous examples:
 
 Next, simply attach the pay link URL to an `a` element in your HTML:
 
-    <a href="#!" class="ml-4 paddle_button" data-override="{{ $payLink }}">
+    <a href="#!" class="ml-4 paddle_button" data-override="\{\{ $payLink \}\}">
         Paddle Checkout
     </a>
 
@@ -429,7 +429,7 @@ translate this example to your own frontend stack:
 ```alpine
 <div class="paddle-checkout" x-data="{}" x-init="
     Paddle.Checkout.open({
-        override: {{ $payLink }},
+        override: \{\{ $payLink \}\},
         method: 'inline',
         frameTarget: 'paddle-checkout',
         frameInitialHeight: 366,
@@ -503,7 +503,7 @@ After retrieving the prices you may display them however you wish:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - {{ $price->price()->gross() }}</li>
+        <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->gross() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -514,7 +514,7 @@ separately:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - {{ $price->price()->net() }} (+ {{ $price->price()->tax() }} tax)</li>
+        <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->net() \}\} (+ \{\{ $price->price()->tax() \}\} tax)</li>
     @endforeach
 </ul>
 ```
@@ -525,7 +525,7 @@ recurring price separately:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - Initial: {{ $price->initialPrice()->gross() }} - Recurring: {{ $price->recurringPrice()->gross() }}</li>
+        <li>\{\{ $price->product_title \}\} - Initial: \{\{ $price->initialPrice()->gross() \}\} - Recurring: \{\{ $price->recurringPrice()->gross() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -571,7 +571,7 @@ Then, display the calculated prices using the `price` method:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - {{ $price->price()->gross() }}</li>
+        <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->gross() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -582,7 +582,7 @@ the `listPrice` method:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - {{ $price->listPrice()->gross() }}</li>
+        <li>\{\{ $price->product_title \}\} - \{\{ $price->listPrice()->gross() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -1609,9 +1609,9 @@ the receipts:
 <table>
     @foreach ($receipts as $receipt)
         <tr>
-            <td>{{ $receipt->paid_at->toFormattedDateString() }}</td>
-            <td>{{ $receipt->amount() }}</td>
-            <td><a href="{{ $receipt->receipt_url }}" target="_blank">Download</a></td>
+            <td>\{\{ $receipt->paid_at->toFormattedDateString() \}\}</td>
+            <td>\{\{ $receipt->amount() \}\}</td>
+            <td><a href="\{\{ $receipt->receipt_url \}\}" target="_blank">Download</a></td>
         </tr>
     @endforeach
 </table>
@@ -1638,7 +1638,7 @@ however, `nextPayment` will return `null` when the billing cycle has ended (such
 as when a subscription has been cancelled):
 
 ```blade
-Next payment: {{ $nextPayment->amount() }} due on {{ $nextPayment->date()->format('d/m/Y') }}
+Next payment: \{\{ $nextPayment->amount() \}\} due on \{\{ $nextPayment->date()->format('d/m/Y') \}\}
 ```
 
 <a name="handling-failed-payments"></a>

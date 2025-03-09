@@ -420,7 +420,7 @@ available in your view, so you may access it like you would access any other
 data in your Blade templates:
 
     <div>
-        Price: {{ $order->price }}
+        Price: \{\{ $order->price \}\}
     </div>
 
 <a name="via-the-with-parameter"></a>
@@ -488,7 +488,7 @@ available in your view, so you may access it like you would access any other
 data in your Blade templates:
 
     <div>
-        Price: {{ $orderPrice }}
+        Price: \{\{ $orderPrice \}\}
     </div>
 
 <a name="attachments"></a>
@@ -621,7 +621,7 @@ manually:
 <body>
     Here is an image:
 
-    <img src="{{ $message->embed($pathToImage) }}">
+    <img src="\{\{ $message->embed($pathToImage) \}\}">
 </body>
 ```
 
@@ -642,7 +642,7 @@ be assigned to the embedded image:
 <body>
     Here is an image from raw data:
 
-    <img src="{{ $message->embedData($data, 'example-image.jpg') }}">
+    <img src="\{\{ $message->embedData($data, 'example-image.jpg') \}\}">
 </body>
 ```
 
@@ -883,7 +883,7 @@ View Order
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+\{\{ config('app.name') \}\}
 </x-mail::message>
 ```
 

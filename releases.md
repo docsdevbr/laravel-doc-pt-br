@@ -43,7 +43,7 @@ meses e as correções de segurança são fornecidas por 2 anos.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 | Versão  |  PHP (*)  |       Lançamento        | Correções de falhas até | Correções de segurança até |
 |:-------:|:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
@@ -108,7 +108,7 @@ para enviar emails.
 No entanto, essa biblioteca não é mais mantida, sendo sucedida pelo Symfony
 Mailer.
 
-Revise o [guia de atualização](../upgrade.md#symfony-mailer) para saber mais
+Revise o [guia de atualização](upgrade.md#symfony-mailer) para saber mais
 sobre como garantir que sua aplicação seja compatível com o Symfony Mailer.
 
 ### Flysystem 3.x {: #flysystem-3-x }
@@ -121,7 +121,7 @@ O Laravel 9.x atualiza nossa dependência original do Flysystem para Flysystem
 O Flysystem dá suporte a todas as interações do sistema de arquivos oferecidas
 pela fachada `Storage`.
 
-Revise o [guia de atualização](../upgrade.md#flysystem-3) para saber mais sobre
+Revise o [guia de atualização](upgrade.md#flysystem-3) para saber mais sobre
 como garantir que sua aplicação seja compatível com Flysystem 3.x.
 
 ### Acessadores e Modificadores Aprimorados do Eloquent
@@ -130,7 +130,7 @@ _Os acessadores e modificadores aprimorados do Eloquent foram contribuídos por
 [Taylor Otwell](https://github.com/taylorotwell)_.
 
 O Laravel 9.x oferece uma nova maneira de definir
-[acessadores e modificadores](../eloquent-mutators.md#accessors-and-mutators) do
+[acessadores e modificadores](eloquent-mutators.md#accessors-and-mutators) do
 Eloquent.
 Nas versões anteriores do Laravel, a única maneira de definir acessadores e
 modificadores era definindo métodos prefixados no seu modelo da seguinte forma:
@@ -165,7 +165,7 @@ public function name(): Attribute
 
 Além disso, esta nova abordagem para definir acessadores armazenará em _cache_
 os valores dos objetos retornados pelo atributo, assim como as
-[classes de conversão personalizadas](../eloquent-mutators.md#custom-casts):
+[classes de conversão personalizadas](eloquent-mutators.md#custom-casts):
 
 ```php
 use App\Support\Address;
@@ -339,7 +339,7 @@ $table->text('bio')->fullText();
 
 Além disso, os métodos `whereFullText` e `orWhereFullText` podem ser usados para
 adicionar cláusulas `WHERE` de texto completo a uma consulta para colunas que
-possuem [índices de texto completo](../migrations.md#available-index-types).
+possuem [índices de texto completo](migrations.md#available-index-types).
 Esses métodos serão transformados no SQL apropriado para o sistema de banco de
 dados subjacente pelo Laravel.
 Por exemplo, uma cláusula `MATCH AGAINST` será gerada para aplicações que
@@ -365,7 +365,7 @@ completo ao filtrar os resultados do seu banco de dados existente para
 determinar os resultados de pesquisa aplicáveis à sua consulta.
 
 Para saber mais sobre o motor de banco de dados do Scout, consulte a
-[documentação do Scout](../scout.md).
+[documentação do Scout](scout.md).
 
 ### Renderização de Modelos do Blade em Linha
 
@@ -383,7 +383,7 @@ dados para fornecer ao modelo:
 ```php
 use Illuminate\Support\Facades\Blade;
 
-return Blade::render('Olá, {{ $name }}', ['name' => 'Julian Bashir']);
+return Blade::render('Olá, \{\{ $name \}\}', ['name' => 'Julian Bashir']);
 ```
 
 Da mesma forma, o método `renderComponent` pode ser usado para renderizar um
@@ -447,8 +447,8 @@ determinada opção do elemento HTML `select` deve ser "selecionada":
 ```bladehtml
 <select name="version">
     @foreach ($product->versions as $version)
-        <option value="{{ $version }}" @selected(old('version') == $version)>
-            {{ $version }}
+        <option value="\{\{ $version \}\}" @selected(old('version') == $version)>
+            \{\{ $version \}\}
         </option>
     @endforeach
 </select>
@@ -515,7 +515,7 @@ do Next.js foram contribuídos por
 [Taylor Otwell](https://github.com/taylorotwell) e
 [Miguel Piedrafita](https://twitter.com/m1guelpf)_.
 
-O _kit_ para iniciantes do [Laravel Breeze](../starter-kits.md#breeze-and-next)
+O _kit_ para iniciantes do [Laravel Breeze](starter-kits.md#breeze-and-next)
 recebeu um modo de geração automática de código da API e uma
 [implementação de _front-end_](https://github.com/laravel/breeze-next)
 [Next.js](https://nextjs.org) gratuita.
@@ -587,12 +587,12 @@ _O servidor Echo Soketi foi desenvolvido por
 
 Embora não seja exclusivo do Laravel 9.x, o Laravel recentemente ajudou na
 documentação do Soketi, um servidor WebSocket compatível com
-[Laravel Echo](../broadcasting.md) escrito para Node.js.
+[Laravel Echo](broadcasting.md) escrito para Node.js.
 O Soketi fornece uma excelente alternativa de código aberto ao Pusher e Ably
 para aquelas aplicações que preferem gerenciar seu próprio servidor WebSocket.
 
 Para obter mais informações sobre o uso do Soketi, consulte a
-[documentação de transmissão](../broadcasting.md) e a
+[documentação de transmissão](broadcasting.md) e a
 [documentação do Soketi](https://docs.soketi.app/).
 
 ### Suporte Aprimorado a Coleções no IDE

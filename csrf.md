@@ -83,7 +83,7 @@ may use the `@csrf` Blade directive to generate the hidden token input field:
     @csrf
 
     <!-- Equivalent to... -->
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}" />
 </form>
 ```
 
@@ -150,7 +150,7 @@ the `X-CSRF-TOKEN` request header. You could, for example, store the token in an
 HTML `meta` tag:
 
 ```blade
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 ```
 
 Then, you can instruct a library like jQuery to automatically add the token to

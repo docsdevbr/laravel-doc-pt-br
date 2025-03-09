@@ -693,7 +693,7 @@ application's `passwords` [language file](localization.md):
 ```html
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
-        {{ session('status') }}
+        \{\{ session('status') \}\}
     </div>
 @endif
 ```
@@ -757,7 +757,7 @@ successful status of the reset on your login screen:
 ```blade
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
-        {{ session('status') }}
+        \{\{ session('status') \}\}
     </div>
 @endif
 ```

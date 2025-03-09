@@ -572,7 +572,7 @@ example, consider this "update payment method" form:
 <!-- Stripe Elements Placeholder -->
 <div id="card-element"></div>
 
-<button id="card-button" data-secret="{{ $intent->client_secret }}">
+<button id="card-button" data-secret="\{\{ $intent->client_secret \}\}">
     Update Payment Method
 </button>
 ```
@@ -1170,7 +1170,7 @@ may use the `latestPayment` method available on subscription instance to
 retrieve this identifier:
 
 ```html
-<a href="{{ route('cashier.payment', $subscription->latestPayment()->id) }}">
+<a href="\{\{ route('cashier.payment', $subscription->latestPayment()->id) \}\}">
     Please confirm your payment.
 </a>
 ```
@@ -1619,9 +1619,9 @@ containing an associative array of usage records. You may iterate over this
 array to display a customer's total usage:
 
     @foreach ($usageRecords as $usageRecord)
-        - Period Starting: {{ $usageRecord['period']['start'] }}
-        - Period Ending: {{ $usageRecord['period']['end'] }}
-        - Total Usage: {{ $usageRecord['total_usage'] }}
+        - Period Starting: \{\{ $usageRecord['period']['start'] \}\}
+        - Period Ending: \{\{ $usageRecord['period']['end'] \}\}
+        - Total Usage: \{\{ $usageRecord['total_usage'] \}\}
     @endforeach
 
 For a full reference of all usage data returned and how to use Stripe's cursor
@@ -2303,9 +2303,9 @@ every invoice in a table, allowing the user to easily download any of them:
     <table>
         @foreach ($invoices as $invoice)
             <tr>
-                <td>{{ $invoice->date()->toFormattedDateString() }}</td>
-                <td>{{ $invoice->total() }}</td>
-                <td><a href="/user/invoice/{{ $invoice->id }}">Download</a></td>
+                <td>\{\{ $invoice->date()->toFormattedDateString() \}\}</td>
+                <td>\{\{ $invoice->total() \}\}</td>
+                <td><a href="/user/invoice/\{\{ $invoice->id \}\}">Download</a></td>
             </tr>
         @endforeach
     </table>

@@ -241,7 +241,7 @@ root template:
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -253,7 +253,7 @@ JavaScript entry point:
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite('resources/js/app.js')
 </head>
@@ -270,7 +270,7 @@ invoking the `@vite` directive:
 ```blade
 <!doctype html>
 <head>
-    {{-- Given build path is relative to public path. --}}
+    \{\{-- Given build path is relative to public path. --\}\}
 
     @vite('resources/js/app.js', 'vendor/courier/build')
 </head>
@@ -547,7 +547,7 @@ then reference these assets in Blade templates using the `Vite::asset` method,
 which will return the versioned URL for a given asset:
 
 ```blade
-<img src="{{ Vite::asset('resources/images/logo.png') }}">
+<img src="\{\{ Vite::asset('resources/images/logo.png') \}\}">
 ```
 
 <a name="blade-refreshing-on-save"></a>
@@ -652,7 +652,7 @@ example, we can use the `image` macro defined above to reference an asset
 located at `resources/images/logo.png`:
 
 ```blade
-<img src="{{ Vite::image('logo.png') }}" alt="Laravel Logo">
+<img src="\{\{ Vite::image('logo.png') \}\}" alt="Laravel Logo">
 ```
 
 <a name="custom-base-urls"></a>
@@ -960,14 +960,14 @@ directive:
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
-    {{
+    \{\{
         Vite::useHotFile(storage_path('vite.hot')) // Customize the "hot" file...
             ->useBuildDirectory('bundle') // Customize the build directory...
             ->useManifestFilename('assets.json') // Customize the manifest filename...
             ->withEntryPoints(['resources/js/app.js']) // Specify the entry points...
-    }}
+    \}\}
 </head>
 ```
 
