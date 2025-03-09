@@ -183,7 +183,7 @@ So, in our example, the user will be redirected to our controller's `create` met
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>\{\{ $error \}\}</li>
             @endforeach
         </ul>
     </div>
@@ -217,7 +217,7 @@ You may use the `@error` [Blade](blade.md) directive to quickly determine if val
 <input id="title" type="text" name="title" class="@error('title') is-invalid @enderror">
 
 @error('title')
-    <div class="alert alert-danger">{{ $message }}</div>
+    <div class="alert alert-danger">\{\{ $message \}\}</div>
 @enderror
 ```
 
@@ -238,7 +238,7 @@ To retrieve flashed input from the previous request, invoke the `old` method on 
 
 Laravel also provides a global `old` helper. If you are displaying old input within a [Blade template](blade.md), it is more convenient to use the `old` helper to repopulate the form. If no old input exists for the given field, `null` will be returned:
 
-    <input type="text" name="title" value="{{ old('title') }}">
+    <input type="text" name="title" value="\{\{ old('title') \}\}">
 
 <a name="a-note-on-optional-fields"></a>
 ### A Note On Optional Fields
@@ -538,7 +538,7 @@ If you have multiple forms on a single page, you may wish to name the `MessageBa
 
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
-    {{ $errors->login->first('email') }}
+    \{\{ $errors->login->first('email') \}\}
 
 <a name="manual-customizing-the-error-messages"></a>
 ### Customizing The Error Messages

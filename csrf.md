@@ -53,7 +53,7 @@ Anytime you define a "POST", "PUT", "PATCH", or "DELETE" HTML form in your appli
         @csrf
 
         <!-- Equivalent to... -->
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}" />
     </form>
 
 The `App\Http\Middleware\VerifyCsrfToken` [middleware](middleware.md), which is included in the `web` middleware group by default, will automatically verify that the token in the request input matches the token stored in the session. When these two tokens match, we know that the authenticated user is the one initiating the request.
@@ -97,7 +97,7 @@ Typically, you should place these kinds of routes outside of the `web` middlewar
 
 In addition to checking for the CSRF token as a POST parameter, the `App\Http\Middleware\VerifyCsrfToken` middleware will also check for the `X-CSRF-TOKEN` request header. You could, for example, store the token in an HTML `meta` tag:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 Then, you can instruct a library like jQuery to automatically add the token to all request headers. This provides simple, convenient CSRF protection for your AJAX based applications using legacy JavaScript technology:
 

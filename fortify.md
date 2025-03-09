@@ -418,7 +418,7 @@ After being redirected back to the `/forgot-password` endpoint after a successfu
 ```html
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
-        {{ session('status') }}
+        \{\{ session('status') \}\}
     </div>
 @endif
 ```
@@ -462,7 +462,7 @@ If the password reset request was successful, Fortify will redirect back to the 
 ```html
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
-        {{ session('status') }}
+        \{\{ session('status') \}\}
     </div>
 @endif
 ```

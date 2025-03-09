@@ -399,7 +399,7 @@ Internally, the `XDEBUG_CONFIG` environment variable is defined as `client_host=
 First, you should determine the correct host IP address to add to the environment variable by running the following command. Typically, the `<container-name>` should be the name of the container that serves your application and often ends with `_laravel.test_1`:
 
 ```bash
-docker inspect -f {{range.NetworkSettings.Networks}}{{.Gateway}}{{end}} <container-name>
+docker inspect -f \{\{range.NetworkSettings.Networks\}\}\{\{.Gateway\}\}\{\{end\}\} <container-name>
 ```
 
 Once you have obtained the correct host IP address, you should define the `SAIL_XDEBUG_CONFIG` variable within your application's `.env` file:

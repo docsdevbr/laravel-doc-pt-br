@@ -1468,7 +1468,7 @@ Dusk even allows you to make assertions on the state of [Vue component](https://
     // Component Definition...
 
     Vue.component('profile', {
-        template: '<div>{{ user.name }}</div>',
+        template: '<div>\{\{ user.name \}\}</div>',
 
         data: function () {
             return {

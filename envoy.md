@@ -82,7 +82,7 @@ Envoy allows you to easily run a task across multiple servers. First, add additi
 
 @task('deploy', ['on' => ['web-1', 'web-2']])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate --force
 @endtask
 ```
@@ -97,7 +97,7 @@ By default, tasks will be executed on each server serially. In other words, a ta
 
 @task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate --force
 @endtask
 ```
@@ -139,7 +139,7 @@ You may access the options within your tasks using Blade's "echo" syntax. You ma
     cd /home/user/example.com
 
     @if ($branch)
-        git pull origin {{ $branch }}
+        git pull origin \{\{ $branch \}\}
     @endif
 
     php artisan migrate --force
@@ -259,7 +259,7 @@ If you would like to be prompted for confirmation before running a given task on
 ```bash
 @task('deploy', ['on' => 'web', 'confirm' => true])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate
 @endtask
 ```

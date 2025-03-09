@@ -47,7 +47,7 @@ meses e as correções de segurança são fornecidas por 2 anos.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 | Versão  |  PHP (*)  |       Lançamento        | Correções de falhas até | Correções de segurança até |
 |:-------:|:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
@@ -113,7 +113,7 @@ colocados no diretório `app`.
 _As classes de fábricas de modelos foram contribuídas por
 [Taylor Otwell](https://github.com/taylorotwell)_.
 
-As [fábricas de modelos](../database-testing.md#defining-model-factories) do
+As [fábricas de modelos](database-testing.md#defining-model-factories) do
 Eloquent foram totalmente reescritas como fábricas baseadas em classes e
 aprimoradas para ter suporte de primeira classe a relacionamentos.
 Por exemplo, a `UserFactory` incluída no Laravel é escrita assim:
@@ -219,7 +219,7 @@ Laravel 8.x.
 As fábricas reescritas do Laravel contêm muito mais recursos que achamos que
 você irá adorar.
 Para saber mais sobre fábricas de modelos, consulte a
-[documentação de testes de banco de dados](../database-testing.md#defining-model-factories).
+[documentação de testes de banco de dados](database-testing.md#defining-model-factories).
 
 ### Compressão de Migrações
 
@@ -293,7 +293,7 @@ return $batch->id;
 ```
 
 Para saber mais sobre processamento em lote de trabalhos, consulte a
-[documentação de filas](../queues.md#job-batching).
+[documentação de filas](queues.md#job-batching).
 
 ### Limitação de Taxa Aprimorada
 
@@ -346,7 +346,7 @@ RateLimiter::for('uploads', function (Request $request) {
 ```
 
 Limitadores de taxa podem ser anexados a rotas ou grupos de rotas usando o
-[_middleware_](../middleware.md) `throttle`.
+[_middleware_](middleware.md) `throttle`.
 O _middleware_ `throttle` aceita o nome do limitador de taxa que você deseja
 atribuir à rota:
 
@@ -363,7 +363,7 @@ Route::middleware(['throttle:uploads'])->group(function () {
 ```
 
 Para saber mais sobre limitação de taxa, consulte a
-[documentação de roteamento](../routing.md#rate-limiting).
+[documentação de roteamento](routing.md#rate-limiting).
 
 ### Modo de Manutenção Aprimorado
 
@@ -453,7 +453,7 @@ de execução:
 ```
 
 Para saber mais sobre os componentes do Blade, consulte a
-[documentação do Blade](../blade.md#components).
+[documentação do Blade](blade.md#components).
 
 ### Melhorias nos Ouvintes de Eventos
 
