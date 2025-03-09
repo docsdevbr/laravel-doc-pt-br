@@ -40,7 +40,7 @@ Laravel 5.4.22 patches a security vulnerability in the Laravel 5.4 release serie
 
 In Laravel 5.1 applications, the password reset notification is maintained by the developer, so this vulnerability may or may not be present. You should verify that your application generates an absolute URL for password reset links:
 
-    {{ url('http://example.com/password/reset/'.$token) }}
+    \{\{ url('http://example.com/password/reset/'.$token) \}\}
 
 <a name="laravel-5.4"></a>
 ## Laravel 5.4
@@ -70,7 +70,7 @@ Markdown mailable messages allow you to take advantage of the pre-built template
     - Pre-Sign For Delivery
 
     Thanks,<br>
-    {{ config('app.name') }}
+    \{\{ config('app.name') \}\}
     @endcomponent
 
 Using this simple Markdown template, Laravel is able to generate a responsive HTML email and plain-text counterpart:
@@ -133,10 +133,10 @@ Blade components and slots provide similar benefits to sections and layouts; how
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
-The `{{ $slot }}` variable will contain the content we wish to inject into the component. Now, to construct this component, we can use the `@component` Blade directive:
+The `\{\{ $slot \}\}` variable will contain the content we wish to inject into the component. Now, to construct this component, we can use the `@component` Blade directive:
 
     @component('alert')
         <strong>Whoops!</strong> Something went wrong!
@@ -147,9 +147,9 @@ Named slots allow you to provide multiple slots into a single component:
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        <div class="alert-title">{{ $title }}</div>
+        <div class="alert-title">\{\{ $title \}\}</div>
 
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
 Named slots may be injected using the `@slot` directive. Any content is not within a `@slot` directive will be passed to the component in the `$slot` variable:
@@ -371,7 +371,7 @@ If you choose to switch to this character set manually and are running a version
 <a name="laravel-5.3"></a>
 ## Laravel 5.3
 
-Laravel 5.3 continues the improvements made in Laravel 5.2 by adding a driver based [notification system](/docs/laravel/laravel/doc/5.3/notifications.html), robust realtime support via [Laravel Echo](/docs/laravel/laravel/doc/5.3/broadcasting.html), painless OAuth2 servers via [Laravel Passport](/docs/laravel/laravel/doc/5.3/passport.html), full-text model searching via [Laravel Scout](/docs/laravel/laravel/doc/5.3/scout.html), Webpack support in Laravel Elixir, "mailable" objects, explicit separation of `web` and `api` routes, Closure based console commands, convenient helpers for storing uploaded files, support for POPO and single-action controllers, improved default frontend scaffolding, and more.
+Laravel 5.3 continues the improvements made in Laravel 5.2 by adding a driver based [notification system](/pt-br/docs/laravel/laravel/doc/5.3/notifications.html), robust realtime support via [Laravel Echo](/pt-br/docs/laravel/laravel/doc/5.3/broadcasting.html), painless OAuth2 servers via [Laravel Passport](/pt-br/docs/laravel/laravel/doc/5.3/passport.html), full-text model searching via [Laravel Scout](/pt-br/docs/laravel/laravel/doc/5.3/scout.html), Webpack support in Laravel Elixir, "mailable" objects, explicit separation of `web` and `api` routes, Closure based console commands, convenient helpers for storing uploaded files, support for POPO and single-action controllers, improved default frontend scaffolding, and more.
 
 ### Notifications
 
@@ -381,7 +381,7 @@ Laravel Notifications provide a simple, expressive API for sending notifications
 
     $user->notify(new InvoicePaid($invoice));
 
-There is already a wide variety of [community written drivers](http://laravel-notification-channels.com) for notifications, including support for iOS and Android notifications. To learn more about notifications, be sure to check out the [full notification documentation](/docs/laravel/laravel/doc/5.3/notifications.html).
+There is already a wide variety of [community written drivers](http://laravel-notification-channels.com) for notifications, including support for iOS and Android notifications. To learn more about notifications, be sure to check out the [full notification documentation](/pt-br/docs/laravel/laravel/doc/5.3/notifications.html).
 
 ### WebSockets / Event Broadcasting
 
@@ -414,7 +414,7 @@ In addition to subscribing to traditional channels, Laravel Echo also makes it a
             console.log(user.name);
         });
 
-To learn more about Echo and event broadcasting, check out the [full documentation](/docs/laravel/laravel/doc/5.3/broadcasting.html).
+To learn more about Echo and event broadcasting, check out the [full documentation](/pt-br/docs/laravel/laravel/doc/5.3/broadcasting.html).
 
 ### Laravel Passport (OAuth2 Server)
 
@@ -443,11 +443,11 @@ In addition, Passport includes helpful middleware for verifying that an access t
         // Access token has "check-status" scope...
     })->middleware('scope:check-status');
 
-Lastly, Passport includes support for consuming your own API from your JavaScript application without worrying about passing access tokens. Passport achieves this through encrypted JWT cookies and synchronized CSRF tokens, allowing you to focus on what matters: your application. For more information on Passport, be sure to check out its [full documentation](/docs/laravel/laravel/doc/5.3/passport.html).
+Lastly, Passport includes support for consuming your own API from your JavaScript application without worrying about passing access tokens. Passport achieves this through encrypted JWT cookies and synchronized CSRF tokens, allowing you to focus on what matters: your application. For more information on Passport, be sure to check out its [full documentation](/pt-br/docs/laravel/laravel/doc/5.3/passport.html).
 
 ### Search (Laravel Scout)
 
-Laravel Scout provides a simple, driver based solution for adding full-text search to your [Eloquent models](/docs/laravel/laravel/doc/5.3/eloquent.html). Using model observers, Scout will automatically keep your search indexes in sync with your Eloquent records. Currently, Scout ships with an [Algolia](https://www.algolia.com/) driver; however, writing custom drivers is simple and you are free to extend Scout with your own search implementations.
+Laravel Scout provides a simple, driver based solution for adding full-text search to your [Eloquent models](/pt-br/docs/laravel/laravel/doc/5.3/eloquent.html). Using model observers, Scout will automatically keep your search indexes in sync with your Eloquent records. Currently, Scout ships with an [Algolia](https://www.algolia.com/) driver; however, writing custom drivers is simple and you are free to extend Scout with your own search implementations.
 
 Making models searchable is as simple as adding a `Searchable` trait to the model:
 
@@ -477,7 +477,7 @@ Once your models have been indexed, its a breeze to perform full-text searches a
 
     return Order::search('Star Trek')->where('user_id', 1)->paginate();
 
-Of course, Scout has many more features which are covered in the [full documentation](/docs/laravel/laravel/doc/5.3/scout.html).
+Of course, Scout has many more features which are covered in the [full documentation](/pt-br/docs/laravel/laravel/doc/5.3/scout.html).
 
 ### Mailable Objects
 
@@ -511,7 +511,7 @@ Of course, you may also mark mailable objects as "queueable" so that they will b
         //
     }
 
-For more information on mailable objects, be sure to check out the [mail documentation](/docs/laravel/laravel/doc/5.3/mail.html).
+For more information on mailable objects, be sure to check out the [mail documentation](/pt-br/docs/laravel/laravel/doc/5.3/mail.html).
 
 ### Storing Uploaded Files
 
@@ -537,7 +537,7 @@ For more information on storing uploaded files, check out the [full documentatio
 
 ### Webpack & Laravel Elixir
 
-Along with Laravel 5.3, Laravel Elixir 6.0 has been released with baked-in support for the Webpack and Rollup JavaScript module bundlers. By default, the Laravel 5.3 `gulpfile.js` file now uses Webpack to compile your JavaScript. The [full Laravel Elixir documentation](/docs/laravel/laravel/doc/5.3/elixir.html) contains more information on both of these bundlers:
+Along with Laravel 5.3, Laravel Elixir 6.0 has been released with baked-in support for the Webpack and Rollup JavaScript module bundlers. By default, the Laravel 5.3 `gulpfile.js` file now uses Webpack to compile your JavaScript. The [full Laravel Elixir documentation](/pt-br/docs/laravel/laravel/doc/5.3/elixir.html) contains more information on both of these bundlers:
 
     elixir(mix => {
         mix.sass('app.scss')
@@ -552,7 +552,7 @@ Laravel 5.3 ships with a more modern frontend structure. This primarily affects 
 
 In addition, support for single file [Vue components](https://vuejs.org) is now included out of the box. A sample `Example.vue` component is included in the `resources/assets/js/components` directory. In addition, the new `resources/assets/js/app.js` file bootstraps and configures your JavaScript libraries and, if applicable, Vue components.
 
-This structure provides more guidance on how to begin developing modern, robust JavaScript applications, without requiring your application to use any given JavaScript or CSS framework. For more information on getting started with modern Laravel frontend development, check out the new [introductory frontend documentation](/docs/laravel/laravel/doc/5.3/frontend.html).
+This structure provides more guidance on how to begin developing modern, robust JavaScript applications, without requiring your application to use any given JavaScript or CSS framework. For more information on getting started with modern Laravel frontend development, check out the new [introductory frontend documentation](/pt-br/docs/laravel/laravel/doc/5.3/frontend.html).
 
 ### Routes Files
 
@@ -566,7 +566,7 @@ In addition to being defined as command classes, Artisan commands may now be def
         $this->info('Building project...');
     });
 
-For more information on Closure commands, check out the [full Artisan documentation](/docs/laravel/laravel/doc/5.3/artisan.html#closure-commands).
+For more information on Closure commands, check out the [full Artisan documentation](/pt-br/docs/laravel/laravel/doc/5.3/artisan.html#closure-commands).
 
 ### The `$loop` Variable
 
@@ -583,10 +583,10 @@ When looping within a Blade template, a `$loop` variable will be available insid
             This is the last iteration.
         @endif
 
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
-For more information, consult the [full Blade documentation](/docs/laravel/laravel/doc/5.3/blade.html#the-loop-variable).
+For more information, consult the [full Blade documentation](/pt-br/docs/laravel/laravel/doc/5.3/blade.html#the-loop-variable).
 
 <a name="laravel-5.2"></a>
 ## Laravel 5.2
@@ -943,7 +943,7 @@ The base Laravel controller utilizes the new `DispatchesCommands` trait, allowin
 
     $this->dispatch(new PurchasePodcastCommand($user, $podcast));
 
-Of course, you may also use commands for tasks that are executed synchronously (are not queued). In fact, using commands is a great way to encapsulate complex tasks your application needs to perform. For more information, check out the [command bus](/docs/laravel/laravel/doc/5.0/bus.html) documentation.
+Of course, you may also use commands for tasks that are executed synchronously (are not queued). In fact, using commands is a great way to encapsulate complex tasks your application needs to perform. For more information, check out the [command bus](/pt-br/docs/laravel/laravel/doc/5.0/bus.html) documentation.
 
 ### Database Queue
 
@@ -973,7 +973,7 @@ Instead of a variety of confusing, nested environment configuration directories,
 
 Laravel Elixir, by Jeffrey Way, provides a fluent, expressive interface to compiling and concatenating your assets. If you've ever been intimidated by learning Grunt or Gulp, fear no more. Elixir makes it a cinch to get started using Gulp to compile your Less, Sass, and CoffeeScript. It can even run your tests for you!
 
-For more information on Elixir, check out the [full documentation](/docs/laravel/laravel/doc/5.3/elixir.html).
+For more information on Elixir, check out the [full documentation](/pt-br/docs/laravel/laravel/doc/5.3/elixir.html).
 
 ### Laravel Socialite
 
@@ -1130,7 +1130,7 @@ The full change list for this release by running the `php artisan changes` comma
 
 ### New SSH Component
 
-An entirely new `SSH` component has been introduced with this release. This feature allows you to easily SSH into remote servers and run commands. To learn more, consult the [SSH component documentation](/docs/laravel/laravel/doc/4.1/ssh.html).
+An entirely new `SSH` component has been introduced with this release. This feature allows you to easily SSH into remote servers and run commands. To learn more, consult the [SSH component documentation](/pt-br/docs/laravel/laravel/doc/4.1/ssh.html).
 
 The new `php artisan tail` command utilizes the new SSH component. For more information, consult the `tail` [command documentation](http://laravel.com/docs/ssh#tailing-remote-logs).
 
@@ -1162,7 +1162,7 @@ Cache "sections" have been superseded by "tags". Cache tags allow you to assign 
 
 ### Flexible Password Reminders
 
-The password reminder engine has been changed to provide greater developer flexibility when validating passwords, flashing status messages to the session, etc. For more information on using the enhanced password reminder engine, [consult the documentation](/docs/laravel/laravel/doc/4.1/security.html#password-reminders-and-reset).
+The password reminder engine has been changed to provide greater developer flexibility when validating passwords, flashing status messages to the session, etc. For more information on using the enhanced password reminder engine, [consult the documentation](/pt-br/docs/laravel/laravel/doc/4.1/security.html#password-reminders-and-reset).
 
 ### Improved Routing Engine
 
