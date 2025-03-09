@@ -69,7 +69,7 @@ Laravel automatically generates a CSRF "token" for each active user session mana
 
 Of course, using the Blade [templating engine](templates.md):
 
-	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
 
 You do not need to manually verify the CSRF token on POST, PUT, or DELETE requests. The `VerifyCsrfToken` [HTTP middleware](middleware.md) will verify token in the request input matches the token stored in the session.
 
@@ -77,7 +77,7 @@ You do not need to manually verify the CSRF token on POST, PUT, or DELETE reques
 
 In addition to looking for the CSRF token as a "POST" parameter, the middleware will also check for the `X-CSRF-TOKEN` request header. You could, for example, store the token in a "meta" tag and instruct jQuery to add it to all request headers:
 
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
+	<meta name="csrf-token" content="\{\{ csrf_token() \}\}" />
 
 	$.ajaxSetup({
 			headers: {

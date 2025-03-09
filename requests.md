@@ -134,7 +134,7 @@ To retrieve flashed input from the previous request, use the `old` method on the
 
 If you are displaying old input within a Blade template, it is more convenient to use the `old` helper:
 
-	{{ old('username') }}
+	\{\{ old('username') \}\}
 
 <a name="cookies"></a>
 ## Cookies

@@ -30,7 +30,7 @@ Blade is a simple, yet powerful templating engine provided with Laravel. Unlike 
 #### Using A Blade Layout
 
 	@extends('layouts.master')
-	
+
 	@section('title', 'Page Title')
 
 	@section('sidebar')
@@ -54,25 +54,25 @@ Sometimes, such as when you are not sure if a section has been defined, you may 
 
 #### Echoing Data
 
-	Hello, {{ $name }}.
+	Hello, \{\{ $name \}\}.
 
-	The current UNIX timestamp is {{ time() }}.
+	The current UNIX timestamp is \{\{ time() \}\}.
 
 #### Echoing Data After Checking For Existence
 
 Sometimes you may wish to echo a variable, but you aren't sure if the variable has been set. Basically, you want to do this:
 
-	{{ isset($name) ? $name : 'Default' }}
+	\{\{ isset($name) ? $name : 'Default' \}\}
 
 However, instead of writing a ternary statement, Blade allows you to use the following convenient short-cut:
 
-	{{ $name or 'Default' }}
+	\{\{ $name or 'Default' \}\}
 
 #### Displaying Raw Text With Curly Braces
 
 If you need to display a string that is wrapped in curly braces, you may escape the Blade behavior by prefixing your text with an `@` symbol:
 
-	@{{ This will not be processed by Blade }}
+	@\{\{ This will not be processed by Blade \}\}
 
 If you don't want the data to be escaped, you may use the following syntax:
 
@@ -97,15 +97,15 @@ If you don't want the data to be escaped, you may use the following syntax:
 #### Loops
 
 	@for ($i = 0; $i < 10; $i++)
-		The current value is {{ $i }}
+		The current value is \{\{ $i \}\}
 	@endfor
 
 	@foreach ($users as $user)
-		<p>This is user {{ $user->id }}</p>
+		<p>This is user \{\{ $user->id \}\}</p>
 	@endforeach
 
 	@forelse($users as $user)
-		<li>{{ $user->name }}</li>
+		<li>\{\{ $user->name \}\}</li>
 	@empty
 		<p>No users</p>
 	@endforelse
@@ -129,7 +129,7 @@ To overwrite a section entirely, you may use the `overwrite` statement:
 	@extends('list.item.container')
 
 	@section('list.item.content')
-		<p>This is an item of type {{ $item->type }}</p>
+		<p>This is an item of type \{\{ $item->type \}\}</p>
 	@overwrite
 
 #### Displaying Language Lines
@@ -140,5 +140,5 @@ To overwrite a section entirely, you may use the `overwrite` statement:
 
 #### Comments
 
-	{{-- This comment will not be in the rendered HTML --}}
+	\{\{-- This comment will not be in the rendered HTML --\}\}
 
