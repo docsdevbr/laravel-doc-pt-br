@@ -189,7 +189,7 @@ Now that we have made the `users` available to our view, we can display them lik
 
 	@section('content')
 		@foreach($users as $user)
-			<p>{{ $user->name }}</p>
+			<p>\{\{ $user->name \}\}</p>
 		@endforeach
 	@stop
 

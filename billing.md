@@ -235,11 +235,11 @@ You can easily retrieve an array of a user's invoices using the `invoices` metho
 
 When listing the invoices for the customer, you may use these helper methods to display the relevant invoice information:
 
-	{{ $invoice->id }}
+	\{\{ $invoice->id \}\}
 
-	{{ $invoice->dateString() }}
+	\{\{ $invoice->dateString() \}\}
 
-	{{ $invoice->dollars() }}
+	\{\{ $invoice->dollars() \}\}
 
 Use the `downloadInvoice` method to generate a PDF download of the invoice. Yes, it's really this easy:
 

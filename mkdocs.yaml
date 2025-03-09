@@ -4,6 +4,9 @@
 
 INHERIT: !ENV MKDOCS_BASE_CONFIG
 
+extra:
+  version: 4.2
+
 ### navigation ###
 
 nav:
