@@ -173,7 +173,7 @@ Of course, after the user is redirected to a new page, you may retrieve and disp
 
     @if (session('status'))
         <div class="alert alert-success">
-            {{ session('status') }}
+            \{\{ session('status') \}\}
         </div>
     @endif
 

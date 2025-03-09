@@ -70,7 +70,7 @@ Though the authentication controllers are included with the framework, you will 
 
         <div>
             Email
-            <input type="email" name="email" value="{{ old('email') }}">
+            <input type="email" name="email" value="\{\{ old('email') \}\}">
         </div>
 
         <div>
@@ -96,12 +96,12 @@ Though the authentication controllers are included with the framework, you will 
 
         <div>
             Name
-            <input type="text" name="name" value="{{ old('name') }}">
+            <input type="text" name="name" value="\{\{ old('name') \}\}">
         </div>
 
         <div>
             Email
-            <input type="email" name="email" value="{{ old('email') }}">
+            <input type="email" name="email" value="\{\{ old('email') \}\}">
         </div>
 
         <div>
@@ -415,14 +415,14 @@ You will need to provide an HTML view for the password reset request form. This 
         @if (count($errors) > 0)
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         @endif
 
         <div>
             Email
-            <input type="email" name="email" value="{{ old('email') }}">
+            <input type="email" name="email" value="\{\{ old('email') \}\}">
         </div>
 
         <div>
@@ -436,7 +436,7 @@ When a user submits a request to reset their password, they will receive an e-ma
 
     <!-- resources/views/emails/password.blade.php -->
 
-    Click here to reset your password: {{ url('http://example.com/password/reset/'.$token) }}
+    Click here to reset your password: \{\{ url('http://example.com/password/reset/'.$token) \}\}
 
 #### Sample Password Reset Form
 
@@ -448,19 +448,19 @@ Here is a sample password reset form to get you started:
 
     <form method="POST" action="/password/reset">
         {!! csrf_field() !!}
-        <input type="hidden" name="token" value="{{ $token }}">
+        <input type="hidden" name="token" value="\{\{ $token \}\}">
 
         @if (count($errors) > 0)
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         @endif
 
         <div>
             Email
-            <input type="email" name="email" value="{{ old('email') }}">
+            <input type="email" name="email" value="\{\{ old('email') \}\}">
         </div>
 
         <div>

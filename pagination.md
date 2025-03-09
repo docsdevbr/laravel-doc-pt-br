@@ -88,7 +88,7 @@ So, once you have retrieved the results, you may display the results and render 
 
     <div class="container">
         @foreach ($users as $user)
-            {{ $user->name }}
+            \{\{ $user->name \}\}
         @endforeach
     </div>
 

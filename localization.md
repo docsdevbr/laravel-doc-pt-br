@@ -48,9 +48,9 @@ You may retrieve lines from language files using the `trans` helper function. Th
 
     echo trans('messages.welcome');
 
-Of course if you are using the [Blade templating engine](blade.md), you may use the `{{ }}` syntax to echo the language line:
+Of course if you are using the [Blade templating engine](blade.md), you may use the `\{\{ \}\}` syntax to echo the language line:
 
-    {{ trans('messages.welcome') }}
+    \{\{ trans('messages.welcome') \}\}
 
 If the specified language line does not exist, the `trans` function will simply return the language line key. So, using the example above, the `trans` function would return `messages.welcome` if the language line does not exist.
 

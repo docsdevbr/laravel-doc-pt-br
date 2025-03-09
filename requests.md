@@ -194,7 +194,7 @@ To retrieve flashed input from the previous request, use the `old` method on the
 
 Laravel also provides a global `old` helper function. If you are displaying old input within a [Blade template](blade.md), it is more convenient to use the `old` helper:
 
-    {{ old('username') }}
+    \{\{ old('username') \}\}
 
 <a name="cookies"></a>
 ### Cookies

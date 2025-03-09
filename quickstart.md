@@ -227,7 +227,7 @@ We'll skip over some of the Bootstrap CSS boilerplate and only focus on the thin
 
 			<!-- New Task Form -->
 			<form action="/task" method="POST" class="form-horizontal">
-				{{ csrf_field() }}
+				\{\{ csrf_field() \}\}
 
                 <!-- Task Name -->
 				<div class="form-group">
@@ -307,7 +307,7 @@ Remember that we used the `@include('common.errors')` directive within our view 
 
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         </div>
@@ -383,7 +383,7 @@ Once the data is passed, we can spin through the tasks in our `tasks.blade.php` 
                                 <tr>
                                     <!-- Task Name -->
                                     <td class="table-text">
-                                        <div>{{ $task->name }}</div>
+                                        <div>\{\{ $task->name \}\}</div>
                                     </td>
 
                                     <td>
@@ -411,14 +411,14 @@ We left a "TODO" note in our code where our delete button is supposed to be. So,
     <tr>
         <!-- Task Name -->
         <td class="table-text">
-            <div>{{ $task->name }}</div>
+            <div>\{\{ $task->name \}\}</div>
         </td>
 
         <!-- Delete Button -->
         <td>
-            <form action="/task/{{ $task->id }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
+            <form action="/task/\{\{ $task->id \}\}" method="POST">
+                \{\{ csrf_field() \}\}
+                \{\{ method_field('DELETE') \}\}
 
                 <button>Delete Task</button>
             </form>

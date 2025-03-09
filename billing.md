@@ -308,9 +308,9 @@ When listing the invoices for the customer, you may use the invoice's helper met
     <table>
         @foreach ($invoices as $invoice)
             <tr>
-                <td>{{ $invoice->dateString() }}</td>
-                <td>{{ $invoice->dollars() }}</td>
-                <td><a href="/user/invoice/{{ $invoice->id }}">Download</a></td>
+                <td>\{\{ $invoice->dateString() \}\}</td>
+                <td>\{\{ $invoice->dollars() \}\}</td>
+                <td><a href="/user/invoice/\{\{ $invoice->id \}\}">Download</a></td>
             </tr>
         @endforeach
     </table>

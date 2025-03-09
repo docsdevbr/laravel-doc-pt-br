@@ -272,7 +272,7 @@ The `csrf_field` helper function generates the following HTML:
 
 Of course, using the Blade [templating engine](blade.md):
 
-    {{ csrf_field() }}
+    \{\{ csrf_field() \}\}
 
 You do not need to manually verify the CSRF token on POST, PUT, or DELETE requests. The `VerifyCsrfToken` [HTTP middleware](middleware.md) will verify that the token in the request input matches the token stored in the session.
 
@@ -306,7 +306,7 @@ You may exclude URIs by adding them to the `$except` property of the `VerifyCsrf
 
 In addition to checking for the CSRF token as a POST parameter, the Laravel `VerifyCsrfToken` middleware will also check for the `X-CSRF-TOKEN` request header. You could, for example, store the token in a "meta" tag:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 Once you have created the `meta` tag, you can instruct a library like jQuery to add the token to all request headers. This provides simple, convenient CSRF protection for your AJAX based applications:
 
@@ -366,7 +366,7 @@ HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining 
 
     <form action="/foo/bar" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 To generate the hidden input field `_method`, you may also use the `method_field` helper function:
@@ -375,7 +375,7 @@ To generate the hidden input field `_method`, you may also use the `method_field
 
 Of course, using the Blade [templating engine](blade.md):
 
-    {{ method_field('PUT') }}
+    \{\{ method_field('PUT') \}\}
 
 <a name="throwing-404-errors"></a>
 ## Throwing 404 Errors
