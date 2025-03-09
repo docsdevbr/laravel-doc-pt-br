@@ -98,7 +98,7 @@ time possa reagir rapidamente aos erros:
 Além disso, agora é mais fácil personalizar canais de _log_ existentes usando a
 nova funcionalidade "tap" do sistema de _logging_.
 Para obter mais informações, verifique a
-[documentação completa sobre _logging_](../logging.md).
+[documentação completa sobre _logging_](logging.md).
 
 ### Agendamento de Tarefas de Servidor Único
 
@@ -131,7 +131,7 @@ $schedule->command('report:generate')
 
 ### Limitação de Taxa Dinâmica
 
-Ao especificar um [limite de taxa](../routing.md#rate-limiting) em um grupo de
+Ao especificar um [limite de taxa](routing.md#rate-limiting) em um grupo de
 rotas em versões anteriores do Laravel, você precisava fornecer um número máximo
 de requisições diretamente no código:
 

@@ -299,9 +299,9 @@ The `version` method will generate unique hashes for all of your compiled files 
 
 After generating the versioned file, you should use Laravel's global `mix` function within your [views](views.md) to generate the appropriately versioned asset URL:
 
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="\{\{ mix('/css/app.css') \}\}">
 
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="\{\{ mix('/js/app.js') \}\}"></script>
 
 Because versioned files are usually unnecessary in development, you may instruct the versioning process to only run during `npm run production`:
 

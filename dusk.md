@@ -525,7 +525,7 @@ Dusk even allows you to make assertions on the state of [Vue](https://vuejs.org)
     // Component Definition...
 
     Vue.component('profile', {
-        template: '<div>{{ user.name }}</div>',
+        template: '<div>\{\{ user.name \}\}</div>',
 
         data: function () {
             return {
@@ -684,21 +684,21 @@ Assert the given query string parameter is present and has a given value:
 Assert the given query string parameter is missing:
 
     $browser->assertQueryStringMissing($name);
-    
+
 <a name="assert-fragment-is"></a>
 #### assertFragmentIs
 
 Assert the current fragment matches the given fragment:
 
     $browser->assertFragmentIs('anchor');
-    
+
 <a name="assert-fragment-begins-with"></a>
 #### assertFragmentBeginsWith
 
 Assert that the current fragment begins with given fragment:
 
     $browser->assertFragmentBeginsWith('anchor');
-    
+
 <a name="assert-fragment-is-not"></a>
 #### assertFragmentIsNot
 
