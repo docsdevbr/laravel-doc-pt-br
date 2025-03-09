@@ -236,7 +236,7 @@ The generated controller will already have a `getRemind` method that handles sho
 
 A simple form on the `password.remind` view might look like this:
 
-	<form action="{{ action('RemindersController@postRemind') }}" method="POST">
+	<form action="\{\{ action('RemindersController@postRemind') \}\}" method="POST">
 		<input type="email" name="email">
 		<input type="submit" value="Send Reminder">
 	</form>
@@ -254,8 +254,8 @@ Your user will receive an e-mail with a link that points to the `getReset` metho
 
 A simple form on the `password.reset` view might look like this:
 
-	<form action="{{ action('RemindersController@postReset') }}" method="POST">
-		<input type="hidden" name="token" value="{{ $token }}">
+	<form action="\{\{ action('RemindersController@postReset') \}\}" method="POST">
+		<input type="hidden" name="token" value="\{\{ $token \}\}">
 		<input type="email" name="email">
 		<input type="password" name="password">
 		<input type="password" name="password_confirmation">

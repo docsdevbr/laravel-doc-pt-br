@@ -147,7 +147,7 @@ You may use the options via the Blade syntax you are used to:
 
 	@task('deploy', ['on' => 'web'])
 		cd site
-		git pull origin {{ $branch }}
+		git pull origin \{\{ $branch \}\}
 		php artisan migrate
 	@endtask
 
@@ -174,7 +174,7 @@ You may easily run a task across multiple servers. Simply list the servers in th
 
 	@task('deploy', ['on' => ['web-1', 'web-2']])
 		cd site
-		git pull origin {{ $branch }}
+		git pull origin \{\{ $branch \}\}
 		php artisan migrate
 	@endtask
 
@@ -189,7 +189,7 @@ If you would like to run a task across multiple servers in parallel, simply add 
 
 	@task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
 		cd site
-		git pull origin {{ $branch }}
+		git pull origin \{\{ $branch \}\}
 		php artisan migrate
 	@endtask
 
