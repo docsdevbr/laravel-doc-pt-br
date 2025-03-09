@@ -43,7 +43,7 @@ meses e as correções de segurança são fornecidas por 2 anos.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 | Versão |  PHP (*)  |       Lançamento        | Correções de falhas até | Correções de segurança até |
 |:------:|:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
@@ -157,7 +157,7 @@ Claro, por conveniência, diretivas do Blade também estão disponíveis:
 
 O Pennant oferece uma variedade de APIs e recursos mais avançados.
 Para obter mais informações, consulte a
-[documentação abrangente do Pennant](../pennant.md).
+[documentação abrangente do Pennant](pennant.md).
 
 ### Interação com Processos
 
@@ -203,7 +203,7 @@ Process::assertRan('ls -la');
 ```
 
 Para obter mais informações sobre a interação com processos, consulte a
-[documentação abrangente de processos](../processes.md).
+[documentação abrangente de processos](processes.md).
 
 ### Criação de Perfis de Testes
 
@@ -251,7 +251,7 @@ php artisan make:controller
 
 ### Melhorias Visuais no Horizon / Telescope
 
-O [Horizon](../horizon.md) e o [Telescope](../telescope.md) foram atualizados
+O [Horizon](horizon.md) e o [Telescope](telescope.md) foram atualizados
 com uma aparência nova e moderna, incluindo tipografia, espaçamento e _design_
 aprimorados:
 
