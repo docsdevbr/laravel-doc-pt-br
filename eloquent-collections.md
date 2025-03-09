@@ -59,7 +59,7 @@ The `except` method returns all of the models that do not have the given primary
 
     $users = $users->except([1, 2, 3]);
 
-#### `find($key)` {#collection-method .first-collection-method}
+#### `find($key)` {: #collection-method .first-collection-method }
 
 The `find` method finds a model that has a given primary key. If `$key` is a model instance, `find` will attempt to return a model matching the primary key. If `$key` is an array of keys, `find` will return all models which match the `$keys` using `whereIn()`:
 

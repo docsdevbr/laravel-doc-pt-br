@@ -85,7 +85,7 @@ public function accountHistory()
 ### Descoberta Automática de Políticas de Modelo
 
 Ao usar o Laravel 5.7, a
-[política de autorização](../authorization.md#creating-policies) de cada modelo
+[política de autorização](authorization.md#creating-policies) de cada modelo
 precisava ser explicitamente registrada no `AuthServiceProvider` da sua
 aplicação:
 
@@ -178,12 +178,12 @@ suporta o armazenamento de _tokens_ de API como _hashes_ SHA-256.
 Isso fornece segurança aprimorada em relação ao armazenamento de _tokens_ como
 texto simples.
 Para saber mais sobre _tokens_ com _hash_, revise a
-[documentação completa da autenticação de API](../api-authentication.md).
+[documentação completa da autenticação de API](api-authentication.md).
 
 > **Nota:**
 > Embora o Laravel venha com uma proteção de autenticação simples baseada em
 > _token_, recomendamos fortemente que você considere usar o
-> [Laravel Passport](../passport.md) para aplicações de produção robustas que
+> [Laravel Passport](passport.md) para aplicações de produção robustas que
 > oferecem autenticação de API.
 
 ### Validação de _E-mail_ Aprimorada
@@ -227,11 +227,11 @@ protected function scheduleTimezone()
 ### Eventos de Modelo de Tabela Intermediária / Pivô
 
 Nas versões anteriores do Laravel, os
-[eventos dos modelos do Eloquent](../eloquent.md#events) não eram despachados ao
+[eventos dos modelos do Eloquent](eloquent.md#events) não eram despachados ao
 anexar, desanexar ou sincronizar modelos de tabelas intermediárias / "pivôs"
 personalizadas de um relacionamento muitos para muitos.
 Ao usar
-[modelos de tabela intermediária customizados](../eloquent-relationships.md#defining-custom-intermediate-table-models)
+[modelos de tabela intermediária customizados](eloquent-relationships.md#defining-custom-intermediate-table-models)
 no Laravel 5.8, os eventos de modelo aplicáveis agora serão despachados.
 
 ### Melhorias no Método `Artisan::call`
@@ -274,7 +274,7 @@ $this->mock(Service::class, function ($mock) {
 
 ### Preservação da Chave de Recurso do Eloquent
 
-Ao retornar uma [coleção de recursos do Eloquent](../eloquent-resources.md) de
+Ao retornar uma [coleção de recursos do Eloquent](eloquent-resources.md) de
 uma rota, o Laravel redefine as chaves da coleção para ficarem em ordem numérica
 simples:
 

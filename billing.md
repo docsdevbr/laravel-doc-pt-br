@@ -158,7 +158,7 @@ After you have created the Setup Intent and passed it to the view, you should at
     <!-- Stripe Elements Placeholder -->
     <div id="card-element"></div>
 
-    <button id="card-button" data-secret="{{ $intent->client_secret }}">
+    <button id="card-button" data-secret="\{\{ $intent->client_secret \}\}">
         Update Payment Method
     </button>
 
@@ -415,7 +415,7 @@ Similarly, if a secondary payment action is required when swapping plans the sub
 
 When a subscription has an incomplete payment, you should direct the user to Cashier's payment confirmation page, passing the `latestPayment` identifier. You may use the `latestPayment` method available on subscription instance to retrieve this identifier:
 
-    <a href="{{ route('cashier.payment', $subscription->latestPayment()->id) }}">
+    <a href="\{\{ route('cashier.payment', $subscription->latestPayment()->id) \}\}">
         Please confirm your payment.
     </a>
 
@@ -743,9 +743,9 @@ When listing the invoices for the customer, you may use the invoice's helper met
     <table>
         @foreach ($invoices as $invoice)
             <tr>
-                <td>{{ $invoice->date()->toFormattedDateString() }}</td>
-                <td>{{ $invoice->total() }}</td>
-                <td><a href="/user/invoice/{{ $invoice->id }}">Download</a></td>
+                <td>\{\{ $invoice->date()->toFormattedDateString() \}\}</td>
+                <td>\{\{ $invoice->total() \}\}</td>
+                <td><a href="/user/invoice/\{\{ $invoice->id \}\}">Download</a></td>
             </tr>
         @endforeach
     </table>

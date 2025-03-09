@@ -102,10 +102,10 @@ Components and slots provide similar benefits to sections and layouts; however, 
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
-The `{{ $slot }}` variable will contain the content we wish to inject into the component. Now, to construct this component, we can use the `@component` Blade directive:
+The `\{\{ $slot \}\}` variable will contain the content we wish to inject into the component. Now, to construct this component, we can use the `@component` Blade directive:
 
     @component('alert')
         <strong>Whoops!</strong> Something went wrong!
@@ -122,9 +122,9 @@ Sometimes it is helpful to define multiple slots for a component. Let's modify o
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        <div class="alert-title">{{ $title }}</div>
+        <div class="alert-title">\{\{ $title \}\}</div>
 
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
 Now, we can inject content into the named slot using the `@slot` directive. Any content not within a `@slot` directive will be passed to the component in the `$slot` variable:
@@ -176,17 +176,17 @@ You may display data passed to your Blade views by wrapping the variable in curl
 
 You may display the contents of the `name` variable like so:
 
-    Hello, {{ $name }}.
+    Hello, \{\{ $name \}\}.
 
-> {tip} Blade `{{ }}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks.
+> {tip} Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks.
 
 You are not limited to displaying the contents of the variables passed to the view. You may also echo the results of any PHP function. In fact, you can put any PHP code you wish inside of a Blade echo statement:
 
-    The current UNIX timestamp is {{ time() }}.
+    The current UNIX timestamp is \{\{ time() \}\}.
 
 #### Displaying Unescaped Data
 
-By default, Blade `{{ }}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
+By default, Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
 
     Hello, {!! $name !!}.
 
@@ -247,9 +247,9 @@ Since many JavaScript frameworks also use "curly" braces to indicate a given exp
 
     <h1>Laravel</h1>
 
-    Hello, @{{ name }}.
+    Hello, @\{\{ name \}\}.
 
-In this example, the `@` symbol will be removed by Blade; however, `{{ name }}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
+In this example, the `@` symbol will be removed by Blade; however, `\{\{ name \}\}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
 
 #### The `@verbatim` Directive
 
@@ -257,7 +257,7 @@ If you are displaying JavaScript variables in a large portion of your template, 
 
     @verbatim
         <div class="container">
-            Hello, {{ name }}.
+            Hello, \{\{ name \}\}.
         </div>
     @endverbatim
 
@@ -353,15 +353,15 @@ Switch statements can be constructed using the `@switch`, `@case`, `@break`, `@d
 In addition to conditional statements, Blade provides simple directives for working with PHP's loop structures. Again, each of these directives functions identically to their PHP counterparts:
 
     @for ($i = 0; $i < 10; $i++)
-        The current value is {{ $i }}
+        The current value is \{\{ $i \}\}
     @endfor
 
     @foreach ($users as $user)
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
     @forelse ($users as $user)
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
     @empty
         <p>No users</p>
     @endforelse
@@ -379,7 +379,7 @@ When using loops you may also end the loop or skip the current iteration:
             @continue
         @endif
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @if ($user->number == 5)
             @break
@@ -391,7 +391,7 @@ You may also include the condition with the directive declaration in one line:
     @foreach ($users as $user)
         @continue($user->type == 1)
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @break($user->number == 5)
     @endforeach
@@ -410,7 +410,7 @@ When looping, a `$loop` variable will be available inside of your loop. This var
             This is the last iteration.
         @endif
 
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
 If you are in a nested loop, you may access the parent loop's `$loop` variable via the `parent` property:
@@ -443,7 +443,7 @@ Property  | Description
 
 Blade also allows you to define comments in your views. However, unlike HTML comments, Blade comments are not included in the HTML returned by your application:
 
-    {{-- This comment will not be present in the rendered HTML --}}
+    \{\{-- This comment will not be present in the rendered HTML --\}\}
 
 <a name="php"></a>
 ### PHP
@@ -493,7 +493,7 @@ The `@error` directive may be used to quickly check if [validation error message
     <input id="title" type="text" class="@error('title') is-invalid @enderror">
 
     @error('title')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger">\{\{ $message \}\}</div>
     @enderror
 
 <a name="including-sub-views"></a>
@@ -531,7 +531,7 @@ To include the first view that exists from a given array of views, you may use t
 
 If your Blade includes are stored in a sub-directory, you may wish to alias them for easier access. For example, imagine a Blade include that is stored at `resources/views/includes/input.blade.php` with the following content:
 
-    <input type="{{ $type ?? 'text' }}">
+    <input type="\{\{ $type ?? 'text' \}\}">
 
 You may use the `include` method to alias the include from `includes.input` to `input`. Typically, this should be done in the `boot` method of your `AppServiceProvider`:
 
@@ -595,7 +595,7 @@ The `@inject` directive may be used to retrieve a service from the Laravel [serv
     @inject('metrics', 'App\Services\MetricsService')
 
     <div>
-        Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+        Monthly Revenue: \{\{ $metrics->monthlyRevenue() \}\}.
     </div>
 
 <a name="extending-blade"></a>

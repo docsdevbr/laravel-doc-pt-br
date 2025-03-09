@@ -896,7 +896,7 @@ If needed, you can customize the `laravel_token` cookie's name using the `Passpo
 When using this method of authentication, the default Laravel JavaScript scaffolding instructs Axios to always send the `X-CSRF-TOKEN` and `X-Requested-With` headers. However, you should be sure to include your CSRF token in a [HTML meta tag](csrf.md#csrf-x-csrf-token):
 
     // In your application layout...
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
     // Laravel's JavaScript scaffolding...
     window.axios.defaults.headers.common = {

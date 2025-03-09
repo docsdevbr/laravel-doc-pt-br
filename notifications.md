@@ -365,7 +365,7 @@ Markdown mail notifications use a combination of Blade components and Markdown s
     @endcomponent
 
     Thanks,<br>
-    {{ config('app.name') }}
+    \{\{ config('app.name') \}\}
     @endcomponent
 
 #### Button Component
