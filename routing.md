@@ -58,7 +58,7 @@ Sometimes you may need to register a route that responds to multiple HTTP verbs.
 Any HTML forms pointing to `POST`, `PUT`, or `DELETE` routes that are defined in the `web` routes file should include a CSRF token field. Otherwise, the request will be rejected. You can read more about CSRF protection in the [CSRF documentation](csrf.md):
 
     <form method="POST" action="/profile">
-        {{ csrf_field() }}
+        \{\{ csrf_field() \}\}
         ...
     </form>
 
@@ -291,12 +291,12 @@ HTML forms do not support `PUT`, `PATCH` or `DELETE` actions. So, when defining 
 
     <form action="/foo/bar" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 You may use the `method_field` helper to generate the `_method` input:
 
-    {{ method_field('PUT') }}
+    \{\{ method_field('PUT') \}\}
 
 <a name="accessing-the-current-route"></a>
 ## Accessing The Current Route
@@ -309,4 +309,4 @@ You may use the `current`, `currentRouteName`, and `currentRouteAction` methods 
 
     $action = Route::currentRouteAction();
 
-Refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{{version}}/Illuminate/Routing/Route.html) to review all accessible methods.
+Refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{{ version }}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{{ version }}/Illuminate/Routing/Route.html) to review all accessible methods.

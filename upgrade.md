@@ -1060,7 +1060,7 @@ The `App\Providers\ConfigServiceProvider` may be removed from your service provi
 
 The recommended method of upgrading is to create a new Laravel `5.0` install and then to copy your `4.2` site's unique application files into the new application. This would include controllers, routes, Eloquent models, Artisan commands, assets, and other code specific files to your application.
 
-To start, [install a new Laravel 5.0 application](/docs/laravel/laravel/doc/5.0/installation.html) into a fresh directory in your local environment.  Do not install any versions newer than 5.0 yet, since we need to complete the migration steps for 5.0 first. We'll discuss each piece of the migration process in further detail below.
+To start, [install a new Laravel 5.0 application](/pt-br/docs/laravel/laravel/doc/5.0/installation.html) into a fresh directory in your local environment.  Do not install any versions newer than 5.0 yet, since we need to complete the migration steps for 5.0 first. We'll discuss each piece of the migration process in further detail below.
 
 ### Composer Dependencies & Packages
 
@@ -1196,17 +1196,17 @@ Move your views from `app/views` to the new `resources/views` directory.
 
 ### Blade Tag Changes
 
-For better security by default, Laravel 5.0 escapes all output from both the `{{ }}` and `{{{ }}}` Blade directives. A new `{!! !!}` directive has been introduced to display raw, unescaped output. The most secure option when upgrading your application is to only use the new `{!! !!}` directive when you are **certain** that it is safe to display raw output.
+For better security by default, Laravel 5.0 escapes all output from both the `\{\{ \}\}` and `\{\{\{ \}\}\}` Blade directives. A new `{!! !!}` directive has been introduced to display raw, unescaped output. The most secure option when upgrading your application is to only use the new `{!! !!}` directive when you are **certain** that it is safe to display raw output.
 
 However, if you **must** use the old Blade syntax, add the following lines at the bottom of `AppServiceProvider@register`:
 
 ```php
-\Blade::setRawTags('{{', '}}');
-\Blade::setContentTags('{{{', '}}}');
-\Blade::setEscapedContentTags('{{{', '}}}');
+\Blade::setRawTags('\{\{', '\}\}');
+\Blade::setContentTags('\{\{\{', '\}\}\}');
+\Blade::setEscapedContentTags('\{\{\{', '\}\}\}');
 ```
 
-This should not be done lightly, and may make your application more vulnerable to XSS exploits. Also, comments with `{{--` will no longer work.
+This should not be done lightly, and may make your application more vulnerable to XSS exploits. Also, comments with `\{\{--` will no longer work.
 
 ### Translation Files
 
@@ -1404,7 +1404,7 @@ If `app/controllers/BaseController.php` has a `use` statement at the top, change
 
 ### Password Reminders Updates
 
-Password reminders have been overhauled for greater flexibility. You may examine the new stub controller by running the `php artisan auth:reminders-controller` Artisan command. You may also browse the [updated documentation](/docs/laravel/laravel/doc/4.1/security.html#password-reminders-and-reset) and update your application accordingly.
+Password reminders have been overhauled for greater flexibility. You may examine the new stub controller by running the `php artisan auth:reminders-controller` Artisan command. You may also browse the [updated documentation](/pt-br/docs/laravel/laravel/doc/4.1/security.html#password-reminders-and-reset) and update your application accordingly.
 
 Update your `app/lang/en/reminders.php` language file to match [this updated file](https://github.com/laravel/laravel/blob/v4.1.0/app/lang/en/reminders.php).
 

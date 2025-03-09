@@ -14,7 +14,7 @@ Views contain the HTML served by your application and separate your controller /
 
     <html>
         <body>
-            <h1>Hello, {{ $name }}</h1>
+            <h1>Hello, \{\{ $name \}\}</h1>
         </body>
     </html>
 

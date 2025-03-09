@@ -176,7 +176,7 @@ Typically, you will want to pass some data to your view that you can utilize whe
 Once the data has been set to a public property, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $order->price }}
+        Price: \{\{ $order->price \}\}
     </div>
 
 #### Via The `with` Method:
@@ -231,7 +231,7 @@ If you would like to customize the format of your email's data before it is sent
 Once the data has been passed to the `with` method, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $orderPrice }}
+        Price: \{\{ $orderPrice \}\}
     </div>
 
 <a name="attachments"></a>
@@ -291,7 +291,7 @@ Embedding inline images into your emails is typically cumbersome; however, Larav
     <body>
         Here is an image:
 
-        <img src="{{ $message->embed($pathToFile) }}">
+        <img src="\{\{ $message->embed($pathToFile) \}\}">
     </body>
 
 #### Embedding Raw Data Attachments
@@ -301,7 +301,7 @@ If you already have a raw data string you wish to embed into an email template, 
     <body>
         Here is an image from raw data:
 
-        <img src="{{ $message->embedData($data, $name) }}">
+        <img src="\{\{ $message->embedData($data, $name) \}\}">
     </body>
 
 <a name="sending-mail"></a>

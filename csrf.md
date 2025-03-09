@@ -15,7 +15,7 @@ Laravel automatically generates a CSRF "token" for each active user session mana
 Anytime you define a HTML form in your application, you should include a hidden CSRF token field in the form so that the CSRF protection middleware can validate the request. You may use the `csrf_field` helper to generate the token field:
 
     <form method="POST" action="/profile">
-        {{ csrf_field() }}
+        \{\{ csrf_field() \}\}
         ...
     </form>
 
@@ -51,7 +51,7 @@ Typically, you should place these kinds of routes outside of the `web` middlewar
 
 In addition to checking for the CSRF token as a POST parameter, the `VerifyCsrfToken` middleware will also check for the `X-CSRF-TOKEN` request header. You could, for example, store the token in a HTML `meta` tag:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 Then, once you have created the `meta` tag, you can instruct a library like jQuery to automatically add the token to all request headers. This provides simple, convenient CSRF protection for your AJAX based applications:
 
