@@ -649,9 +649,9 @@ $custom = $checkout->getCustomData();
     href='#!'
     class='paddle_button'
     data-items='{!! json_encode($items) !!}'
-    @if ($customer) data-customer-id='{{ $customer->paddle_id }}' @endif
-    @if ($custom) data-custom-data='{{ json_encode($custom) }}' @endif
-    @if ($returnUrl = $checkout->getReturnUrl()) data-success-url='{{ $returnUrl }}' @endif
+    @if ($customer) data-customer-id='\{\{ $customer->paddle_id \}\}' @endif
+    @if ($custom) data-custom-data='\{\{ json_encode($custom) \}\}' @endif
+    @if ($returnUrl = $checkout->getReturnUrl()) data-success-url='\{\{ $returnUrl \}\}' @endif
 >
     Buy Product
 </a>
@@ -781,7 +781,7 @@ After retrieving the prices you may display them however you wish:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product['name'] }} - {{ $price->total() }}</li>
+        <li>\{\{ $price->product['name'] \}\} - \{\{ $price->total() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -791,7 +791,7 @@ You may also display the subtotal price and tax amount separately:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product_title }} - {{ $price->subtotal() }} (+ {{ $price->tax() }} tax)</li>
+        <li>\{\{ $price->product_title \}\} - \{\{ $price->subtotal() \}\} (+ \{\{ $price->tax() \}\} tax)</li>
     @endforeach
 </ul>
 ```
@@ -837,7 +837,7 @@ Then, display the calculated prices:
 ```blade
 <ul>
     @foreach ($prices as $price)
-        <li>{{ $price->product['name'] }} - {{ $price->total() }}</li>
+        <li>\{\{ $price->product['name'] \}\} - \{\{ $price->total() \}\}</li>
     @endforeach
 </ul>
 ```
@@ -1843,10 +1843,10 @@ download any of the invoices:
 <table>
     @foreach ($transactions as $transaction)
         <tr>
-            <td>{{ $transaction->billed_at->toFormattedDateString() }}</td>
-            <td>{{ $transaction->total() }}</td>
-            <td>{{ $transaction->tax() }}</td>
-            <td><a href="{{ route('download-invoice', $transaction->id) }}" target="_blank">Download</a></td>
+            <td>\{\{ $transaction->billed_at->toFormattedDateString() \}\}</td>
+            <td>\{\{ $transaction->total() \}\}</td>
+            <td>\{\{ $transaction->tax() \}\}</td>
+            <td><a href="\{\{ route('download-invoice', $transaction->id) \}\}" target="_blank">Download</a></td>
         </tr>
     @endforeach
 </table>
@@ -1883,7 +1883,7 @@ by webhooks yet, while `nextPayment` will return `null` when the billing cycle
 has ended (such as when a subscription has been canceled):
 
 ```blade
-Next payment: {{ $nextPayment->amount() }} due on {{ $nextPayment->date()->format('d/m/Y') }}
+Next payment: \{\{ $nextPayment->amount() \}\} due on \{\{ $nextPayment->date()->format('d/m/Y') \}\}
 ```
 
 <a name="testing"></a>

@@ -644,7 +644,7 @@ within a [Blade template](blade.md), it is more convenient to use
 the `old` helper to repopulate the form. If no old input exists for the given
 field, `null` will be returned:
 
-    <input type="text" name="username" value="{{ old('username') }}">
+    <input type="text" name="username" value="\{\{ old('username') \}\}">
 
 <a name="cookies"></a>
 

@@ -943,11 +943,11 @@ traditional Eloquent query:
 ```html
 <div class="container">
     @foreach ($orders as $order)
-        {{ $order->price }}
+        \{\{ $order->price \}\}
     @endforeach
 </div>
 
-{{ $orders->links() }}
+\{\{ $orders->links() \}\}
 ```
 
 Of course, if you would like to retrieve the pagination results as JSON, you may

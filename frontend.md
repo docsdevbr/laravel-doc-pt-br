@@ -56,7 +56,7 @@ short syntax for displaying data, iterating over data, and more:
 ```blade
 <div>
     @foreach ($users as $user)
-        Hello, {{ $user->name }} <br />
+        Hello, \{\{ $user->name \}\} <br />
     @endforeach
 </div>
 ```
@@ -131,7 +131,7 @@ And, the corresponding template for the counter would be written like so:
 ```blade
 <div>
     <button wire:click="increment">+</button>
-    <h1>{{ $count }}</h1>
+    <h1>\{\{ $count \}\}</h1>
 </div>
 ```
 
@@ -251,7 +251,7 @@ const props = defineProps(['user']);
         </template>
 
         <div class="py-12">
-            Hello, {{ user.name }}
+            Hello, \{\{ user.name \}\}
         </div>
     </Layout>
 </template>

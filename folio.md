@@ -185,7 +185,7 @@ Captured segments can be accessed as variables within your Blade template:
 
 ```html
 <div>
-    User {{ $id }}
+    User \{\{ $id \}\}
 </div>
 ```
 
@@ -204,7 +204,7 @@ the page as an array:
 ```html
 <ul>
     @foreach ($ids as $id)
-        <li>User {{ $id }}</li>
+        <li>User \{\{ $id \}\}</li>
     @endforeach
 </ul>
 ```
@@ -229,7 +229,7 @@ model's variable name will be converted to "camel case":
 
 ```html
 <div>
-    User {{ $user->id }}
+    User \{\{ $user->id \}\}
 </div>
 ```
 
@@ -274,7 +274,7 @@ withTrashed();
 ?>
 
 <div>
-    User {{ $user->id }}
+    User \{\{ $user->id \}\}
 </div>
 ```
 
@@ -310,11 +310,11 @@ render(function (View $view, Post $post) {
 }); ?>
 
 <div>
-    {{ $post->content }}
+    \{\{ $post->content \}\}
 </div>
 
 <div>
-    This author has also taken {{ count($photos) }} photos.
+    This author has also taken \{\{ count($photos) \}\} photos.
 </div>
 ```
 
@@ -336,7 +336,7 @@ Just like Laravel's named routes, you may use the `route` function to generate
 URLs to Folio pages that have been assigned a name:
 
 ```php
-<a href="{{ route('users.index') }}">
+<a href="\{\{ route('users.index') \}\}">
     All Users
 </a>
 ```

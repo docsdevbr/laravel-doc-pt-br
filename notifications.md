@@ -935,7 +935,7 @@ View Invoice
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+\{\{ config('app.name') \}\}
 </x-mail::message>
 ```
 

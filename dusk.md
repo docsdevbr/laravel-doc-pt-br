@@ -2089,7 +2089,7 @@ application contains the following Vue component:
     // Component Definition...
 
     Vue.component('profile', {
-        template: '<div>{{ user.name }}</div>',
+        template: '<div>\{\{ user.name \}\}</div>',
 
         data: function () {
             return {

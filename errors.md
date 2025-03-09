@@ -535,7 +535,7 @@ directory should be named to match the HTTP status code they correspond to.
 The `Symfony\Component\HttpKernel\Exception\HttpException` instance raised by
 the `abort` function will be passed to the view as an `$exception` variable:
 
-    <h2>{{ $exception->getMessage() }}</h2>
+    <h2>\{\{ $exception->getMessage() \}\}</h2>
 
 You may publish Laravel's default error page templates using
 the `vendor:publish` Artisan command. Once the templates have been published,

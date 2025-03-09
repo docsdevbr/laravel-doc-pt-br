@@ -1027,7 +1027,7 @@ the `_method` field will be used as the HTTP request method:
 
     <form action="/example" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 For convenience, you may use
@@ -1054,8 +1054,8 @@ incoming request:
     $action = Route::currentRouteAction(); // string
 
 You may refer to the API documentation for both
-the [underlying class of the Route facade](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html)
-and [Route instance](https://laravel.com/api/{{version}}/Illuminate/Routing/Route.html)
+the [underlying class of the Route facade](https://laravel.com/api/{{ version }}/Illuminate/Routing/Router.html)
+and [Route instance](https://laravel.com/api/{{ version }}/Illuminate/Routing/Route.html)
 to review all of the methods that are available on the router and route classes.
 
 <a name="cors"></a>

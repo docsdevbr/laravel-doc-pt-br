@@ -1918,7 +1918,7 @@ The `csrf_field` function generates an HTML `hidden` input field containing the
 value of the CSRF token. For example,
 using [Blade syntax](blade.md):
 
-    {{ csrf_field() }}
+    \{\{ csrf_field() \}\}
 
 <a name="method-csrf-token"></a>
 
@@ -2032,10 +2032,10 @@ model factories, database seeding, tests, and prototyping views:
 @for($i = 0; $i < 10; $i++)
     <dl>
         <dt>Name</dt>
-        <dd>{{ fake()->name() }}</dd>
+        <dd>\{\{ fake()->name() \}\}</dd>
 
         <dt>Email</dt>
-        <dd>{{ fake()->unique()->safeEmail() }}</dd>
+        <dd>\{\{ fake()->unique()->safeEmail() \}\}</dd>
     </dl>
 @endfor
 ```
@@ -2108,7 +2108,7 @@ the spoofed value of the form's HTTP verb. For example,
 using [Blade syntax](blade.md):
 
     <form method="POST">
-        {{ method_field('DELETE') }}
+        \{\{ method_field('DELETE') \}\}
     </form>
 
 <a name="method-now"></a>
@@ -2139,11 +2139,11 @@ doing so, Laravel will assume the first argument provided to the `old` function
 is the name of the Eloquent attribute that should be considered the "default
 value":
 
-    {{ old('name', $user->name) }}
+    \{\{ old('name', $user->name) \}\}
 
     // Is equivalent to...
 
-    {{ old('name', $user) }}
+    \{\{ old('name', $user) \}\}
 
 <a name="method-optional"></a>
 

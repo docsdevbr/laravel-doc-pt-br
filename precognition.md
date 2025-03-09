@@ -91,7 +91,7 @@ const submit = () => form.submit();
             @change="form.validate('name')"
         />
         <div v-if="form.invalid('name')">
-            {{ form.errors.name }}
+            \{\{ form.errors.name \}\}
         </div>
 
         <label for="email">Email</label>
@@ -102,7 +102,7 @@ const submit = () => form.submit();
             @change="form.validate('email')"
         />
         <div v-if="form.invalid('email')">
-            {{ form.errors.email }}
+            \{\{ form.errors.email \}\}
         </div>
 
         <button :disabled="form.processing">
@@ -136,7 +136,7 @@ will automatically populate the form's `errors` object:
 
 ```html
 <div v-if="form.invalid('email')">
-    {{ form.errors.email }}
+    \{\{ form.errors.email \}\}
 </div>
 ```
 
@@ -641,9 +641,9 @@ old" input and validation errors returned from the server-side form submission:
 ```html
 <form x-data="{
     form: $form('post', '/register', {
-        name: '{{ old('name') }}',
-        email: '{{ old('email') }}',
-    }).setErrors({{ Js::from($errors->messages()) }}),
+        name: '\{\{ old('name') \}\}',
+        email: '\{\{ old('email') \}\}',
+    }).setErrors(\{\{ Js::from($errors->messages()) \}\}),
 }">
 ```
 

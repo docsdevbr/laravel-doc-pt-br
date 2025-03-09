@@ -238,7 +238,7 @@ view:
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>\{\{ $error \}\}</li>
             @endforeach
         </ul>
     </div>
@@ -301,7 +301,7 @@ message:
     class="@error('title') is-invalid @enderror">
 
 @error('title')
-    <div class="alert alert-danger">{{ $message }}</div>
+    <div class="alert alert-danger">\{\{ $message \}\}</div>
 @enderror
 ```
 
@@ -334,7 +334,7 @@ the `old` helper to repopulate the form. If no old input exists for the given
 field, `null` will be returned:
 
 ```blade
-<input type="text" name="title" value="{{ old('title') }}">
+<input type="text" name="title" value="\{\{ old('title') \}\}">
 ```
 
 <a name="a-note-on-optional-fields"></a>
@@ -803,7 +803,7 @@ argument to `withErrors`:
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
 ```blade
-{{ $errors->login->first('email') }}
+\{\{ $errors->login->first('email') \}\}
 ```
 
 <a name="manual-customizing-the-error-messages"></a>

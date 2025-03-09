@@ -226,9 +226,9 @@ Again, if the translation string does not exist, the `__` function will return
 the translation string key that it was given.
 
 If you are using the [Blade templating engine](blade.md), you may
-use the `{{ }}` echo syntax to display the translation string:
+use the `\{\{ \}\}` echo syntax to display the translation string:
 
-    {{ __('messages.welcome') }}
+    \{\{ __('messages.welcome') \}\}
 
 <a name="replacing-parameters-in-translation-strings"></a>
 

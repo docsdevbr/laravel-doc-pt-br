@@ -113,7 +113,7 @@ list each of the servers in the task's `on` array:
 
 @task('deploy', ['on' => ['web-1', 'web-2']])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate --force
 @endtask
 ```
@@ -132,7 +132,7 @@ parallel, add the `parallel` option to your task declaration:
 
 @task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate --force
 @endtask
 ```
@@ -185,7 +185,7 @@ the `git pull` command:
     cd /home/user/example.com
 
     @if ($branch)
-        git pull origin {{ $branch }}
+        git pull origin \{\{ $branch \}\}
     @endif
 
     php artisan migrate --force
@@ -340,7 +340,7 @@ This option is particularly useful for destructive operations:
 ```blade
 @task('deploy', ['on' => 'web', 'confirm' => true])
     cd /home/user/example.com
-    git pull origin {{ $branch }}
+    git pull origin \{\{ $branch \}\}
     php artisan migrate
 @endtask
 ```

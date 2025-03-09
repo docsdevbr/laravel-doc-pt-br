@@ -928,9 +928,9 @@ for each of the requested aggregates:
 
 ```
 @foreach ($topSellers as $seller)
-    {{ $seller->key }}
-    {{ $seller->sum }}
-    {{ $seller->count }}
+    \{\{ $seller->key \}\}
+    \{\{ $seller->sum \}\}
+    \{\{ $seller->count \}\}
 @endforeach
 ```
 
@@ -975,7 +975,7 @@ keys, which you may optionally pass directly to the `<x-pulse::user-card>` Blade
 component:
 
 ```blade
-<x-pulse::user-card :user="{{ $seller->user }}" :stats="{{ $seller->sum }}" />
+<x-pulse::user-card :user="\{\{ $seller->user \}\}" :stats="\{\{ $seller->sum \}\}" />
 ```
 
 <a name="custom-recorders"></a>

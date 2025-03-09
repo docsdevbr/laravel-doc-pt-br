@@ -92,11 +92,11 @@ in curly braces. For example, given the following route:
 You may display the contents of the `name` variable like so:
 
 ```blade
-Hello, {{ $name }}.
+Hello, \{\{ $name \}\}.
 ```
 
 > [!NOTE]
-> Blade's `{{ }}` echo statements are automatically sent through
+> Blade's `\{\{ \}\}` echo statements are automatically sent through
 > PHP's `htmlspecialchars` function to prevent XSS attacks.
 
 You are not limited to displaying the contents of the variables passed to the
@@ -104,7 +104,7 @@ view. You may also echo the results of any PHP function. In fact, you can put
 any PHP code you wish inside of a Blade echo statement:
 
 ```blade
-The current UNIX timestamp is {{ time() }}.
+The current UNIX timestamp is \{\{ time() \}\}.
 ```
 
 <a name="html-entity-encoding"></a>
@@ -138,7 +138,7 @@ your `AppServiceProvider`:
 
 #### Displaying Unescaped Data
 
-By default, Blade `{{ }}` statements are automatically sent through
+By default, Blade `\{\{ \}\}` statements are automatically sent through
 PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want
 your data to be escaped, you may use the following syntax:
 
@@ -163,17 +163,17 @@ example:
 ```blade
 <h1>Laravel</h1>
 
-Hello, @{{ name }}.
+Hello, @\{\{ name \}\}.
 ```
 
-In this example, the `@` symbol will be removed by Blade; however, `{{ name }}`
+In this example, the `@` symbol will be removed by Blade; however, `\{\{ name \}\}`
 expression will remain untouched by the Blade engine, allowing it to be rendered
 by your JavaScript framework.
 
 The `@` symbol may also be used to escape Blade directives:
 
 ```blade
-{{-- Blade template --}}
+\{\{-- Blade template --\}\}
 @@if()
 
 <!-- HTML output -->
@@ -202,7 +202,7 @@ will convert the given object or array into a valid JavaScript object:
 
 ```blade
 <script>
-    var app = {{ Illuminate\Support\Js::from($array) }};
+    var app = \{\{ Illuminate\Support\Js::from($array) \}\};
 </script>
 ```
 
@@ -212,7 +212,7 @@ templates:
 
 ```blade
 <script>
-    var app = {{ Js::from($array) }};
+    var app = \{\{ Js::from($array) \}\};
 </script>
 ```
 
@@ -232,7 +232,7 @@ prefix each Blade echo statement with an `@` symbol:
 ```blade
 @verbatim
     <div class="container">
-        Hello, {{ name }}.
+        Hello, \{\{ name \}\}.
     </div>
 @endverbatim
 ```
@@ -384,7 +384,7 @@ the `$value` variable to display the session value:
 ```blade
 @session('status')
     <div class="p-4 bg-green-100">
-        {{ $value }}
+        \{\{ $value \}\}
     </div>
 @endsession
 ```
@@ -421,15 +421,15 @@ identically to their PHP counterparts:
 
 ```blade
 @for ($i = 0; $i < 10; $i++)
-    The current value is {{ $i }}
+    The current value is \{\{ $i \}\}
 @endfor
 
 @foreach ($users as $user)
-    <p>This is user {{ $user->id }}</p>
+    <p>This is user \{\{ $user->id \}\}</p>
 @endforeach
 
 @forelse ($users as $user)
-    <li>{{ $user->name }}</li>
+    <li>\{\{ $user->name \}\}</li>
 @empty
     <p>No users</p>
 @endforelse
@@ -453,7 +453,7 @@ the `@continue` and `@break` directives:
         @continue
     @endif
 
-    <li>{{ $user->name }}</li>
+    <li>\{\{ $user->name \}\}</li>
 
     @if ($user->number == 5)
         @break
@@ -468,7 +468,7 @@ declaration:
 @foreach ($users as $user)
     @continue($user->type == 1)
 
-    <li>{{ $user->name }}</li>
+    <li>\{\{ $user->name \}\}</li>
 
     @break($user->number == 5)
 @endforeach
@@ -493,7 +493,7 @@ iteration through the loop:
         This is the last iteration.
     @endif
 
-    <p>This is user {{ $user->id }}</p>
+    <p>This is user \{\{ $user->id \}\}</p>
 @endforeach
 ```
 
@@ -587,8 +587,8 @@ option should be "selected":
 ```blade
 <select name="version">
     @foreach ($product->versions as $version)
-        <option value="{{ $version }}" @selected(old('version') == $version)>
-            {{ $version }}
+        <option value="\{\{ $version \}\}" @selected(old('version') == $version)>
+            \{\{ $version \}\}
         </option>
     @endforeach
 </select>
@@ -780,7 +780,7 @@ comments, Blade comments are not included in the HTML returned by your
 application:
 
 ```blade
-{{-- This comment will not be present in the rendered HTML --}}
+\{\{-- This comment will not be present in the rendered HTML --\}\}
 ```
 
 <a name="components"></a>
@@ -971,8 +971,8 @@ When your component is rendered, you may display the contents of your
 component's public variables by echoing the variables by name:
 
 ```blade
-<div class="alert alert-{{ $type }}">
-    {{ $message }}
+<div class="alert alert-\{\{ $type \}\}">
+    \{\{ $message \}\}
 </div>
 ```
 
@@ -1006,10 +1006,10 @@ syntax. This is often convenient since attribute names frequently match the
 variable names they correspond to:
 
 ```blade
-{{-- Short attribute syntax... --}}
+\{\{-- Short attribute syntax... --\}\}
 <x-profile :$userId :$name />
 
-{{-- Is equivalent to... --}}
+\{\{-- Is equivalent to... --\}\}
 <x-profile :user-id="$userId" :name="$name" />
 ```
 
@@ -1055,8 +1055,8 @@ You may execute this method from your component template by invoking the
 variable matching the name of the method:
 
 ```blade
-<option {{ $isSelected($value) ? 'selected' : '' }} value="{{ $value }}">
-    {{ $label }}
+<option \{\{ $isSelected($value) ? 'selected' : '' \}\} value="\{\{ $value \}\}">
+    \{\{ $label \}\}
 </option>
 ```
 
@@ -1171,7 +1171,7 @@ All of the attributes may be rendered within the component by echoing this
 variable:
 
 ```blade
-<div {{ $attributes }}>
+<div \{\{ $attributes \}\}>
     <!-- Component content -->
 </div>
 ```
@@ -1191,8 +1191,8 @@ useful for defining a set of default CSS classes that should always be applied
 to a component:
 
 ```blade
-<div {{ $attributes->merge(['class' => 'alert alert-'.$type]) }}>
-    {{ $message }}
+<div \{\{ $attributes->merge(['class' => 'alert alert-'.$type]) \}\}>
+    \{\{ $message \}\}
 </div>
 ```
 
@@ -1221,8 +1221,8 @@ a boolean expression. If the array element has a numeric key, it will always be
 included in the rendered class list:
 
 ```blade
-<div {{ $attributes->class(['p-4', 'bg-red' => $hasError]) }}>
-    {{ $message }}
+<div \{\{ $attributes->class(['p-4', 'bg-red' => $hasError]) \}\}>
+    \{\{ $message \}\}
 </div>
 ```
 
@@ -1230,8 +1230,8 @@ If you need to merge other attributes onto your component, you can chain
 the `merge` method onto the `class` method:
 
 ```blade
-<button {{ $attributes->class(['p-4'])->merge(['type' => 'button']) }}>
-    {{ $slot }}
+<button \{\{ $attributes->class(['p-4'])->merge(['type' => 'button']) \}\}>
+    \{\{ $slot \}\}
 </button>
 ```
 
@@ -1251,8 +1251,8 @@ injected attribute values. Instead, they will be overwritten. For example,
 a `button` component's implementation may look like the following:
 
 ```blade
-<button {{ $attributes->merge(['type' => 'button']) }}>
-    {{ $slot }}
+<button \{\{ $attributes->merge(['type' => 'button']) \}\}>
+    \{\{ $slot \}\}
 </button>
 ```
 
@@ -1281,8 +1281,8 @@ with `profile-controller` and any additional injected `data-controller` values
 will be placed after this default value:
 
 ```blade
-<div {{ $attributes->merge(['data-controller' => $attributes->prepends('profile-controller')]) }}>
-    {{ $slot }}
+<div \{\{ $attributes->merge(['data-controller' => $attributes->prepends('profile-controller')]) \}\}>
+    \{\{ $slot \}\}
 </div>
 ```
 
@@ -1295,28 +1295,28 @@ closure which should return `true` if you wish to retain the attribute in the
 attribute bag:
 
 ```blade
-{{ $attributes->filter(fn (string $value, string $key) => $key == 'foo') }}
+\{\{ $attributes->filter(fn (string $value, string $key) => $key == 'foo') \}\}
 ```
 
 For convenience, you may use the `whereStartsWith` method to retrieve all
 attributes whose keys begin with a given string:
 
 ```blade
-{{ $attributes->whereStartsWith('wire:model') }}
+\{\{ $attributes->whereStartsWith('wire:model') \}\}
 ```
 
 Conversely, the `whereDoesntStartWith` method may be used to exclude all
 attributes whose keys begin with a given string:
 
 ```blade
-{{ $attributes->whereDoesntStartWith('wire:model') }}
+\{\{ $attributes->whereDoesntStartWith('wire:model') \}\}
 ```
 
 Using the `first` method, you may render the first attribute in a given
 attribute bag:
 
 ```blade
-{{ $attributes->whereStartsWith('wire:model')->first() }}
+\{\{ $attributes->whereStartsWith('wire:model')->first() \}\}
 ```
 
 If you would like to check if an attribute is present on the component, you may
@@ -1351,7 +1351,7 @@ present on the component:
 You may retrieve a specific attribute's value using the `get` method:
 
 ```blade
-{{ $attributes->get('class') }}
+\{\{ $attributes->get('class') \}\}
 ```
 
 <a name="reserved-keywords"></a>
@@ -1386,7 +1386,7 @@ concept, let's imagine that an `alert` component has the following markup:
 <!-- /resources/views/components/alert.blade.php -->
 
 <div class="alert alert-danger">
-    {{ $slot }}
+    \{\{ $slot \}\}
 </div>
 ```
 
@@ -1405,10 +1405,10 @@ the injection of a "title" slot:
 ```blade
 <!-- /resources/views/components/alert.blade.php -->
 
-<span class="alert-title">{{ $title }}</span>
+<span class="alert-title">\{\{ $title \}\}</span>
 
 <div class="alert alert-danger">
-    {{ $slot }}
+    \{\{ $slot \}\}
 </div>
 ```
 
@@ -1430,13 +1430,13 @@ You may invoke a slot's `isEmpty` method to determine if the slot contains
 content:
 
 ```blade
-<span class="alert-title">{{ $title }}</span>
+<span class="alert-title">\{\{ $title \}\}</span>
 
 <div class="alert alert-danger">
     @if ($slot->isEmpty())
         This is default content if the slot is empty.
     @else
-        {{ $slot }}
+        \{\{ $slot \}\}
     @endif
 </div>
 ```
@@ -1465,7 +1465,7 @@ component class:
 ```blade
 <x-alert>
     <x-slot:title>
-        {{ $component->formatAlert('Server Error') }}
+        \{\{ $component->formatAlert('Server Error') \}\}
     </x-slot>
 
     <strong>Whoops!</strong> Something went wrong!
@@ -1504,15 +1504,15 @@ on [component attributes](#component-attributes):
     'footer',
 ])
 
-<div {{ $attributes->class(['border']) }}>
-    <h1 {{ $heading->attributes->class(['text-lg']) }}>
-        {{ $heading }}
+<div \{\{ $attributes->class(['border']) \}\}>
+    <h1 \{\{ $heading->attributes->class(['text-lg']) \}\}>
+        \{\{ $heading \}\}
     </h1>
 
-    {{ $slot }}
+    \{\{ $slot \}\}
 
-    <footer {{ $footer->attributes->class(['text-gray-700']) }}>
-        {{ $footer }}
+    <footer \{\{ $footer->attributes->class(['text-gray-700']) \}\}>
+        \{\{ $footer \}\}
     </footer>
 </div>
 ```
@@ -1532,7 +1532,7 @@ component's markup directly from the `render` method:
     {
         return <<<'blade'
             <div class="alert alert-danger">
-                {{ $slot }}
+                \{\{ $slot \}\}
             </div>
         blade;
     }
@@ -1714,8 +1714,8 @@ variable's name as the array key and the default value as the array value:
 
 @props(['type' => 'info', 'message'])
 
-<div {{ $attributes->merge(['class' => 'alert alert-'.$type]) }}>
-    {{ $message }}
+<div \{\{ $attributes->merge(['class' => 'alert alert-'.$type]) \}\}>
+    \{\{ $message \}\}
 </div>
 ```
 
@@ -1748,8 +1748,8 @@ The `<x-menu>` component may have an implementation like the following:
 
 @props(['color' => 'gray'])
 
-<ul {{ $attributes->merge(['class' => 'bg-'.$color.'-200']) }}>
-    {{ $slot }}
+<ul \{\{ $attributes->merge(['class' => 'bg-'.$color.'-200']) \}\}>
+    \{\{ $slot \}\}
 </ul>
 ```
 
@@ -1762,8 +1762,8 @@ we can make it available inside `<x-menu.item>` as well:
 
 @aware(['color' => 'gray'])
 
-<li {{ $attributes->merge(['class' => 'text-'.$color.'-800']) }}>
-    {{ $slot }}
+<li \{\{ $attributes->merge(['class' => 'text-'.$color.'-800']) \}\}>
+    \{\{ $slot \}\}
 </li>
 ```
 
@@ -1844,12 +1844,12 @@ a `layout` component that looks like the following:
 
 <html>
     <head>
-        <title>{{ $title ?? 'Todo Manager' }}</title>
+        <title>\{\{ $title ?? 'Todo Manager' \}\}</title>
     </head>
     <body>
         <h1>Todos</h1>
         <hr/>
-        {{ $slot }}
+        \{\{ $slot \}\}
     </body>
 </html>
 ```
@@ -1867,7 +1867,7 @@ displays our task list:
 
 <x-layout>
     @foreach ($tasks as $task)
-        {{ $task }}
+        \{\{ $task \}\}
     @endforeach
 </x-layout>
 ```
@@ -1888,7 +1888,7 @@ the [component documentation](#components):
     </x-slot>
 
     @foreach ($tasks as $task)
-        {{ $task }}
+        \{\{ $task \}\}
     @endforeach
 </x-layout>
 ```
@@ -2046,7 +2046,7 @@ the `$message` variable to display the error message:
     class="@error('title') is-invalid @enderror">
 
 @error('title')
-    <div class="alert alert-danger">{{ $message }}</div>
+    <div class="alert alert-danger">\{\{ $message \}\}</div>
 @enderror
 ```
 
@@ -2079,7 +2079,7 @@ messages on pages containing multiple forms:
     class="@error('email', 'login') is-invalid @enderror">
 
 @error('email', 'login')
-    <div class="alert alert-danger">{{ $message }}</div>
+    <div class="alert alert-danger">\{\{ $message \}\}</div>
 @enderror
 ```
 
@@ -2146,7 +2146,7 @@ to resolve:
 @inject('metrics', 'App\Services\MetricsService')
 
 <div>
-    Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+    Monthly Revenue: \{\{ $metrics->monthlyRevenue() \}\}.
 </div>
 ```
 
@@ -2162,7 +2162,7 @@ array of data to provide to the template:
 ```php
 use Illuminate\Support\Facades\Blade;
 
-return Blade::render('Hello, {{ $name }}', ['name' => 'Julian Bashir']);
+return Blade::render('Hello, \{\{ $name \}\}', ['name' => 'Julian Bashir']);
 ```
 
 Laravel renders inline Blade templates by writing them to
@@ -2172,7 +2172,7 @@ the `deleteCachedView` argument to the method:
 
 ```php
 return Blade::render(
-    'Hello, {{ $name }}',
+    'Hello, \{\{ $name \}\}',
     ['name' => 'Julian Bashir'],
     deleteCachedView: true
 );
@@ -2192,7 +2192,7 @@ within `@fragment` and `@endfragment` directives:
 @fragment('user-list')
     <ul>
         @foreach ($users as $user)
-            <li>{{ $user->name }}</li>
+            <li>\{\{ $user->name \}\}</li>
         @endforeach
     </ul>
 @endfragment
@@ -2313,7 +2313,7 @@ Once your custom echo handler has been defined, you may simply echo the object
 in your Blade template:
 
 ```blade
-Cost: {{ $money }}
+Cost: \{\{ $money \}\}
 ```
 
 <a name="custom-if-statements"></a>
