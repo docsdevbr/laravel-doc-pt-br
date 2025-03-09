@@ -8,7 +8,7 @@ status: ready
 
 ## Prólogo
 
-- [Notas de Versão](prologo/versoes.md)
+- [Notas de Versão](releases.md)
 - [Guia de Atualização](upgrade.md)
 - [Guia de Contribuição](contributions.md)
 

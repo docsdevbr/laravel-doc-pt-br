@@ -35,7 +35,7 @@ correções de segurança são fornecidas por 1 ano.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 |  Versão   |       Lançamento        | Correções de falhas até | Correções de segurança até |
 |:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
@@ -222,7 +222,7 @@ _As coleções preguiçosas foram implementadas por
 [Joseph Silber](https://github.com/JosephSilber)_.
 
 Muitas pessoas desenvolvedoras já desfrutam dos poderosos
-[métodos da classe Collection](../collections.md) do Laravel.
+[métodos da classe Collection](collections.md) do Laravel.
 Para complementar a já poderosa classe `Collection`, o Laravel 6 introduz uma
 `LazyCollection`, que aproveita os
 [geradores](/docs/php/doc/8/language.generators.overview.html) do PHP para

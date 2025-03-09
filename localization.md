@@ -102,9 +102,9 @@ You may retrieve lines from language files using the `__` helper function. The `
 
     echo __('I love programming.');
 
-If you are using the [Blade templating engine](blade.md), you may use the `{{ }}` syntax to echo the translation string or use the `@lang` directive:
+If you are using the [Blade templating engine](blade.md), you may use the `\{\{ \}\}` syntax to echo the translation string or use the `@lang` directive:
 
-    {{ __('messages.welcome') }}
+    \{\{ __('messages.welcome') \}\}
 
     @lang('messages.welcome')
 
