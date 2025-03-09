@@ -235,7 +235,7 @@ You may modify the message instance that is sent to the user by passing a Closur
 You may also have noticed that we are returning the results of the `remind` method directly from a route. By default, the `remind` method will return a `Redirect` to the current URI. If an error occurred while attempting to reset the password, an `error` variable will be flashed to the session, as well as a `reason`, which can be used to extract a language line from the `reminders` language file. If the password reset was successful, a `success` variable will be flashed to the session. So, your password reset form view could look something like this:
 
 	@if (Session::has('error'))
-		{{ trans(Session::get('reason')) }}
+		\{\{ trans(Session::get('reason')) \}\}
 	@elseif (Session::has('success'))
 		An e-mail with the password reset has been sent.
 	@endif
@@ -255,10 +255,10 @@ Once a user has clicked on the reset link from the reminder e-mail, they should 
 And, a password reset form might look like this:
 
 	@if (Session::has('error'))
-		{{ trans(Session::get('reason')) }}
+		\{\{ trans(Session::get('reason')) \}\}
 	@endif
 
-	<input type="hidden" name="token" value="{{ $token }}">
+	<input type="hidden" name="token" value="\{\{ $token \}\}">
 	<input type="text" name="email">
 	<input type="password" name="password">
 	<input type="password" name="password_confirmation">

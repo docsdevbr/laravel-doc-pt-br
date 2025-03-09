@@ -74,19 +74,19 @@ Sometimes, such as when you are not sure if a section has been defined, you may 
 
 **Echoing Data**
 
-	Hello, {{ $name }}.
+	Hello, \{\{ $name \}\}.
 
-	The current UNIX timestamp is {{ time() }}.
+	The current UNIX timestamp is \{\{ time() \}\}.
 
 If you need to display a string that is wrapped in curly braces, you may escape the Blade behavior by prefixing your text with an `@` symbol:
 
 **Displaying Raw Text With Curly Braces**
 
-	@{{ This will not be processed by Blade }}
+	@\{\{ This will not be processed by Blade \}\}
 
 Of course, all user supplied data should be escaped or purified. To escape the output, you may use the triple curly brace syntax:
 
-	Hello, {{{ $name }}}.
+	Hello, \{\{\{ $name \}\}\}.
 
 > **Note:** Be very careful when echoing content that is supplied by users of your application. Always use the triple curly brace syntax to escape any HTML entities in the content.
 
@@ -107,11 +107,11 @@ Of course, all user supplied data should be escaped or purified. To escape the o
 **Loops**
 
 	@for ($i = 0; $i < 10; $i++)
-		The current value is {{ $i }}
+		The current value is \{\{ $i \}\}
 	@endfor
 
 	@foreach ($users as $user)
-		<p>This is user {{ $user->id }}</p>
+		<p>This is user \{\{ $user->id \}\}</p>
 	@endforeach
 
 	@while (true)
@@ -121,19 +121,19 @@ Of course, all user supplied data should be escaped or purified. To escape the o
 **Including Sub-Views**
 
 	@include('view.name')
-	
+
 You may also pass an array of data to the included view:
-	
+
 	@include('view.name', array('some'=>'data'))
-	
+
 **Overwriting Sections**
 
 By default, sections are appended to any previous content that exists in the section. To overwrite a section entirely, you may use the `overwrite` statement:
-	
+
 	@extends('list.item.container')
 
 	@section('list.item.content')
-		<p>This is an item of type {{ $item->type }}</p>
+		<p>This is an item of type \{\{ $item->type \}\}</p>
 	@overwrite
 
 **Displaying Language Lines**
@@ -144,4 +144,4 @@ By default, sections are appended to any previous content that exists in the sec
 
 **Comments**
 
-	{{-- This comment will not be in the rendered HTML --}}
+	\{\{-- This comment will not be in the rendered HTML --\}\}
