@@ -112,17 +112,17 @@ You may display data passed to your Blade views by wrapping the variable in curl
 
 You may display the contents of the `name` variable like so:
 
-    Hello, {{ $name }}.
+    Hello, \{\{ $name \}\}.
 
-> {tip} Blade `{{ }}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks.
+> {tip} Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks.
 
 You are not limited to displaying the contents of the variables passed to the view. You may also echo the results of any PHP function. In fact, you can put any PHP code you wish inside of a Blade echo statement:
 
-    The current UNIX timestamp is {{ time() }}.
+    The current UNIX timestamp is \{\{ time() \}\}.
 
 #### Displaying Unescaped Data
 
-By default, Blade `{{ }}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
+By default, Blade `\{\{ \}\}` statements are automatically sent through PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want your data to be escaped, you may use the following syntax:
 
     Hello, {!! $name !!}.
 
@@ -177,13 +177,13 @@ Since many JavaScript frameworks also use "curly" braces to indicate a given exp
 
     <h1>Laravel</h1>
 
-    Hello, @{{ name }}.
+    Hello, @\{\{ name \}\}.
 
-In this example, the `@` symbol will be removed by Blade; however, `{{ name }}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
+In this example, the `@` symbol will be removed by Blade; however, `\{\{ name \}\}` expression will remain untouched by the Blade engine, allowing it to instead be rendered by your JavaScript framework.
 
 The `@` symbol may also be used to escape Blade directives:
 
-    {{-- Blade --}}
+    \{\{-- Blade --\}\}
     @@json()
 
     <!-- HTML output -->
@@ -195,7 +195,7 @@ If you are displaying JavaScript variables in a large portion of your template, 
 
     @verbatim
         <div class="container">
-            Hello, {{ name }}.
+            Hello, \{\{ name \}\}.
         </div>
     @endverbatim
 
@@ -317,15 +317,15 @@ Switch statements can be constructed using the `@switch`, `@case`, `@break`, `@d
 In addition to conditional statements, Blade provides simple directives for working with PHP's loop structures. Again, each of these directives functions identically to their PHP counterparts:
 
     @for ($i = 0; $i < 10; $i++)
-        The current value is {{ $i }}
+        The current value is \{\{ $i \}\}
     @endfor
 
     @foreach ($users as $user)
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
     @forelse ($users as $user)
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
     @empty
         <p>No users</p>
     @endforelse
@@ -343,7 +343,7 @@ When using loops you may also end the loop or skip the current iteration:
             @continue
         @endif
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @if ($user->number == 5)
             @break
@@ -355,7 +355,7 @@ You may also include the condition with the directive declaration in one line:
     @foreach ($users as $user)
         @continue($user->type == 1)
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @break($user->number == 5)
     @endforeach
@@ -374,7 +374,7 @@ When looping, a `$loop` variable will be available inside of your loop. This var
             This is the last iteration.
         @endif
 
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
 If you are in a nested loop, you may access the parent loop's `$loop` variable via the `parent` property:
@@ -407,7 +407,7 @@ Property  | Description
 
 Blade also allows you to define comments in your views. However, unlike HTML comments, Blade comments are not included in the HTML returned by your application:
 
-    {{-- This comment will not be present in the rendered HTML --}}
+    \{\{-- This comment will not be present in the rendered HTML --\}\}
 
 <a name="php"></a>
 ### PHP
@@ -470,7 +470,7 @@ The `@error` directive may be used to quickly check if [validation error message
     <input id="title" type="text" class="@error('title') is-invalid @enderror">
 
     @error('title')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger">\{\{ $message \}\}</div>
     @enderror
 
 You may pass [the name of a specific error bag](validation.md#named-error-bags) as the second parameter to the `@error` directive to retrieve validation error messages on pages containing multiple forms:
@@ -482,7 +482,7 @@ You may pass [the name of a specific error bag](validation.md#named-error-bags) 
     <input id="email" type="email" class="@error('email', 'login') is-invalid @enderror">
 
     @error('email', 'login')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger">\{\{ $message \}\}</div>
     @enderror
 
 <a name="components"></a>
@@ -586,8 +586,8 @@ You should define the component's required data in its class constructor. All pu
 
 When your component is rendered, you may display the contents of your component's public variables by echoing the variables by name:
 
-    <div class="alert alert-{{ $type }}">
-        {{ $message }}
+    <div class="alert alert-\{\{ $type \}\}">
+        \{\{ $message \}\}
     </div>
 
 #### Casing
@@ -626,8 +626,8 @@ In addition to public variables being available to your component template, any 
 
 You may execute this method from your component template by invoking the variable matching the name of the method:
 
-    <option {{ $isSelected($value) ? 'selected="selected"' : '' }} value="{{ $value }}">
-        {{ $label }}
+    <option \{\{ $isSelected($value) ? 'selected="selected"' : '' \}\} value="\{\{ $value \}\}">
+        \{\{ $label \}\}
     </option>
 
 #### Using Attributes & Slots Inside The Class
@@ -682,18 +682,18 @@ We've already examined how to pass data attributes to a component; however, some
 
 All of the attributes that are not part of the component's constructor will automatically be added to the component's "attribute bag". This attribute bag is automatically made available to the component via the `$attributes` variable. All of the attributes may be rendered within the component by echoing this variable:
 
-    <div {{ $attributes }}>
+    <div \{\{ $attributes \}\}>
         <!-- Component Content -->
     </div>
 
-> {note} Echoing variables (`{{ $attributes }}`) or using directives such as `@env` directly on a component is not supported at this time.
+> {note} Echoing variables (`\{\{ $attributes \}\}`) or using directives such as `@env` directly on a component is not supported at this time.
 
 #### Default / Merged Attributes
 
 Sometimes you may need to specify default values for attributes or merge additional values into some of the component's attributes. To accomplish this, you may use the attribute bag's `merge` method:
 
-    <div {{ $attributes->merge(['class' => 'alert alert-'.$type]) }}>
-        {{ $message }}
+    <div \{\{ $attributes->merge(['class' => 'alert alert-'.$type]) \}\}>
+        \{\{ $message \}\}
     </div>
 
 If we assume this component is utilized like so:
@@ -710,15 +710,15 @@ The final, rendered HTML of the component will appear like the following:
 
 You may filter attributes using the `filter` method. This method accepts a Closure which should return `true` if you wish to retain the attribute in the attribute bag:
 
-    {{ $attributes->filter(fn ($value, $key) => $key == 'foo') }}
+    \{\{ $attributes->filter(fn ($value, $key) => $key == 'foo') \}\}
 
 For convenience, you may use the `whereStartsWith` method to retrieve all attributes whose keys begin with a given string:
 
-    {{ $attributes->whereStartsWith('wire:model') }}
+    \{\{ $attributes->whereStartsWith('wire:model') \}\}
 
 Using the `first` method, you may render the first attribute in a given attribute bag:
 
-    {{ $attributes->whereStartsWith('wire:model')->first() }}
+    \{\{ $attributes->whereStartsWith('wire:model')->first() \}\}
 
 <a name="slots"></a>
 ### Slots
@@ -728,7 +728,7 @@ Often, you will need to pass additional content to your component via "slots". L
     <!-- /resources/views/components/alert.blade.php -->
 
     <div class="alert alert-danger">
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
 We may pass content to the `slot` by injecting content into the component:
@@ -741,10 +741,10 @@ Sometimes a component may need to render multiple different slots in different l
 
     <!-- /resources/views/components/alert.blade.php -->
 
-    <span class="alert-title">{{ $title }}</span>
+    <span class="alert-title">\{\{ $title \}\}</span>
 
     <div class="alert alert-danger">
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
 You may define the content of the named slot using the `x-slot` tag. Any content not within a `x-slot` tag will be passed to the component in the `$slot` variable:
@@ -763,7 +763,7 @@ If you have used a JavaScript framework such as Vue, you may be familiar with "s
 
     <x-alert>
         <x-slot name="title">
-            {{ $component->formatAlert('Server Error') }}
+            \{\{ $component->formatAlert('Server Error') \}\}
         </x-slot>
 
         <strong>Whoops!</strong> Something went wrong!
@@ -783,7 +783,7 @@ For very small components, it may feel cumbersome to manage both the component c
     {
         return <<<'blade'
             <div class="alert alert-danger">
-                {{ $slot }}
+                \{\{ $slot \}\}
             </div>
         blade;
     }
@@ -815,8 +815,8 @@ You may specify which attributes should be considered data variables using the `
 
     @props(['type' => 'info', 'message'])
 
-    <div {{ $attributes->merge(['class' => 'alert alert-'.$type]) }}>
-        {{ $message }}
+    <div \{\{ $attributes->merge(['class' => 'alert alert-'.$type]) \}\}>
+        \{\{ $message \}\}
     </div>
 
 <a name="including-subviews"></a>
@@ -858,7 +858,7 @@ To include the first view that exists from a given array of views, you may use t
 
 If your Blade includes are stored in a subdirectory, you may wish to alias them for easier access. For example, imagine a Blade include that is stored at `resources/views/includes/input.blade.php` with the following content:
 
-    <input type="{{ $type ?? 'text' }}">
+    <input type="\{\{ $type ?? 'text' \}\}">
 
 You may use the `include` method to alias the include from `includes.input` to `input`. Typically, this should be done in the `boot` method of your `AppServiceProvider`:
 
@@ -922,7 +922,7 @@ The `@inject` directive may be used to retrieve a service from the Laravel [serv
     @inject('metrics', 'App\Services\MetricsService')
 
     <div>
-        Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+        Monthly Revenue: \{\{ $metrics->monthlyRevenue() \}\}.
     </div>
 
 <a name="extending-blade"></a>

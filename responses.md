@@ -197,7 +197,7 @@ After the user is redirected, you may display the flashed message from the [sess
 
     @if (session('status'))
         <div class="alert alert-success">
-            {{ session('status') }}
+            \{\{ session('status') \}\}
         </div>
     @endif
 

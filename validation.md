@@ -164,7 +164,7 @@ So, in our example, the user will be redirected to our controller's `create` met
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         </div>
@@ -183,7 +183,7 @@ You may also use the `@error` [Blade](blade.md) directive to quickly check if va
     <input id="title" type="text" class="@error('title') is-invalid @enderror">
 
     @error('title')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger">\{\{ $message \}\}</div>
     @enderror
 
 <a name="a-note-on-optional-fields"></a>
@@ -428,7 +428,7 @@ If you have multiple forms on a single page, you may wish to name the `MessageBa
 
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
-    {{ $errors->login->first('email') }}
+    \{\{ $errors->login->first('email') \}\}
 
 <a name="after-validation-hook"></a>
 ### After Validation Hook

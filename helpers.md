@@ -2509,7 +2509,7 @@ The `cookie` function creates a new [cookie](requests.md#cookies) instance:
 
 The `csrf_field` function generates an HTML `hidden` input field containing the value of the CSRF token. For example, using [Blade syntax](blade.md):
 
-    {{ csrf_field() }}
+    \{\{ csrf_field() \}\}
 
 <a name="method-csrf-token"></a>
 #### `csrf_token()` {.collection-method}
@@ -2632,7 +2632,7 @@ A [logger](errors.md#logging) instance will be returned if no value is passed to
 The `method_field` function generates an HTML `hidden` input field containing the spoofed value of the form's HTTP verb. For example, using [Blade syntax](blade.md):
 
     <form method="POST">
-        {{ method_field('DELETE') }}
+        \{\{ method_field('DELETE') \}\}
     </form>
 
 <a name="method-now"></a>

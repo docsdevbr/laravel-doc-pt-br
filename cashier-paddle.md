@@ -236,7 +236,7 @@ After retrieving the prices you may display them however you wish:
 
     <ul>
         @foreach ($prices as $price)
-            <li>{{ $price->product_title }} - {{ $price->price()->gross() }}</li>
+            <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->gross() \}\}</li>
         @endforeach
     </ul>
 
@@ -244,7 +244,7 @@ You may also display the net price (excludes tax) and display the tax amount sep
 
     <ul>
         @foreach ($prices as $price)
-            <li>{{ $price->product_title }} - {{ $price->price()->net() }} (+ {{ $price->price()->tax() }} tax)</li>
+            <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->net() \}\} (+ \{\{ $price->price()->tax() \}\} tax)</li>
         @endforeach
     </ul>
 
@@ -252,7 +252,7 @@ If you retrieved prices for subscription plans you can display their initial and
 
     <ul>
         @foreach ($prices as $price)
-            <li>{{ $price->product_title }} - Initial: {{ $price->initialPrice()->gross() }} - Recurring: {{ $price->recurringPrice()->gross() }}</li>
+            <li>\{\{ $price->product_title \}\} - Initial: \{\{ $price->initialPrice()->gross() \}\} - Recurring: \{\{ $price->recurringPrice()->gross() \}\}</li>
         @endforeach
     </ul>
 
@@ -281,7 +281,7 @@ Then, display the calculated prices using the `price` method:
 
     <ul>
         @foreach ($prices as $price)
-            <li>{{ $price->product_title }} - {{ $price->price()->gross() }}</li>
+            <li>\{\{ $price->product_title \}\} - \{\{ $price->price()->gross() \}\}</li>
         @endforeach
     </ul>
 
@@ -289,7 +289,7 @@ You may display the original listed prices (without coupon discounts) using the 
 
     <ul>
         @foreach ($prices as $price)
-            <li>{{ $price->product_title }} - {{ $price->listPrice()->gross() }}</li>
+            <li>\{\{ $price->product_title \}\} - \{\{ $price->listPrice()->gross() \}\}</li>
         @endforeach
     </ul>
 
@@ -887,9 +887,9 @@ When listing the receipts for the customer, you may use the receipt's helper met
     <table>
         @foreach ($receipts as $receipt)
             <tr>
-                <td>{{ $receipt->paid_at->toFormattedDateString() }}</td>
-                <td>{{ $receipt->amount() }}</td>
-                <td><a href="{{ $receipt->receipt_url }}" target="_blank">Download</a></td>
+                <td>\{\{ $receipt->paid_at->toFormattedDateString() \}\}</td>
+                <td>\{\{ $receipt->amount() \}\}</td>
+                <td><a href="\{\{ $receipt->receipt_url \}\}" target="_blank">Download</a></td>
             </tr>
         @endforeach
     </table>
@@ -906,7 +906,7 @@ You may use the `lastPayment` and `nextPayment` methods to display a customer's 
 
 Both of these methods will return an instance of `Laravel\Paddle\Payment`; however, `nextPayment` will return `null` when the billing cycle has ended (such as when a subscription has been cancelled):
 
-    Next payment: {{ $nextPayment->amount() }} due on {{ $nextPayment->date()->format('d/m/Y') }}
+    Next payment: \{\{ $nextPayment->amount() \}\} due on \{\{ $nextPayment->date()->format('d/m/Y') \}\}
 
 <a name="handling-failed-payments"></a>
 ## Handling Failed Payments

@@ -35,7 +35,7 @@ correções de segurança são fornecidas por 1 ano.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 | Versão  |      Lançamento       | Correções de falhas até | Correções de segurança até |
 |:-------:|:---------------------:|:-----------------------:|:--------------------------:|
@@ -67,7 +67,7 @@ Esses _tokens_ podem receber habilidades e escopos que especificam quais ações
 os _tokens_ podem realizar.
 
 Para mais informações sobre o Laravel Sanctum, consulte a
-[documentação do Sanctum](../sanctum.md).
+[documentação do Sanctum](sanctum.md).
 
 ### Conversões Personalizadas do Eloquent
 
@@ -151,7 +151,7 @@ class User extends Model
 
 Para aprender como escrever conversões personalizadas do Eloquent, incluindo
 conversões personalizadas que convertem para objetos de valor, consulte a
-[documentação do Eloquent](../eloquent-mutators.md#custom-casts).
+[documentação do Eloquent](eloquent-mutators.md#custom-casts).
 
 ### Tags e Melhorias nos Componentes do Blade
 
@@ -166,7 +166,7 @@ _As tags dos componentes do Blade foram contribuídas por
 > em _tags_, o gerenciamento de atributos, as classes de componentes, os
 > componentes de visualização em linha e muito mais.
 > Como a revisão dos componentes do Blade é muito extensa, consulte a
-> [documentação completa de componentes do Blade](../blade.md#components) para
+> [documentação completa de componentes do Blade](blade.md#components) para
 > saber mais sobre esse recurso.
 
 Em resumo, um componente agora pode ter uma classe associada que especifica os
@@ -234,10 +234,10 @@ E, supondo que o modelo do componente do Blade tenha sido definido assim:
 ```bladehtml
 <!-- /resources/views/components/alert.blade.php -->
 
-<div class="alert {{ $classForType }}" {{ $attributes }}>
-    {{ $heading }}
+<div class="alert \{\{ $classForType \}\}" \{\{ $attributes \}\}>
+    \{\{ $heading \}\}
 
-    {{ $slot }}
+    \{\{ $slot \}\}
 </div>
 ```
 
@@ -260,7 +260,7 @@ revisão dos componentes do Blade no Laravel 7 e não demonstra componentes
 anônimos, componentes de visualização em linha e uma variedade de outros
 recursos.
 Consulte
-a [documentação completa dos componentes do Blade](../blade.md#components)
+a [documentação completa dos componentes do Blade](blade.md#components)
 para saber mais sobre esse recurso.
 
 > **Nota:**
@@ -315,7 +315,7 @@ Http::fake([
 ```
 
 Para saber mais sobre todos os recursos do cliente HTTP, consulte a
-[documentação do cliente HTTP](../http-client.md).
+[documentação do cliente HTTP](http-client.md).
 
 ### Operações de _Strings_ Fluentes
 
@@ -341,7 +341,7 @@ return (string) Str::of('  Laravel Framework 6.x ')
 
 Para obter mais informações sobre os métodos disponíveis por meio da manipulação
 de _strings_ fluentes, consulte a
-[documentação completa](../helpers.md#fluent-strings).
+[documentação completa](helpers.md#fluent-strings).
 
 ### Melhorias na Vinculação dos Modelos de Rotas
 
@@ -387,7 +387,7 @@ Neste caso, será assumido que o modelo `User` possui um relacionamento chamado
 recuperar o modelo `Post`.
 
 Para obter mais informações sobre a vinculação do modelo de rota, consulte a
-[documentação de roteamento](../routing.md#route-model-binding).
+[documentação de roteamento](routing.md#route-model-binding).
 
 ### Múltiplos _Drivers_ de Correio
 
@@ -439,7 +439,7 @@ Uma nova configuração `cors` está incluída no
 [esqueleto da aplicação Laravel padrão](https://github.com/laravel/laravel/blob/7.x/config/cors.php).
 
 Para obter mais informações sobre o suporte ao CORS no Laravel 7.x, consulte a
-[documentação do CORS](../routing.md#cors).
+[documentação do CORS](routing.md#cors).
 
 ### Conversão em Tempo de Consulta
 
@@ -531,7 +531,7 @@ alt="Captura de tela do novo modelo de correio Markdown"
 src="/content/img/docs/laravel/laravel/doc/7.x/release-notes-notification-preview.png" />
 
 Para obter mais informações sobre o correio Markdown, consulte a
-[documentação do correio](../mail.md#markdown-mailables).
+[documentação do correio](mail.md#markdown-mailables).
 
 ### Personalização dos Arquivos de Exemplo
 

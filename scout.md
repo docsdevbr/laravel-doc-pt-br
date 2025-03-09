@@ -343,11 +343,11 @@ Once you have retrieved the results, you may display the results and render the 
 
     <div class="container">
         @foreach ($orders as $order)
-            {{ $order->price }}
+            \{\{ $order->price \}\}
         @endforeach
     </div>
 
-    {{ $orders->links() }}
+    \{\{ $orders->links() \}\}
 
 <a name="soft-deleting"></a>
 ### Soft Deleting
