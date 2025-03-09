@@ -32,7 +32,7 @@ Almost every modern web application interacts with a database. Laravel makes int
 
 The configuration for Laravel's database services is located in your application's `config/database.php` configuration file. In this file, you may define all of your database connections, as well as specify which connection should be used by default. Most of the configuration options within this file are driven by the values of your application's environment variables. Examples for most of Laravel's supported database systems are provided in this file.
 
-By default, Laravel's sample [environment configuration](comecando/configuracao.md#configuracao-do-ambiente) is ready to use with [Laravel Sail](sail.md), which is a Docker configuration for developing Laravel applications on your local machine. However, you are free to modify your database configuration as needed for your local database.
+By default, Laravel's sample [environment configuration](configuration.md#configuracao-do-ambiente) is ready to use with [Laravel Sail](sail.md), which is a Docker configuration for developing Laravel applications on your local machine. However, you are free to modify your database configuration as needed for your local database.
 
 <a name="sqlite-configuration"></a>
 #### SQLite Configuration
@@ -51,7 +51,7 @@ DB_FOREIGN_KEYS=false
 ```
 
 > [!NOTE]
-> If you use the [Laravel installer](comecando/instalacao.md#criando-um-projeto-laravel) to create your Laravel application and select SQLite as your database, Laravel will automatically create a `database/database.sqlite` file and run the default [database migrations](migrations.md) for you.
+> If you use the [Laravel installer](installation.md#criando-um-projeto-laravel) to create your Laravel application and select SQLite as your database, Laravel will automatically create a `database/database.sqlite` file and run the default [database migrations](migrations.md) for you.
 
 <a name="mssql-configuration"></a>
 #### Microsoft SQL Server Configuration
@@ -262,7 +262,7 @@ You may access the raw, underlying PDO instance of a connection using the `getPd
 <a name="listening-for-query-events"></a>
 ### Listening for Query Events
 
-If you would like to specify a closure that is invoked for each SQL query executed by your application, you may use the `DB` facade's `listen` method. This method can be useful for logging queries or debugging. You may register your query listener closure in the `boot` method of a [service provider](arquitetura/provedores.md):
+If you would like to specify a closure that is invoked for each SQL query executed by your application, you may use the `DB` facade's `listen` method. This method can be useful for logging queries or debugging. You may register your query listener closure in the `boot` method of a [service provider](providers.md):
 
     <?php
 
@@ -298,7 +298,7 @@ If you would like to specify a closure that is invoked for each SQL query execut
 <a name="monitoring-cumulative-query-time"></a>
 ### Monitoring Cumulative Query Time
 
-A common performance bottleneck of modern web applications is the amount of time they spend querying databases. Thankfully, Laravel can invoke a closure or callback of your choice when it spends too much time querying the database during a single request. To get started, provide a query time threshold (in milliseconds) and closure to the `whenQueryingForLongerThan` method. You may invoke this method in the `boot` method of a [service provider](arquitetura/provedores.md):
+A common performance bottleneck of modern web applications is the amount of time they spend querying databases. Thankfully, Laravel can invoke a closure or callback of your choice when it spends too much time querying the database during a single request. To get started, provide a query time threshold (in milliseconds) and closure to the `whenQueryingForLongerThan` method. You may invoke this method in the `boot` method of a [service provider](providers.md):
 
     <?php
 

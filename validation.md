@@ -184,7 +184,7 @@ So, in our example, the user will be redirected to our controller's `create` met
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li>\{\{ $error \}\}</li>
             @endforeach
         </ul>
     </div>
@@ -226,7 +226,7 @@ You may use the `@error` [Blade](blade.md) directive to quickly determine if val
     class="@error('title') is-invalid @enderror">
 
 @error('title')
-    <div class="alert alert-danger">{{ $message }}</div>
+    <div class="alert alert-danger">\{\{ $message \}\}</div>
 @enderror
 ```
 
@@ -248,7 +248,7 @@ To retrieve flashed input from the previous request, invoke the `old` method on 
 Laravel also provides a global `old` helper. If you are displaying old input within a [Blade template](blade.md), it is more convenient to use the `old` helper to repopulate the form. If no old input exists for the given field, `null` will be returned:
 
 ```blade
-<input type="text" name="title" value="{{ old('title') }}">
+<input type="text" name="title" value="\{\{ old('title') \}\}">
 ```
 
 <a name="a-note-on-optional-fields"></a>
@@ -322,7 +322,7 @@ As you might have guessed, the `authorize` method is responsible for determining
     }
 
 > [!NOTE]
-> You may type-hint any dependencies you require within the `rules` method's signature. They will automatically be resolved via the Laravel [service container](arquitetura/conteiner.md).
+> You may type-hint any dependencies you require within the `rules` method's signature. They will automatically be resolved via the Laravel [service container](container.md).
 
 So, how are the validation rules evaluated? All you need to do is type-hint the request on your controller method. The incoming form request is validated before the controller method is called, meaning you do not need to clutter your controller with any validation logic:
 
@@ -469,7 +469,7 @@ If you plan to handle authorization logic for the request in another part of you
     }
 
 > [!NOTE]
-> You may type-hint any dependencies you need within the `authorize` method's signature. They will automatically be resolved via the Laravel [service container](arquitetura/conteiner.md).
+> You may type-hint any dependencies you need within the `authorize` method's signature. They will automatically be resolved via the Laravel [service container](container.md).
 
 <a name="customizing-the-error-messages"></a>
 ### Customizing the Error Messages
@@ -616,7 +616,7 @@ If you have multiple forms on a single page, you may wish to name the `MessageBa
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
 ```blade
-{{ $errors->login->first('email') }}
+\{\{ $errors->login->first('email') \}\}
 ```
 
 <a name="manual-customizing-the-error-messages"></a>

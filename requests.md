@@ -32,7 +32,7 @@ Laravel's `Illuminate\Http\Request` class provides an object-oriented way to int
 <a name="accessing-the-request"></a>
 ### Accessing the Request
 
-To obtain an instance of the current HTTP request via dependency injection, you should type-hint the `Illuminate\Http\Request` class on your route closure or controller method. The incoming request instance will automatically be injected by the Laravel [service container](arquitetura/conteiner.md):
+To obtain an instance of the current HTTP request via dependency injection, you should type-hint the `Illuminate\Http\Request` class on your route closure or controller method. The incoming request instance will automatically be injected by the Laravel [service container](container.md):
 
     <?php
 
@@ -488,7 +488,7 @@ To retrieve flashed input from the previous request, invoke the `old` method on 
 
 Laravel also provides a global `old` helper. If you are displaying old input within a [Blade template](blade.md), it is more convenient to use the `old` helper to repopulate the form. If no old input exists for the given field, `null` will be returned:
 
-    <input type="text" name="username" value="{{ old('username') }}">
+    <input type="text" name="username" value="\{\{ old('username') \}\}">
 
 <a name="cookies"></a>
 ### Cookies

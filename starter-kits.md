@@ -31,14 +31,14 @@ De qualquer forma, sabemos que você construirá algo incrível!
 ## Laravel Breeze
 
 O [Laravel Breeze](https://github.com/laravel/breeze) é uma implementação mínima
-e simples de todos os [recursos de autenticação](../authentication.md) do
+e simples de todos os [recursos de autenticação](authentication.md) do
 Laravel, incluindo _login_, registro, redefinição de senha, verificação de
 _e-mail_ e confirmação de senha.
 Além disso, o Breeze inclui uma página simples de perfil onde a pessoa usuária
 pode atualizar seu nome, endereço de _e-mail_ e senha.
 
 A camada de visualização padrão do Laravel Breeze é composta de
-[_templates_ Blade](../blade.md) simples estilizados com
+[_templates_ Blade](blade.md) simples estilizados com
 [Tailwind CSS](https://tailwindcss.com).
 Além disso, o Breeze oferece opções de geração de código baseado no
 [Livewire](https://livewire.laravel.com) ou [Inertia](https://inertiajs.com),
@@ -58,9 +58,9 @@ Laravel usando o Breeze.
 
 ### Instalação {: #instalacao-do-laravel-breeze }
 
-Primeiro, você deve [criar uma nova aplicação Laravel](instalacao.md).
+Primeiro, você deve [criar uma nova aplicação Laravel](installation.md).
 Se você criar sua aplicação usando o
-[instalador do Laravel](instalacao.md#criando-um-projeto-laravel), será
+[instalador do Laravel](installation.md#criando-um-projeto-laravel), será
 solicitado que você instale o Laravel Breeze durante o processo de instalação.
 Caso contrário, você precisará seguir as instruções de instalação manual abaixo.
 
@@ -92,7 +92,7 @@ npm run dev
 ### Breeze e Blade
 
 A _stack_ padrão Breeze é a _stack_ Blade, que utiliza
-[_templates_ Blade](../blade.md) simples para renderizar o _front-end_ da sua
+[_templates_ Blade](blade.md) simples para renderizar o _front-end_ da sua
 aplicação.
 A _stack_ Blade pode ser instalada invocando o comando `breeze:install` sem
 argumentos adicionais e selecionando a _stack front-end_ Blade.
@@ -113,7 +113,7 @@ Todas as rotas do Breeze são definidas no arquivo `routes/auth.php`.
 
 > **Nota:**
 > Para saber mais sobre como compilar o CSS e o JavaScript da sua aplicação,
-> confira a [documentação do Vite](../vite.md#running-vite) do Laravel.
+> confira a [documentação do Vite](vite.md#running-vite) do Laravel.
 
 ### Breeze e Livewire
 

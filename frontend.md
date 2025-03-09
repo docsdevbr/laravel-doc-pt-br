@@ -19,9 +19,9 @@ status: ready
 ## Introdução
 
 Laravel é um _framework back-end_ que fornece todos os recursos necessários
-para construir aplicações _web_ modernas, como [roteamento](../routing.md),
-[validação](../validation.md), [_cache_](../cache.md), [filas](../queues.md),
-[armazenamento de arquivos](../filesystem.md) e muito mais.
+para construir aplicações _web_ modernas, como [roteamento](routing.md),
+[validação](validation.md), [_cache_](cache.md), [filas](queues.md),
+[armazenamento de arquivos](filesystem.md) e muito mais.
 No entanto, acreditamos que é importante oferecer às pessoas desenvolvedoras uma
 bela experiência _full-stack_, incluindo abordagens poderosas para construir o
 _front-end_ da sua aplicação.
@@ -51,14 +51,14 @@ renderizavam dados recuperados de um banco de dados durante a requisição:
 ```
 
 No Laravel, esta abordagem para renderizar HTML ainda pode ser alcançada usando
-[visualizações](../views.md) e [Blade](../blade.md).
+[visualizações](views.md) e [Blade](blade.md).
 Blade é uma linguagem de _templating_ extremamente leve que fornece sintaxe
 curta e conveniente para exibir dados, iterar sobre dados e muito mais:
 
 ```blade
 <div>
     @foreach ($users as $user)
-        Olá, {{ $user->name }} <br />
+        Olá, \{\{ $user->name \}\} <br />
     @endforeach
 </div>
 ```
@@ -131,7 +131,7 @@ E o _template_ correspondente para o componente seria escrito assim:
 ```blade
 <div>
     <button wire:click="increment">+</button>
-    <h1>{{ $count }}</h1>
+    <h1>\{\{ $count \}\}</h1>
 </div>
 ```
 
@@ -149,7 +149,7 @@ Normalmente, as pessoas desenvolvedoras que usam Livewire também usarão
 apenas onde for necessário, como para renderizar uma janela de diálogo.
 
 Se você está começando agora no Laravel, recomendamos se familiarizar com o uso
-básico das [visualizações](../views.md) e do [Blade](../blade.md).
+básico das [visualizações](views.md) e do [Blade](blade.md).
 Em seguida, consulte a
 [documentação do Laravel Livewire](https://livewire.laravel.com/docs)
 para saber como levar sua aplicação para o próximo nível com componentes
@@ -158,10 +158,10 @@ interativos do Livewire.
 ### _Kits_ para Iniciantes {: #kits-php-para-iniciantes }
 
 Se desejar construir seu _front-end_ usando PHP e Livewire, você pode aproveitar
-nossos [_kits_ Breeze e Jetstream para iniciantes](kits-para-iniciantes.md)
+nossos [_kits_ Breeze e Jetstream para iniciantes](starter-kits.md)
 para iniciar o desenvolvimento da sua aplicação.
 Ambos os _kits_ para iniciantes geram o código do fluxo de autenticação do
-_back-end_ e do _front-end_ da sua aplicação usando [Blade](../blade.md) e
+_back-end_ e do _front-end_ da sua aplicação usando [Blade](blade.md) e
 [Tailwind](https://tailwindcss.com) para que você possa simplesmente começar a
 construir sua próxima grande ideia.
 
@@ -253,7 +253,7 @@ para hidratar as `props` do componente da página:
         </template>
 
         <div class="py-12">
-            Olá, {{ user.name }}
+            Olá, \{\{ user.name \}\}
         </div>
     </Layout>
 </template>
@@ -276,8 +276,8 @@ Inertia esteja sempre em execução.
 ### _Kits_ para Iniciantes {: #kits-inertia-para-iniciantes }
 
 Se desejar construir seu _front-end_ usando Inertia e Vue/React, você pode
-aproveitar nossos _kits_ [Breeze](kits-para-iniciantes.md#laravel-breeze) e
-[Jetstream](kits-para-iniciantes.md#laravel-jetstream) para iniciantes para
+aproveitar nossos _kits_ [Breeze](starter-kits.md#laravel-breeze) e
+[Jetstream](starter-kits.md#laravel-jetstream) para iniciantes para
 iniciar o desenvolvimento da sua aplicação.
 Ambos os _kits_ para iniciantes geram o código do fluxo de autenticação do
 _back-end_ e do _front-end_ da sua aplicação usando Inertia, Vue/React,
@@ -298,16 +298,16 @@ ativos.
 O Vite fornece tempos de construção extremamente rápidos e Hot Module
 Replacement (HMR) quase instantânea durante o desenvolvimento local.
 Em todas as novas aplicações Laravel, incluindo aquelas que usam nossos
-[_kits_ para iniciantes](kits-para-iniciantes.md), você encontrará um arquivo
+[_kits_ para iniciantes](starter-kits.md), você encontrará um arquivo
 `vite.config.js` que carrega nosso _plug-in_ leve do Laravel Vite que torna o
 Vite uma alegria de usar com aplicações Laravel.
 
 A forma mais rápida de começar a usar o Laravel e o Vite é iniciar o
 desenvolvimento da sua aplicação usando o
-[Laravel Breeze](kits-para-iniciantes.md#laravel-breeze), nosso _kit_ para
+[Laravel Breeze](starter-kits.md#laravel-breeze), nosso _kit_ para
 iniciantes mais simples que dá início à sua aplicação fornecendo a geração do
 código de autenticação do _front-end_ e do _back-end_.
 
 > **Nota:**
 > Para mais detalhes sobre o uso do Vite com Laravel, consulte nossa
-> [documentação dedicada sobre empacotamento e compilação dos seus ativos](../vite.md).
+> [documentação dedicada sobre empacotamento e compilação dos seus ativos](vite.md).

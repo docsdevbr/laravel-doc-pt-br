@@ -154,7 +154,7 @@ chave fornecida.
 O ambiente atual da aplicação é determinado pela variável `APP_ENV` do arquivo
 `.env`.
 Você pode acessar esse valor através do método `environment` da
-[fachada](../facades.md) `App`:
+[fachada](facades.md) `App`:
 
 ```php
 use Illuminate\Support\Facades\App;
@@ -214,7 +214,7 @@ php artisan env:encrypt --key=3UVsEgGVK36XN82KKeyLFMhvosbZN1aF
 > Por padrão, o Laravel usará a cifra `AES-256-CBC` que requer uma chave de 32
 > caracteres.
 > Você está livre para usar qualquer cifra suportada pelo
-> [encriptador](../encryption.md) do Laravel, passando a opção `--cipher` ao
+> [encriptador](encryption.md) do Laravel, passando a opção `--cipher` ao
 > invocar o comando.
 
 Se sua aplicação tiver vários arquivos de ambiente, como `.env` e
@@ -532,7 +532,7 @@ php artisan up
 #### Modo de Manutenção e Filas
 
 Enquanto sua aplicação estiver em modo de manutenção, nenhum
-[trabalho na fila](../queues.md) será tratado.
+[trabalho na fila](queues.md) será tratado.
 Os trabalhos continuarão a ser tratados normalmente quando a aplicação sair do
 modo de manutenção.
 

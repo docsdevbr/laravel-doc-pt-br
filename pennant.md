@@ -141,7 +141,7 @@ class NewApi
 }
 ```
 
-> [!NOTE] Feature classes are resolved via the [container](arquitetura/conteiner.md), so you may inject dependencies into the feature class's constructor when needed.
+> [!NOTE] Feature classes are resolved via the [container](container.md), so you may inject dependencies into the feature class's constructor when needed.
 
 #### Customizing the Stored Feature Name
 
@@ -933,7 +933,7 @@ Now, we just need to implement each of these methods using a Redis connection. F
 <a name="registering-the-driver"></a>
 #### Registering the Driver
 
-Once your driver has been implemented, you are ready to register it with Laravel. To add additional drivers to Pennant, you may use the `extend` method provided by the `Feature` facade. You should call the `extend` method from the `boot` method of one of your application's [service provider](arquitetura/provedores.md):
+Once your driver has been implemented, you are ready to register it with Laravel. To add additional drivers to Pennant, you may use the `extend` method provided by the `Feature` facade. You should call the `extend` method from the `boot` method of one of your application's [service provider](providers.md):
 
 ```php
 <?php

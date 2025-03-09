@@ -148,7 +148,7 @@ If you plan to broadcast your events using [Ably](https://ably.com), you should 
 composer require ably/ably-php
 ```
 
-Next, you should configure your Ably credentials in the `config/broadcasting.php` configuration file. An example Ably configuration is already included in this file, allowing you to quickly specify your key. Typically, this value should be set via the `ABLY_KEY` [environment variable](comecando/configuracao.md#configuracao-do-ambiente):
+Next, you should configure your Ably credentials in the `config/broadcasting.php` configuration file. An example Ably configuration is already included in this file, allowing you to quickly specify your key. Typically, this value should be set via the `ABLY_KEY` [environment variable](configuration.md#configuracao-do-ambiente):
 
 ```ini
 ABLY_KEY=your-ably-key
@@ -687,7 +687,7 @@ Finally, you may place the authorization logic for your channel in the channel c
     }
 
 > [!NOTE]
-> Like many other classes in Laravel, channel classes will automatically be resolved by the [service container](arquitetura/conteiner.md). So, you may type-hint any dependencies required by your channel in its constructor.
+> Like many other classes in Laravel, channel classes will automatically be resolved by the [service container](container.md). So, you may type-hint any dependencies required by your channel in its constructor.
 
 <a name="broadcasting-events"></a>
 ## Broadcasting Events

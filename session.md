@@ -70,7 +70,7 @@ Before using Redis sessions with Laravel, you will need to either install the Ph
 <a name="retrieving-data"></a>
 ### Retrieving Data
 
-There are two primary ways of working with session data in Laravel: the global `session` helper and via a `Request` instance. First, let's look at accessing the session via a `Request` instance, which can be type-hinted on a route closure or controller method. Remember, controller method dependencies are automatically injected via the Laravel [service container](arquitetura/conteiner.md):
+There are two primary ways of working with session data in Laravel: the global `session` helper and via a `Request` instance. First, let's look at accessing the session via a `Request` instance, which can be type-hinted on a route closure or controller method. Remember, controller method dependencies are automatically injected via the Laravel [service container](container.md):
 
     <?php
 
@@ -233,7 +233,7 @@ The `forget` method will remove a piece of data from the session. If you would l
 
 Regenerating the session ID is often done in order to prevent malicious users from exploiting a [session fixation](https://owasp.org/www-community/attacks/Session_fixation) attack on your application.
 
-Laravel automatically regenerates the session ID during authentication if you are using one of the Laravel [application starter kits](comecando/kits-para-iniciantes.md) or [Laravel Fortify](fortify.md); however, if you need to manually regenerate the session ID, you may use the `regenerate` method:
+Laravel automatically regenerates the session ID during authentication if you are using one of the Laravel [application starter kits](starter-kits.md) or [Laravel Fortify](fortify.md); however, if you need to manually regenerate the session ID, you may use the `regenerate` method:
 
     $request->session()->regenerate();
 
@@ -310,7 +310,7 @@ Since the purpose of these methods is not readily understandable, let's quickly 
 <a name="registering-the-driver"></a>
 ### Registering the Driver
 
-Once your driver has been implemented, you are ready to register it with Laravel. To add additional drivers to Laravel's session backend, you may use the `extend` method provided by the `Session` [facade](facades.md). You should call the `extend` method from the `boot` method of a [service provider](arquitetura/provedores.md). You may do this from the existing `App\Providers\AppServiceProvider` or create an entirely new provider:
+Once your driver has been implemented, you are ready to register it with Laravel. To add additional drivers to Laravel's session backend, you may use the `extend` method provided by the `Session` [facade](facades.md). You should call the `extend` method from the `boot` method of a [service provider](providers.md). You may do this from the existing `App\Providers\AppServiceProvider` or create an entirely new provider:
 
     <?php
 

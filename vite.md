@@ -55,7 +55,7 @@ Have you started a new Laravel application using our Vite scaffolding but need t
 ## Installation & Setup
 
 > [!NOTE]
-> The following documentation discusses how to manually install and configure the Laravel Vite plugin. However, Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include all of this scaffolding and are the fastest way to get started with Laravel and Vite.
+> The following documentation discusses how to manually install and configure the Laravel Vite plugin. However, Laravel's [starter kits](starter-kits.md) already include all of this scaffolding and are the fastest way to get started with Laravel and Vite.
 
 <a name="installing-node"></a>
 ### Installing Node
@@ -203,7 +203,7 @@ With your Vite entry points configured, you may now reference them in a `@vite()
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -214,7 +214,7 @@ If you're importing your CSS via JavaScript, you only need to include the JavaSc
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     @vite('resources/js/app.js')
 </head>
@@ -227,7 +227,7 @@ If needed, you may also specify the build path of your compiled assets when invo
 ```blade
 <!doctype html>
 <head>
-    {{-- Given build path is relative to public path. --}}
+    \{\{-- Given build path is relative to public path. --\}\}
 
     @vite('resources/js/app.js', 'vendor/courier/build')
 </head>
@@ -243,7 +243,7 @@ Sometimes it may be necessary to include the raw content of assets rather than l
 
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
     <style>
         {!! Vite::content('resources/css/app.css') !!}
@@ -345,7 +345,7 @@ export default defineConfig({
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Vue, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Vue, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Vue, and Vite configuration. Check out [Laravel Breeze](starter-kits.md#breeze-e-inertia) for the fastest way to get started with Laravel, Vue, and Vite.
 
 <a name="react"></a>
 ### React
@@ -383,7 +383,7 @@ You will also need to include the additional `@viteReactRefresh` Blade directive
 The `@viteReactRefresh` directive must be called before the `@vite` directive.
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, React, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, React, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, React, and Vite configuration. Check out [Laravel Breeze](starter-kits.md#breeze-e-inertia) for the fastest way to get started with Laravel, React, and Vite.
 
 <a name="inertia"></a>
 ### Inertia
@@ -406,7 +406,7 @@ createInertiaApp({
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Inertia, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Inertia, and Vite configuration. Check out [Laravel Breeze](starter-kits.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia, and Vite.
 
 <a name="url-processing"></a>
 ### URL Processing
@@ -453,7 +453,7 @@ export default {
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Tailwind, PostCSS, and Vite configuration. Or, if you would like to use Tailwind and Laravel without using one of our starter kits, check out [Tailwind's installation guide for Laravel](https://tailwindcss.com/docs/guides/laravel).
+> Laravel's [starter kits](starter-kits.md) already include the proper Tailwind, PostCSS, and Vite configuration. Or, if you would like to use Tailwind and Laravel without using one of our starter kits, check out [Tailwind's installation guide for Laravel](https://tailwindcss.com/docs/guides/laravel).
 
 <a name="working-with-blade-and-routes"></a>
 ## Working With Blade and Routes
@@ -475,7 +475,7 @@ import.meta.glob([
 These assets will now be processed by Vite when running `npm run build`. You can then reference these assets in Blade templates using the `Vite::asset` method, which will return the versioned URL for a given asset:
 
 ```blade
-<img src="{{ Vite::asset('resources/images/logo.png') }}">
+<img src="\{\{ Vite::asset('resources/images/logo.png') \}\}">
 ```
 
 <a name="blade-refreshing-on-save"></a>
@@ -545,7 +545,7 @@ export default defineConfig({
 <a name="blade-aliases"></a>
 ### Aliases
 
-It is common in JavaScript applications to [create aliases](#aliases) to regularly referenced directories. But, you may also create aliases to use in Blade by using the `macro` method on the `Illuminate\Support\Facades\Vite` class. Typically, "macros" should be defined within the `boot` method of a [service provider](arquitetura/provedores.md):
+It is common in JavaScript applications to [create aliases](#aliases) to regularly referenced directories. But, you may also create aliases to use in Blade by using the `macro` method on the `Illuminate\Support\Facades\Vite` class. Typically, "macros" should be defined within the `boot` method of a [service provider](providers.md):
 
     /**
      * Bootstrap any application services.
@@ -558,7 +558,7 @@ It is common in JavaScript applications to [create aliases](#aliases) to regular
 Once a macro has been defined, it can be invoked within your templates. For example, we can use the `image` macro defined above to reference an asset located at `resources/images/logo.png`:
 
 ```blade
-<img src="{{ Vite::image('logo.png') }}" alt="Laravel Logo">
+<img src="\{\{ Vite::image('logo.png') \}\}" alt="Laravel Logo">
 ```
 
 <a name="custom-base-urls"></a>
@@ -685,7 +685,7 @@ php artisan inertia:start-ssr
 ```
 
 > [!NOTE]
-> Laravel's [starter kits](comecando/kits-para-iniciantes.md) already include the proper Laravel, Inertia SSR, and Vite configuration. Check out [Laravel Breeze](comecando/kits-para-iniciantes.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia SSR, and Vite.
+> Laravel's [starter kits](starter-kits.md) already include the proper Laravel, Inertia SSR, and Vite configuration. Check out [Laravel Breeze](starter-kits.md#breeze-e-inertia) for the fastest way to get started with Laravel, Inertia SSR, and Vite.
 
 <a name="script-and-style-attributes"></a>
 ## Script and Style Tag Attributes
@@ -725,7 +725,7 @@ class AddContentSecurityPolicyHeaders
 
 After invoking the `useCspNonce` method, Laravel will automatically include the `nonce` attributes on all generated script and style tags.
 
-If you need to specify the nonce elsewhere, including the [Ziggy `@route` directive](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) included with Laravel's [starter kits](comecando/kits-para-iniciantes.md), you may retrieve it using the `cspNonce` method:
+If you need to specify the nonce elsewhere, including the [Ziggy `@route` directive](https://github.com/tighten/ziggy#using-routes-with-a-content-security-policy) included with Laravel's [starter kits](starter-kits.md), you may retrieve it using the `cspNonce` method:
 
 ```blade
 @routes(nonce: Vite::cspNonce())
@@ -780,7 +780,7 @@ Vite::useIntegrityKey(false);
 <a name="arbitrary-attributes"></a>
 ### Arbitrary Attributes
 
-If you need to include additional attributes on your script and style tags, such as the [`data-turbo-track`](https://turbo.hotwired.dev/handbook/drive#reloading-when-assets-change) attribute, you may specify them via the `useScriptTagAttributes` and `useStyleTagAttributes` methods. Typically, this methods should be invoked from a [service provider](arquitetura/provedores.md):
+If you need to include additional attributes on your script and style tags, such as the [`data-turbo-track`](https://turbo.hotwired.dev/handbook/drive#reloading-when-assets-change) attribute, you may specify them via the `useScriptTagAttributes` and `useStyleTagAttributes` methods. Typically, this methods should be invoked from a [service provider](providers.md):
 
 ```php
 use Illuminate\Support\Facades\Vite;
@@ -821,9 +821,9 @@ Out of the box, Laravel's Vite plugin uses sensible conventions that should work
 ```blade
 <!doctype html>
 <head>
-    {{-- ... --}}
+    \{\{-- ... --\}\}
 
-    {{
+    \{\{
         Vite::useHotFile(storage_path('vite.hot')) // Customize the "hot" file...
             ->useBuildDirectory('bundle') // Customize the build directory...
             ->useManifestFilename('assets.json') // Customize the manifest filename...
@@ -831,7 +831,7 @@ Out of the box, Laravel's Vite plugin uses sensible conventions that should work
             ->createAssetPathsUsing(function (string $path, ?bool $secure) { // Customize the backend path generation for built assets...
                 return "https://cdn.example.com/{$path}";
             })
-    }}
+    \}\}
 </head>
 ```
 

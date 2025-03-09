@@ -345,7 +345,7 @@ You may continue to define additional methods on the policy as needed for the va
 If you used the `--model` option when generating your policy via the Artisan console, it will already contain methods for the `viewAny`, `view`, `create`, `update`, `delete`, `restore`, and `forceDelete` actions.
 
 > [!NOTE]
-> All policies are resolved via the Laravel [service container](arquitetura/conteiner.md), allowing you to type-hint any needed dependencies in the policy's constructor to have them automatically injected.
+> All policies are resolved via the Laravel [service container](container.md), allowing you to type-hint any needed dependencies in the policy's constructor to have them automatically injected.
 
 <a name="policy-responses"></a>
 ### Policy Responses
@@ -735,7 +735,7 @@ When attempting to determine if the authenticated user can update a given post, 
 
 Although authorization must always be handled on the server, it can often be convenient to provide your frontend application with authorization data in order to properly render your application's UI. Laravel does not define a required convention for exposing authorization information to an Inertia powered frontend.
 
-However, if you are using one of Laravel's Inertia-based [starter kits](comecando/kits-para-iniciantes.md), your application already contains a `HandleInertiaRequests` middleware. Within this middleware's `share` method, you may return shared data that will provided to all Inertia pages in your application. This shared data can serve as a convenient location to define authorization information for the user:
+However, if you are using one of Laravel's Inertia-based [starter kits](starter-kits.md), your application already contains a `HandleInertiaRequests` middleware. Within this middleware's `share` method, you may return shared data that will provided to all Inertia pages in your application. This shared data can serve as a convenient location to define authorization information for the user:
 
 ```php
 <?php

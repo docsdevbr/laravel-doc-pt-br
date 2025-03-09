@@ -102,11 +102,11 @@ configuração gigantescos.
 
 Felizmente, muitas das classes que você escreverá ao construir uma aplicação
 Laravel recebem automaticamente suas dependências por meio do contêiner,
-incluindo [controladores](../controllers.md),
-[ouvintes de eventos](../events.md), [_middlewares_](../middleware.md) e muito
+incluindo [controladores](controllers.md),
+[ouvintes de eventos](events.md), [_middlewares_](middleware.md) e muito
 mais.
 Além disso, você pode declarar o tipo das dependências no método `handle` dos
-[trabalhos em fila](../queues.md).
+[trabalhos em fila](queues.md).
 Após experimentar o poder da injeção de dependência automática e sem
 configuração, parece impossível desenvolver sem ela.
 
@@ -129,7 +129,7 @@ Route::get('/', function (Request $request) {
 ```
 
 Em muitos casos, graças à injeção automática de dependências e às
-[fachadas](../facades.md), você pode construir aplicações Laravel sem **nunca**
+[fachadas](facades.md), você pode construir aplicações Laravel sem **nunca**
 vincular manualmente ou resolver nada do contêiner.
 **Então, quando você interagiria manualmente com o contêiner?**
 Vamos examinar duas situações.
@@ -137,7 +137,7 @@ Vamos examinar duas situações.
 Primeiro, se você escrever uma classe que implementa uma interface e desejar
 declarar o tipo desta interface em uma rota ou construtor de classe, você deve
 [informar ao contêiner como resolver essa interface](#vinculando-interfaces-a-implementacoes).
-Em segundo lugar, se você estiver [escrevendo um pacote Laravel](../packages.md)
+Em segundo lugar, se você estiver [escrevendo um pacote Laravel](packages.md)
 que planeja compartilhar com outras pessoas desenvolvedoras Laravel, pode ser
 necessário vincular os serviços do seu pacote ao contêiner.
 
@@ -148,7 +148,7 @@ necessário vincular os serviços do seu pacote ao contêiner.
 #### Vinculações Simples
 
 Quase todas as suas vinculações de contêiner de serviços serão registradas nos
-[provedores de serviços](provedores.md), portanto, a maioria desses exemplos
+[provedores de serviços](providers.md), portanto, a maioria desses exemplos
 demonstrará o uso do contêiner nesse contexto.
 
 Em um provedor de serviços, você sempre tem acesso ao contêiner por meio da
@@ -173,7 +173,7 @@ estamos construindo.
 
 Conforme mencionado, você normalmente interagirá com o contêiner nos provedores
 de serviços; no entanto, se desejar interagir com o contêiner fora de um
-provedor de serviços, você poderá fazê-lo por meio da [fachada](../facades.md)
+provedor de serviços, você poderá fazê-lo por meio da [fachada](facades.md)
 `App`:
 
 ```php
@@ -237,8 +237,8 @@ do Laravel.
 Embora este método seja semelhante ao método `singleton`, as instâncias
 registradas usando o método `scoped` serão liberadas sempre que a aplicação
 Laravel iniciar um novo “ciclo de vida”, como quando um _worker_
-[Laravel Octane](../octane.md) processa uma nova requisição ou quando um
-[_worker_ de fila](../queues.md) do Laravel processa um novo trabalho:
+[Laravel Octane](octane.md) processa uma nova requisição ou quando um
+[_worker_ de fila](queues.md) do Laravel processa um novo trabalho:
 
 ```php
 use App\Services\Transistor;
@@ -306,7 +306,7 @@ public function __construct(
 Às vezes você pode ter duas classes que utilizam a mesma interface, mas deseja
 injetar implementações diferentes em cada classe.
 Por exemplo, dois controladores podem depender de implementações diferentes do
-[contrato](../contracts.md). `Illuminate\Contracts\Filesystem\Filesystem`.
+[contrato](contracts.md). `Illuminate\Contracts\Filesystem\Filesystem`.
 O Laravel fornece uma interface simples e fluente para definir este
 comportamento:
 
@@ -523,8 +523,8 @@ if ($this->app->bound(Transistor::class)) {
 ```
 
 Se você estiver fora de um provedor de serviços em um local do seu código que
-não tenha acesso à variável `$app`, poderá usar a [fachada](../facades.md) `App`
-ou a função [auxiliar](../helpers.md#method-app) `app` para resolver uma
+não tenha acesso à variável `$app`, poderá usar a [fachada](facades.md) `App`
+ou a função [auxiliar](helpers.md#method-app) `app` para resolver uma
 instância de classe do contêiner:
 
 ```php
@@ -555,10 +555,10 @@ public function __construct(
 
 Alternativamente, e mais importante, você pode declarar o tipo da dependência no
 construtor de uma classe resolvida pelo contêiner, incluindo
-[controladores](../controllers.md), [ouvintes de eventos](../events.md),
-[_middlewares_](../middleware.md) e muito mais.
+[controladores](controllers.md), [ouvintes de eventos](events.md),
+[_middlewares_](middleware.md) e muito mais.
 Além disso, você pode declarar o tipo das dependências no método `handle`
-dos [trabalhos em fila](../queues.md).
+dos [trabalhos em fila](queues.md).
 Na prática, é assim que a maioria dos seus objetos devem ser resolvidos pelo
 container.
 

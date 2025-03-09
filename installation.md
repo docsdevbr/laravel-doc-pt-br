@@ -64,9 +64,9 @@ biblioteca de documentação, guias e [tutoriais em vídeo](https://laracasts.co
 do Laravel te ajudará a aprender o básico sem se sobrecarregar.
 
 Se você é uma pessoa desenvolvedora sênior, o Laravel oferece ferramentas
-robustas para [injeção de dependência](../arquitetura/conteiner.md),
-[testes unitários](../testing.md), [filas](../queues.md),
-[eventos em tempo real](../broadcasting.md), e muito mais.
+robustas para [injeção de dependência](container.md),
+[testes unitários](testing.md), [filas](queues.md),
+[eventos em tempo real](broadcasting.md), e muito mais.
 O Laravel vem ajustado para construir aplicações _web_ profissionais e está
 pronto para lidar com cargas de trabalho empresariais.
 
@@ -134,7 +134,7 @@ Claro, você também pode querer
 
 > **Nota:**
 > Se você quiser sair na frente no desenvolvimento da sua aplicação Laravel,
-> confira um dos nossos [_kits_ para iniciantes](kits-para-iniciantes.md).
+> confira um dos nossos [_kits_ para iniciantes](starter-kits.md).
 > Os _kits_ para iniciantes do Laravel fornecem geração do código de
 > autenticação do _back-end_ e do _front-end_ para sua nova aplicação Laravel.
 
@@ -169,7 +169,7 @@ credenciais confidenciais seriam expostas.
 > **Nota:**
 > Para obter mais informações sobre o arquivo `.env` e a configuração baseada em
 > ambiente, verifique a
-> [documentação completa da configuração](configuracao.md#configuracao-do-ambiente).
+> [documentação completa da configuração](configuration.md#configuracao-do-ambiente).
 
 ### Bancos de Dados e Migrações
 
@@ -198,7 +198,7 @@ DB_PASSWORD =
 ```
 
 Caso opte por usar um banco de dados diferente do SQLite, você precisará criar o
-banco de dados e executar as [migrações de banco de dados](../migrations.md) da
+banco de dados e executar as [migrações de banco de dados](migrations.md) da
 sua aplicação:
 
 ```shell
@@ -224,7 +224,7 @@ independentemente do seu sistema operacional preferido.
 Portanto, há várias opções para desenvolver e executar um projeto Laravel na sua
 máquina local.
 Embora você possa querer explorar essas opções posteriormente, o Laravel fornece
-o [Sail](../sail.md), uma solução integrada para executar seu projeto Laravel
+o [Sail](sail.md), uma solução integrada para executar seu projeto Laravel
 usando o [Docker](https://www.docker.com).
 
 O Docker é uma ferramenta para executar aplicações e serviços em contêineres
@@ -281,7 +281,7 @@ cd app-exemplo
 ```
 
 Depois que os contêineres Docker da aplicação forem iniciados, você deverá
-executar as [migrações de banco de dados](../migrations.md) da sua aplicação:
+executar as [migrações de banco de dados](migrations.md) da sua aplicação:
 
 ```shell
 ./vendor/bin/sail artisan migrate
@@ -292,7 +292,7 @@ Por fim, você pode acessar a aplicação no seu navegador em:
 
 > **Nota:**
 > Para continuar aprendendo mais sobre o Laravel Sail, revise sua
-> [documentação completa](../sail.md).
+> [documentação completa](sail.md).
 
 ### Sail no Windows
 
@@ -345,7 +345,7 @@ cd app-exemplo
 ```
 
 Depois que os contêineres Docker da aplicação forem iniciados, você deverá
-executar as [migrações de banco de dados](../migrations.md) da sua aplicação:
+executar as [migrações de banco de dados](migrations.md) da sua aplicação:
 
 ```shell
 ./vendor/bin/sail artisan migrate
@@ -356,7 +356,7 @@ Por fim, você pode acessar a aplicação no seu navegador em:
 
 > **Nota:**
 > Para continuar aprendendo mais sobre o Laravel Sail, revise sua
-> [documentação completa](../sail.md).
+> [documentação completa](sail.md).
 
 #### Desenvolvendo no WSL2
 
@@ -413,7 +413,7 @@ cd app-exemplo
 ```
 
 Depois que os contêineres Docker da aplicação forem iniciados, você deverá
-executar as [migrações de banco de dados](../migrations.md) da sua aplicação:
+executar as [migrações de banco de dados](migrations.md) da sua aplicação:
 
 ```shell
 ./vendor/bin/sail artisan migrate
@@ -424,7 +424,7 @@ Por fim, você pode acessar a aplicação no seu navegador em:
 
 > **Nota:**
 > Para continuar aprendendo mais sobre o Laravel Sail, revise sua
-> [documentação completa](../sail.md).
+> [documentação completa](sail.md).
 
 ### Escolhendo Seus Serviços Sail
 
@@ -442,7 +442,7 @@ Se você não especificar quais serviços deseja configurar, será configurado u
 _stack_ padrão com `mysql`, `redis`, `meilisearch`, `mailpit` e `selenium`.
 
 Você pode instruir o Sail a instalar um
-[Devcontainer](../sail.md#using-devcontainers) padrão adicionando o parâmetro
+[Devcontainer](sail.md#using-devcontainers) padrão adicionando o parâmetro
 `devcontainer` à URL:
 
 ```shell
@@ -469,12 +469,12 @@ aprender a seguir.
 Primeiro, recomendamos fortemente que você se familiarize com o funcionamento do
 Laravel lendo a seguinte documentação:
 
-- [Ciclo de Vida da Requisição](../arquitetura/ciclo-de-vida.md)
-- [Configuração](configuracao.md)
-- [Estrutura de Diretório](estrutura.md)
-- [_Front-end_](front-end.md)
-- [Contêiner de Serviço](../arquitetura/conteiner.md)
-- [Fachadas](../facades.md)
+- [Ciclo de Vida da Requisição](lifecycle.md)
+- [Configuração](configuration.md)
+- [Estrutura de Diretório](structure.md)
+- [_Front-end_](frontend.md)
+- [Contêiner de Serviço](container.md)
+- [Fachadas](facades.md)
 
 A maneira como você deseja usar o Laravel também ditará os próximos passos em
 sua jornada.
@@ -492,15 +492,15 @@ principais para o _framework_ abaixo.
 O Laravel pode servir como um _framework full-stack_.
 Por _framework full-stack_ queremos dizer que você usará o Laravel para rotear
 requisições para sua aplicação e renderizar seu _front-end_ usando
-[_templates_ Blade](../blade.md) ou uma tecnologia híbrida de aplicação de
+[_templates_ Blade](blade.md) ou uma tecnologia híbrida de aplicação de
 página única como o [Inertia](https://inertiajs.com).
 Esta é a forma mais comum de usar o _framework_ Laravel e, em nossa opinião, a
 forma mais produtiva de usar o Laravel.
 
 Se você planeja usar o Laravel dessa forma, você pode querer verificar nossa
-documentação sobre [desenvolvimento _front-end_](front-end.md),
-[roteamento](../routing.md), [visualizações](../views.md) ou o
-[ORM Eloquent](../eloquent.md).
+documentação sobre [desenvolvimento _front-end_](frontend.md),
+[roteamento](routing.md), [visualizações](views.md) ou o
+[ORM Eloquent](eloquent.md).
 Além disso, você pode estar interessado em aprender sobre pacotes comunitários
 como o [Livewire](https://livewire.laravel.com) e o
 [Inertia](https://inertiajs.com).
@@ -510,11 +510,11 @@ JavaScript de página única.
 
 Se você estiver usando o Laravel como um _framework full-stack_, também
 recomendamos fortemente que você aprenda como compilar o CSS e o JavaScript da
-sua aplicação usando o [Vite](../vite.md).
+sua aplicação usando o [Vite](vite.md).
 
 > **Nota:**
 > Se você quiser sair na frente no desenvolvimento da sua aplicação, confira um
-> dos nossos [_kits_ para iniciantes](kits-para-iniciantes.md).
+> dos nossos [_kits_ para iniciantes](starter-kits.md).
 
 ### Laravel, o _Back-end_ de API
 
@@ -523,18 +523,18 @@ JavaScript de página única ou aplicativo móvel.
 Por exemplo, você pode usar o Laravel como _back-end_ de API para sua aplicação
 [Next.js](https://nextjs.org).
 Neste contexto, você pode usar o Laravel para fornecer
-[autenticação](../sanctum.md) e armazenamento e recuperação de dados para sua
+[autenticação](sanctum.md) e armazenamento e recuperação de dados para sua
 aplicação, enquanto aproveita os poderosos serviços do Laravel, como filas,
 e-mails, notificações e muito mais.
 
 Se você planeja usar o Laravel dessa forma, você pode verificar nossa
-documentação sobre [roteamento](../routing.md), o
-[Laravel Sanctum](../sanctum.md) e o [ORM Eloquent](../eloquent.md).
+documentação sobre [roteamento](routing.md), o
+[Laravel Sanctum](sanctum.md) e o [ORM Eloquent](eloquent.md).
 
 > **Nota:**
 > Precisa sair na frente na geração do código do seu _back-end_ Laravel e
 > _front-end_ Next.js?
 > O Laravel Breeze oferece uma
-> [_stack_ de API](kits-para-iniciantes.md#breeze-e-next), bem como uma
+> [_stack_ de API](starter-kits.md#breeze-e-next), bem como uma
 > [implementação de _front-end_ Next.js](https://github.com/laravel/breeze-next)
 > para que você possa começar em minutos.

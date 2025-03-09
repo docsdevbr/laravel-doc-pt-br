@@ -406,7 +406,7 @@ Typically, you will want to pass some data to your view that you can utilize whe
 Once the data has been set to a public property, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $order->price }}
+        Price: \{\{ $order->price \}\}
     </div>
 
 <a name="via-the-with-parameter"></a>
@@ -453,7 +453,7 @@ If you would like to customize the format of your email's data before it is sent
 Once the data has been passed to the `with` method, it will automatically be available in your view, so you may access it like you would access any other data in your Blade templates:
 
     <div>
-        Price: {{ $orderPrice }}
+        Price: \{\{ $orderPrice \}\}
     </div>
 
 <a name="attachments"></a>
@@ -567,7 +567,7 @@ Embedding inline images into your emails is typically cumbersome; however, Larav
 <body>
     Here is an image:
 
-    <img src="{{ $message->embed($pathToImage) }}">
+    <img src="\{\{ $message->embed($pathToImage) \}\}">
 </body>
 ```
 
@@ -583,7 +583,7 @@ If you already have a raw image data string you wish to embed into an email temp
 <body>
     Here is an image from raw data:
 
-    <img src="{{ $message->embedData($data, 'example-image.jpg') }}">
+    <img src="\{\{ $message->embedData($data, 'example-image.jpg') \}\}">
 </body>
 ```
 
@@ -763,7 +763,7 @@ View Order
 </x-mail::button>
 
 Thanks,<br>
-{{ config('app.name') }}
+\{\{ config('app.name') \}\}
 </x-mail::message>
 ```
 
@@ -1240,7 +1240,7 @@ When developing an application that sends email, you probably don't want to actu
 <a name="log-driver"></a>
 #### Log Driver
 
-Instead of sending your emails, the `log` mail driver will write all email messages to your log files for inspection. Typically, this driver would only be used during local development. For more information on configuring your application per environment, check out the [configuration documentation](comecando/configuracao.md#configuracao-do-ambiente).
+Instead of sending your emails, the `log` mail driver will write all email messages to your log files for inspection. Typically, this driver would only be used during local development. For more information on configuring your application per environment, check out the [configuration documentation](configuration.md#configuracao-do-ambiente).
 
 <a name="mailtrap"></a>
 #### HELO / Mailtrap / Mailpit

@@ -303,7 +303,7 @@ $table->char('codigo_postal', 10)->unique(false)->change();
 
 Se você não quiser atualizar todas as migrações de alteração existentes na sua
 aplicação para manter os atributos existentes da coluna, você pode simplesmente
-[comprimir suas migrações](../migrations.md#squashing-migrations):
+[comprimir suas migrações](migrations.md#squashing-migrations):
 
 ```bash
 php artisan schema:dump
@@ -741,7 +741,7 @@ php artisan vendor:publish --tag=telescope-migrations
 **Probabilidade de Impacto: Média**
 
 O Laravel 11 agora fornece sua própria
-[função `once`](../helpers.md#method-once) para garantir que uma determinada
+[função `once`](helpers.md#method-once) para garantir que uma determinada
 _closure_ seja executada apenas uma vez.
 Portanto, se sua aplicação depende do pacote `spatie/once`, você deve removê-lo
 do arquivo `composer.json` da sua aplicação para evitar conflitos.

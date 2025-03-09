@@ -103,7 +103,7 @@ Sometimes you may need to register a route that responds to multiple HTTP verbs.
 <a name="dependency-injection"></a>
 #### Dependency Injection
 
-You may type-hint any dependencies required by your route in your route's callback signature. The declared dependencies will automatically be resolved and injected into the callback by the Laravel [service container](arquitetura/conteiner.md). For example, you may type-hint the `Illuminate\Http\Request` class to have the current HTTP request automatically injected into your route callback:
+You may type-hint any dependencies required by your route in your route's callback signature. The declared dependencies will automatically be resolved and injected into the callback by the Laravel [service container](container.md). For example, you may type-hint the `Illuminate\Http\Request` class to have the current HTTP request automatically injected into your route callback:
 
     use Illuminate\Http\Request;
 
@@ -858,7 +858,7 @@ HTML forms do not support `PUT`, `PATCH`, or `DELETE` actions. So, when defining
 
     <form action="/example" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 For convenience, you may use the `@method` [Blade directive](blade.md) to generate the `_method` input field:
@@ -879,7 +879,7 @@ You may use the `current`, `currentRouteName`, and `currentRouteAction` methods 
     $name = Route::currentRouteName(); // string
     $action = Route::currentRouteAction(); // string
 
-You may refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{{version}}/Illuminate/Routing/Route.html) to review all of the methods that are available on the router and route classes.
+You may refer to the API documentation for both the [underlying class of the Route facade](https://laravel.com/api/{{ version }}/Illuminate/Routing/Router.html) and [Route instance](https://laravel.com/api/{{ version }}/Illuminate/Routing/Route.html) to review all of the methods that are available on the router and route classes.
 
 <a name="cors"></a>
 ## Cross-Origin Resource Sharing (CORS)

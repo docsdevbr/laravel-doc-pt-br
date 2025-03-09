@@ -85,7 +85,7 @@ Este diretório também abriga seus ativos como imagens, JavaScript e CSS.
 
 #### O Diretório `resources`
 
-O diretório `resources` contém suas [visualizações](../views.md), bem como seus
+O diretório `resources` contém suas [visualizações](views.md), bem como seus
 ativos brutos e não compilados, como CSS ou JavaScript.
 
 #### O Diretório `routes`
@@ -107,7 +107,7 @@ abordagem simples para interagir com os métodos de entrada e saída de cada
 comando.
 Mesmo que este arquivo não defina rotas HTTP, ele define pontos de entrada
 (rotas) baseados em console da sua aplicação.
-Você também pode [agendar](../scheduling.md) tarefas no arquivo `console.php`.
+Você também pode [agendar](scheduling.md) tarefas no arquivo `console.php`.
 
 Opcionalmente, você pode instalar arquivos de rota adicionais para rotas de API
 (`api.php`) e canais de transmissão (`channels.php`), através dos comandos
@@ -115,10 +115,10 @@ Opcionalmente, você pode instalar arquivos de rota adicionais para rotas de API
 
 O arquivo `api.php` contém rotas que não devem possuir estado, portanto, as
 requisições que entram na aplicação por meio dessas rotas devem ser autenticadas
-por meio de [_tokens_](../sanctum.md) e não terão acesso ao estado da sessão.
+por meio de [_tokens_](sanctum.md) e não terão acesso ao estado da sessão.
 
 O arquivo `channels.php` é onde você pode registrar todos os canais de
-[transmissão de eventos](../broadcasting.md) que sua aplicação suporta.
+[transmissão de eventos](broadcasting.md) que sua aplicação suporta.
 
 #### O Diretório `storage`
 
@@ -193,7 +193,7 @@ Essas classes são geradas usando o comando `make:channel`.
 Este diretório não existe por padrão, mas será criado para você quando você
 criar seu primeiro canal.
 Para saber mais sobre canais, confira a documentação sobre
-[transmissão de eventos](../broadcasting.md).
+[transmissão de eventos](broadcasting.md).
 
 #### O Diretório `Console`
 
@@ -205,7 +205,7 @@ Esses comandos podem ser gerados usando o comando `make:command`.
 
 Este diretório não existe por padrão, mas será criado para você pelos comandos
 `event:generate` e `make:event` do Artisan.
-O diretório `Events` abriga [classes de eventos](../events.md).
+O diretório `Events` abriga [classes de eventos](events.md).
 Os eventos podem ser usados para alertar outras partes da sua aplicação sobre a
 ocorrência de uma determinada ação, proporcionando muita flexibilidade e
 desacoplamento.
@@ -227,7 +227,7 @@ colocada neste diretório.
 
 Este diretório não existe por padrão, mas será criado para você se você executar
 o comando `make:job` do Artisan.
-O diretório `Jobs` abriga os [trabalhos enfileiráveis](../queues.md) da sua
+O diretório `Jobs` abriga os [trabalhos enfileiráveis](queues.md) da sua
 aplicação.
 Os trabalhos podem ser enfileirados pela sua aplicação ou executados de forma
 síncrona durante do ciclo de vida da requisição atual.
@@ -240,7 +240,7 @@ vezes chamados de comandos, pois são uma implementação do
 Este diretório não existe por padrão, mas será criado para você se você executar
 os comandos `event:generate` ou `make:listener` do Artisan.
 O diretório `Listeners` contém as classes que tratam seus
-[eventos](../events.md).
+[eventos](events.md).
 Os ouvintes de eventos recebem uma instância de evento e executam a lógica em
 resposta ao evento que está sendo disparado.
 Por exemplo, um evento `UserRegistered` pode ser tratado por um ouvinte
@@ -251,7 +251,7 @@ Por exemplo, um evento `UserRegistered` pode ser tratado por um ouvinte
 Este diretório não existe por padrão, mas será criado para você se você executar
 o comando `make:mail` do Artisan.
 O diretório `Mail` contém todas as suas
-[classes que representam _e-mails_](../mail.md) enviados pela sua aplicação.
+[classes que representam _e-mails_](mail.md) enviados pela sua aplicação.
 Os objetos de _e-mail_ permitem encapsular toda a lógica de construção de um
 _e-mail_ em uma única classe simples que pode ser enviada usando o método
 `Mail::send`.
@@ -259,7 +259,7 @@ _e-mail_ em uma única classe simples que pode ser enviada usando o método
 #### O Diretório `Models`
 
 O diretório `Models` contém todas as suas
-[classes de modelo do Eloquent](../eloquent.md).
+[classes de modelo do Eloquent](eloquent.md).
 O ORM Eloquent incluído no Laravel fornece uma implementação simples e bonita do
 ActiveRecord para trabalhar com seu banco de dados.
 Cada tabela do banco de dados possui um modelo correspondente usado para
@@ -283,14 +283,14 @@ de dados.
 Este diretório não existe por padrão, mas será criado para você se você executar
 o comando `make:policy` do Artisan.
 O diretório `Policies` contém as
-[classes de política de autorização](../authorization.md) da sua aplicação.
+[classes de política de autorização](authorization.md) da sua aplicação.
 As políticas são usadas para determinar se uma pessoa usuária pode executar uma
 determinada ação em um recurso.
 
 #### O Diretório `Providers`
 
 O diretório `Providers` contém todos os
-[provedores de serviço](../arquitetura/provedores.md) da sua aplicação.
+[provedores de serviço](providers.md) da sua aplicação.
 Os provedores de serviço inicializam sua aplicação vinculando serviços no
 contêiner de serviço, registrando eventos ou executando qualquer outra tarefa
 para preparar sua aplicação para as requisições recebidas.
@@ -308,4 +308,4 @@ aplicação.
 As regras são usadas para encapsular lógica de validação complicada em um objeto
 simples.
 Para obter mais informações, verifique a
-[documentação de validação](../validation.md).
+[documentação de validação](validation.md).

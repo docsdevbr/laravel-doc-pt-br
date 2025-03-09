@@ -214,9 +214,9 @@ If your queued job accepts an Eloquent model in its constructor, only the identi
 <a name="handle-method-dependency-injection"></a>
 #### `handle` Method Dependency Injection
 
-The `handle` method is invoked when the job is processed by the queue. Note that we are able to type-hint dependencies on the `handle` method of the job. The Laravel [service container](arquitetura/conteiner.md) automatically injects these dependencies.
+The `handle` method is invoked when the job is processed by the queue. Note that we are able to type-hint dependencies on the `handle` method of the job. The Laravel [service container](container.md) automatically injects these dependencies.
 
-If you would like to take total control over how the container injects dependencies into the `handle` method, you may use the container's `bindMethod` method. The `bindMethod` method accepts a callback which receives the job and the container. Within the callback, you are free to invoke the `handle` method however you wish. Typically, you should call this method from the `boot` method of your `App\Providers\AppServiceProvider` [service provider](arquitetura/provedores.md):
+If you would like to take total control over how the container injects dependencies into the `handle` method, you may use the container's `bindMethod` method. The `bindMethod` method accepts a callback which receives the job and the container. Within the callback, you are free to invoke the `handle` method however you wish. Typically, you should call this method from the `boot` method of your `App\Providers\AppServiceProvider` [service provider](providers.md):
 
     use App\Jobs\ProcessPodcast;
     use App\Services\AudioProcessor;
@@ -1741,7 +1741,7 @@ php artisan queue:work --sleep=3
 <a name="maintenance-mode-queues"></a>
 #### Maintenance Mode and Queues
 
-While your application is in [maintenance mode](comecando/configuracao.md#modo-de-manutencao), no queued jobs will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
+While your application is in [maintenance mode](configuration.md#modo-de-manutencao), no queued jobs will be handled. The jobs will continue to be handled as normal once the application is out of maintenance mode.
 
 To force your queue workers to process jobs even if maintenance mode is enabled, you may use `--force` option:
 
@@ -2428,7 +2428,7 @@ $job->assertFailed();
 <a name="job-events"></a>
 ## Job Events
 
-Using the `before` and `after` methods on the `Queue` [facade](facades.md), you may specify callbacks to be executed before or after a queued job is processed. These callbacks are a great opportunity to perform additional logging or increment statistics for a dashboard. Typically, you should call these methods from the `boot` method of a [service provider](arquitetura/provedores.md). For example, we may use the `AppServiceProvider` that is included with Laravel:
+Using the `before` and `after` methods on the `Queue` [facade](facades.md), you may specify callbacks to be executed before or after a queued job is processed. These callbacks are a great opportunity to perform additional logging or increment statistics for a dashboard. Typically, you should call these methods from the `boot` method of a [service provider](providers.md). For example, we may use the `AppServiceProvider` that is included with Laravel:
 
     <?php
 

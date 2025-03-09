@@ -8,24 +8,24 @@ status: ready
 
 ## Prólogo
 
-- [Notas de Versão](prologo/versoes.md)
-- [Guia de Atualização](prologo/atualizacao.md)
-- [Guia de Contribuição](prologo/contribuicoes.md)
+- [Notas de Versão](releases.md)
+- [Guia de Atualização](upgrade.md)
+- [Guia de Contribuição](contributions.md)
 
 ## Começando
 
-- [Instalação](comecando/instalacao.md)
-- [Configuração](comecando/configuracao.md)
-- [Estrutura de Diretório](comecando/estrutura.md)
-- [_Front-end_](comecando/front-end.md)
-- [_Kits_ para Iniciantes](comecando/kits-para-iniciantes.md)
-- [Implantação](comecando/implantacao.md)
+- [Instalação](installation.md)
+- [Configuração](configuration.md)
+- [Estrutura de Diretório](structure.md)
+- [_Front-end_](frontend.md)
+- [_Kits_ para Iniciantes](starter-kits.md)
+- [Implantação](deployment.md)
 
 ## Conceitos de Arquitetura
 
-- [Ciclo de Vida da Requisição](arquitetura/ciclo-de-vida.md)
-- [Contêiner de Serviços](arquitetura/conteiner.md)
-- [Provedores de Serviços](arquitetura/provedores.md)
+- [Ciclo de Vida da Requisição](lifecycle.md)
+- [Contêiner de Serviços](container.md)
+- [Provedores de Serviços](providers.md)
 - [Fachadas](facades.md)
 
 ## O Básico
@@ -106,7 +106,7 @@ status: ready
 
 ## Pacotes
 
-- [Breeze](comecando/kits-para-iniciantes.md#laravel-breeze)
+- [Breeze](starter-kits.md#laravel-breeze)
 - [Cashier (Stripe)](billing.md)
 - [Cashier (Paddle)](cashier-paddle.md)
 - [Dusk](dusk.md)

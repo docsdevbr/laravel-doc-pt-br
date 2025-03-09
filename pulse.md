@@ -159,7 +159,7 @@ public function boot(): void
 ```
 
 > [!NOTE]
-> You may completely customize how the authenticated user is captured and retrieved by implementing the `Laravel\Pulse\Contracts\ResolvesUsers` contract and binding it in Laravel's [service container](arquitetura/conteiner.md#binding-a-singleton).
+> You may completely customize how the authenticated user is captured and retrieved by implementing the `Laravel\Pulse\Contracts\ResolvesUsers` contract and binding it in Laravel's [service container](container.md#binding-a-singleton).
 
 <a name="dashboard-cards"></a>
 ### Cards
@@ -675,9 +675,9 @@ The `aggregate` method returns a collection of PHP `stdClass` objects. Each obje
 
 ```
 @foreach ($topSellers as $seller)
-    {{ $seller->key }}
-    {{ $seller->sum }}
-    {{ $seller->count }}
+    \{\{ $seller->key \}\}
+    \{\{ $seller->sum \}\}
+    \{\{ $seller->count \}\}
 @endforeach
 ```
 
@@ -711,7 +711,7 @@ return view('livewire.pulse.top-sellers', [
 The `find` method returns an object containing `name`, `extra`, and `avatar` keys, which you may optionally pass directly to the `<x-pulse::user-card>` Blade component:
 
 ```blade
-<x-pulse::user-card :user="{{ $seller->user }}" :stats="{{ $seller->sum }}" />
+<x-pulse::user-card :user="\{\{ $seller->user \}\}" :stats="\{\{ $seller->sum \}\}" />
 ```
 
 <a name="custom-recorders"></a>

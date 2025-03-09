@@ -1601,7 +1601,7 @@ Like the `abort` method, you may also provide the exception's response text as t
 <a name="method-app"></a>
 #### `app()` {.collection-method}
 
-The `app` function returns the [service container](arquitetura/conteiner.md) instance:
+The `app` function returns the [service container](container.md) instance:
 
     $container = app();
 
@@ -1697,7 +1697,7 @@ The `collect` function creates a [collection](collections.md) instance from the 
 <a name="method-config"></a>
 #### `config()` {.collection-method}
 
-The `config` function gets the value of a [configuration](comecando/configuracao.md) variable. The configuration values may be accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist:
+The `config` function gets the value of a [configuration](configuration.md) variable. The configuration values may be accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist:
 
     $value = config('app.timezone');
 
@@ -1734,7 +1734,7 @@ The `cookie` function creates a new [cookie](requests.md#cookies) instance:
 
 The `csrf_field` function generates an HTML `hidden` input field containing the value of the CSRF token. For example, using [Blade syntax](blade.md):
 
-    {{ csrf_field() }}
+    \{\{ csrf_field() \}\}
 
 <a name="method-csrf-token"></a>
 #### `csrf_token()` {.collection-method}
@@ -1796,7 +1796,7 @@ The `encrypt` function [encrypts](encryption.md) the given value. You may use th
 <a name="method-env"></a>
 #### `env()` {.collection-method}
 
-The `env` function retrieves the value of an [environment variable](comecando/configuracao.md#configuracao-do-ambiente) or returns a default value:
+The `env` function retrieves the value of an [environment variable](configuration.md#configuracao-do-ambiente) or returns a default value:
 
     $env = env('APP_ENV');
 
@@ -1821,10 +1821,10 @@ The `fake` function resolves a [Faker](https://github.com/FakerPHP/Faker) single
 @for($i = 0; $i < 10; $i++)
     <dl>
         <dt>Name</dt>
-        <dd>{{ fake()->name() }}</dd>
+        <dd>\{\{ fake()->name() \}\}</dd>
 
         <dt>Email</dt>
-        <dd>{{ fake()->unique()->safeEmail() }}</dd>
+        <dd>\{\{ fake()->unique()->safeEmail() \}\}</dd>
     </dl>
 @endfor
 ```
@@ -1898,7 +1898,7 @@ A [logger](errors.md#logging) instance will be returned if no value is passed to
 The `method_field` function generates an HTML `hidden` input field containing the spoofed value of the form's HTTP verb. For example, using [Blade syntax](blade.md):
 
     <form method="POST">
-        {{ method_field('DELETE') }}
+        \{\{ method_field('DELETE') \}\}
     </form>
 
 <a name="method-now"></a>
@@ -1919,11 +1919,11 @@ The `old` function [retrieves](requests.md#retrieving-input) an [old input](requ
 
 Since the "default value" provided as the second argument to the `old` function is often an attribute of an Eloquent model, Laravel allows you to simply pass the entire Eloquent model as the second argument to the `old` function. When doing so, Laravel will assume the first argument provided to the `old` function is the name of the Eloquent attribute that should be considered the "default value":
 
-    {{ old('name', $user->name) }}
+    \{\{ old('name', $user->name) \}\}
 
     // Is equivalent to...
 
-    {{ old('name', $user) }}
+    \{\{ old('name', $user) \}\}
 
 <a name="method-once"></a>
 #### `once()` {.collection-method}
@@ -2067,7 +2067,7 @@ A `report` argument may be provided to the `rescue` function to determine if the
 <a name="method-resolve"></a>
 #### `resolve()` {.collection-method}
 
-The `resolve` function resolves a given class or interface name to an instance using the [service container](arquitetura/conteiner.md):
+The `resolve` function resolves a given class or interface name to an instance using the [service container](container.md):
 
     $api = resolve('HelpSpot\API');
 
@@ -2392,7 +2392,7 @@ As you can see, each invokable class or closure in the pipeline is provided the 
 
 When the last callable in the pipeline invokes the `$next` closure, the callable provided to the `then` method will be invoked. Typically, this callable will simply return the given input.
 
-Of course, as discussed previously, you are not limited to providing closures to your pipeline. You may also provide invokable classes. If a class name is provided, the class will be instantiated via Laravel's [service container](arquitetura/conteiner.md), allowing dependencies to be injected into the invokable class:
+Of course, as discussed previously, you are not limited to providing closures to your pipeline. You may also provide invokable classes. If a class name is provided, the class will be instantiated via Laravel's [service container](container.md), allowing dependencies to be injected into the invokable class:
 
 ```php
 $user = Pipeline::send($user)

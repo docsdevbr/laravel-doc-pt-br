@@ -83,7 +83,7 @@ php artisan event:list
 <a name="event-discovery-in-production"></a>
 #### Event Discovery in Production
 
-To give your application a speed boost, you should cache a manifest of all of your application's listeners using the `optimize` or `event:cache` Artisan commands. Typically, this command should be run as part of your application's [deployment process](comecando/implantacao.md#otimizacao). This manifest will be used by the framework to speed up the event registration process. The `event:clear` command may be used to destroy the event cache.
+To give your application a speed boost, you should cache a manifest of all of your application's listeners using the `optimize` or `event:cache` Artisan commands. Typically, this command should be run as part of your application's [deployment process](deployment.md#otimizacao). This manifest will be used by the framework to speed up the event registration process. The `event:clear` command may be used to destroy the event cache.
 
 <a name="manually-registering-events"></a>
 ### Manually Registering Events
@@ -235,7 +235,7 @@ Next, let's take a look at the listener for our example event. Event listeners r
     }
 
 > [!NOTE]
-> Your event listeners may also type-hint any dependencies they need on their constructors. All event listeners are resolved via the Laravel [service container](arquitetura/conteiner.md), so dependencies will be injected automatically.
+> Your event listeners may also type-hint any dependencies they need on their constructors. All event listeners are resolved via the Laravel [service container](container.md), so dependencies will be injected automatically.
 
 <a name="stopping-the-propagation-of-an-event"></a>
 #### Stopping The Propagation Of An Event

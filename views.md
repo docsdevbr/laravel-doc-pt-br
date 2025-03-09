@@ -24,7 +24,7 @@ Views separate your controller / application logic from your presentation logic 
 
 <html>
     <body>
-        <h1>Hello, {{ $name }}</h1>
+        <h1>Hello, \{\{ $name \}\}</h1>
     </body>
 </html>
 ```
@@ -43,7 +43,7 @@ Since this view is stored at `resources/views/greeting.blade.php`, we may return
 
 Instead of writing their frontend templates in PHP via Blade, many developers have begun to prefer to write their templates using React or Vue. Laravel makes this painless thanks to [Inertia](https://inertiajs.com/), a library that makes it a cinch to tie your React / Vue frontend to your Laravel backend without the typical complexities of building an SPA.
 
-Our Breeze and Jetstream [starter kits](comecando/kits-para-iniciantes.md) give you a great starting point for your next Laravel application powered by Inertia. In addition, the [Laravel Bootcamp](https://bootcamp.laravel.com) provides a full demonstration of building a Laravel application powered by Inertia, including examples in Vue and React.
+Our Breeze and Jetstream [starter kits](starter-kits.md) give you a great starting point for your next Laravel application powered by Inertia. In addition, the [Laravel Bootcamp](https://bootcamp.laravel.com) provides a full demonstration of building a Laravel application powered by Inertia, including examples in Vue and React.
 
 <a name="creating-and-rendering-views"></a>
 ## Creating and Rendering Views
@@ -150,7 +150,7 @@ Occasionally, you may need to share data with all views that are rendered by you
 
 View composers are callbacks or class methods that are called when a view is rendered. If you have data that you want to be bound to a view each time that view is rendered, a view composer can help you organize that logic into a single location. View composers may prove particularly useful if the same view is returned by multiple routes or controllers within your application and always needs a particular piece of data.
 
-Typically, view composers will be registered within one of your application's [service providers](arquitetura/provedores.md). In this example, we'll assume that the `App\Providers\AppServiceProvider` will house this logic.
+Typically, view composers will be registered within one of your application's [service providers](providers.md). In this example, we'll assume that the `App\Providers\AppServiceProvider` will house this logic.
 
 We'll use the `View` facade's `composer` method to register the view composer. Laravel does not include a default directory for class based view composers, so you are free to organize them however you wish. For example, you could create an `app/View/Composers` directory to house all of your application's view composers:
 
@@ -219,7 +219,7 @@ Now that we have registered the composer, the `compose` method of the `App\View\
         }
     }
 
-As you can see, all view composers are resolved via the [service container](arquitetura/conteiner.md), so you may type-hint any dependencies you need within a composer's constructor.
+As you can see, all view composers are resolved via the [service container](container.md), so you may type-hint any dependencies you need within a composer's constructor.
 
 <a name="attaching-a-composer-to-multiple-views"></a>
 #### Attaching a Composer to Multiple Views

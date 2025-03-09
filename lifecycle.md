@@ -46,7 +46,7 @@ O arquivo `index.php` carrega a definição do carregador automático gerada pel
 Composer e, em seguida, recupera uma instância da aplicação Laravel de
 `bootstrap/app.php`.
 A primeira ação realizada pelo próprio Laravel é criar uma instância da
-aplicação/[contêiner de serviço](conteiner.md).
+aplicação/[contêiner de serviço](container.md).
 
 ### _Kernels_ HTTP / do Console {- #kernels-http-e-do-console }
 
@@ -62,7 +62,7 @@ de `Illuminate\Foundation\Http\Kernel`.
 O _kernel_ HTTP define um _array_ de `bootstrappers` que serão executados antes
 da execução da requisição.
 Esses _bootstrappers_ configuram o tratamento de erros, configuram o _log_,
-[detectam o ambiente da aplicação](../comecando/configuracao.md#configuracao-do-ambiente),
+[detectam o ambiente da aplicação](configuration.md#configuracao-do-ambiente),
 e executam outras tarefas que precisam ser executadas antes que a requisição
 seja realmente tratada.
 Normalmente, essas classes lidam com configurações internas do Laravel com as
@@ -71,8 +71,8 @@ quais você não precisa se preocupar.
 O _kernel_ HTTP também é responsável por passar a requisição pela pilha de
 _middlewares_ da aplicação.
 Esses _middlewares_ lidam com a leitura e gravação da
-[sessão HTTP](../session.md), determinando se a aplicação está em modo de
-manutenção, [verificando o token CSRF](../csrf.md) e muito mais.
+[sessão HTTP](session.md), determinando se a aplicação está em modo de
+manutenção, [verificando o token CSRF](csrf.md) e muito mais.
 Falaremos mais sobre isso em breve.
 
 A assinatura do método `handle` do _kernel_ HTTP é bem simples: ele recebe uma
@@ -83,7 +83,7 @@ Alimente-o com requisições HTTP e ele retornará respostas HTTP.
 ### Provedores de Serviço
 
 Uma das ações mais importantes de inicialização do _kernel_ é carregar os
-[provedores de serviço](provedores.md) da sua aplicação.
+[provedores de serviço](providers.md) da sua aplicação.
 Os provedores de serviço são responsáveis pela inicialização de todos os vários
 componentes do _framework_, como componentes de banco de dados, fila, validação
 e de roteamento.
@@ -128,7 +128,7 @@ Alguns _middlewares_ são atribuídos a todas as rotas da aplicação, como
 `PreventRequestsDuringMaintenance`, enquanto outros são atribuídos apenas a
 rotas ou grupos de rotas específicos.
 Você pode aprender mais sobre _middlewares_ lendo a
-[documentação completa de middlewares](../middleware.md).
+[documentação completa de middlewares](middleware.md).
 
 Se a requisição passar por todos os _middlewares_ atribuídos à rota
 correspondente, a rota ou método controlador será executado e a resposta

@@ -39,7 +39,7 @@ de serviços e registrá-los em sua aplicação Laravel.
 > **Nota:**
 > Se você quiser saber mais sobre como o Laravel lida com requisições e como
 > funciona internamente, verifique nossa documentação sobre o
-> [ciclo de vida da requisição](ciclo-de-vida.md) do Laravel.
+> [ciclo de vida da requisição](lifecycle.md) do Laravel.
 
 ## Escrevendo Provedores de Serviços
 
@@ -48,7 +48,7 @@ Todos os provedores de serviços estendem a classe
 A maioria dos provedores de serviços contém um método `register` e um método
 `boot`.
 No método `register`, você **só deve vincular coisas ao
-[contêiner de serviços](conteiner.md)**.
+[contêiner de serviços](container.md)**.
 Você nunca deve tentar registrar quaisquer ouvintes de eventos, rotas ou
 qualquer outra funcionalidade no método `register`.
 
@@ -63,7 +63,7 @@ php artisan make:provider RiakServiceProvider
 ### O Método `register`
 
 Conforme mencionado anteriormente, no método `register`, você só deve vincular
-coisas ao [contêiner de serviços](conteiner.md).
+coisas ao [contêiner de serviços](container.md).
 Você nunca deve tentar registrar quaisquer ouvintes de eventos, rotas ou
 qualquer outra funcionalidade no método `register`.
 Caso contrário, você poderá usar acidentalmente um serviço fornecido por um
@@ -100,7 +100,7 @@ Este provedor de serviços define apenas um método `register` e usa esse métod
 para definir uma implementação de `App\Services\Riak\Connection` no contêiner de
 serviços.
 Se você ainda não se familiarizou com o contêiner de serviços do Laravel,
-confira [sua documentação](conteiner.md).
+confira [sua documentação](container.md).
 
 #### As Propriedades `bindings` e `singletons`
 
@@ -148,7 +148,7 @@ class AppServiceProvider extends ServiceProvider
 ### O Método `boot`
 
 Então, e se precisarmos registrar um
-[compositor de visualização](../views.md#view-composers) em nosso provedor de
+[compositor de visualização](views.md#view-composers) em nosso provedor de
 serviço?
 Isso deve ser feito no método `boot`.
 **Este método é chamado após todos os outros provedores de serviços terem sido
@@ -181,7 +181,7 @@ class ComposerServiceProvider extends ServiceProvider
 
 Você pode declarar o tipo das dependências no método `boot` do seu provedor de
 serviços.
-O [contêiner de serviços](conteiner.md) injetará automaticamente todas as
+O [contêiner de serviços](container.md) injetará automaticamente todas as
 dependências necessárias:
 
 ```php
@@ -230,7 +230,7 @@ return [
 ## Provedores Adiados
 
 Se o seu provedor estiver registrando **apenas** ligações no
-[contêiner de serviços](conteiner.md), você poderá optar por adiar seu registro
+[contêiner de serviços](container.md), você poderá optar por adiar seu registro
 até que uma das ligações registradas seja realmente necessária.
 Adiar o carregamento de tal provedor melhorará o desempenho da sua aplicação,
 uma vez que ele não é carregado do sistema de arquivos a cada requisição.

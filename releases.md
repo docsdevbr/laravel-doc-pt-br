@@ -43,7 +43,7 @@ meses e as correções de segurança são fornecidas por 2 anos.
 Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
 mais recente recebe correções de falhas.
 Além disso, revise as versões do banco de dados
-[suportadas pelo Laravel](../database.md#introduction).
+[suportadas pelo Laravel](database.md#introduction).
 
 |              Versão               |  PHP (*)  |       Lançamento        | Correções de falhas até | Correções de segurança até |
 |:---------------------------------:|:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
@@ -255,7 +255,7 @@ WebSocket por vários servidores Reverb de _back-end_, todos suportando uma úni
 aplicação de alta demanda.
 
 Para mais informações sobre o Laravel Reverb, consulte a
-[documentação completa do Reverb](../reverb.md).
+[documentação completa do Reverb](reverb.md).
 
 ### Limitação de Taxa por Segundo
 
@@ -275,7 +275,7 @@ RateLimiter::for('faturas', function (Request $request) {
 ```
 
 Para obter mais informações sobre limitação de taxa no Laravel, verifique a
-[documentação sobre limitação de taxa](../routing.md#rate-limiting).
+[documentação sobre limitação de taxa](routing.md#rate-limiting).
 
 ### Rota de Integridade
 
@@ -328,7 +328,7 @@ continuem usando sua aplicação ininterruptamente, mesmo que sua chave de
 encriptação seja rotacionada.
 
 Para mais informações sobre encriptação no Laravel, confira a
-[documentação sobre encriptação](../encryption.md).
+[documentação sobre encriptação](encryption.md).
 
 ### Atualização Automática do _Hash_ de Senha
 
@@ -350,7 +350,7 @@ que elas se autenticam na sua aplicação.
 _A integração com o validador do prompt foi contribuída por
 [Andrea Marco Sartori](https://github.com/cerbero90)_.
 
-[Laravel Prompts](../prompts.md) é um pacote PHP para adicionar formulários
+[Laravel Prompts](prompts.md) é um pacote PHP para adicionar formulários
 bonitos e fáceis de usar às suas aplicações de linha de comando, com recursos
 semelhantes aos de navegador, incluindo texto de sugestão e validação.
 
@@ -370,7 +370,7 @@ $name = text(
 No entanto, isso pode se tornar trabalhoso ao lidar com muitas entradas ou
 cenários de validação complicados.
 Portanto, no Laravel 11, você pode usar todo o poder do
-[validador](../validation.md) do Laravel ao validar entradas de _prompt_:
+[validador](validation.md) do Laravel ao validar entradas de _prompt_:
 
 ```php
 $name = text('Qual o seu nome?', validate: [
@@ -400,7 +400,7 @@ $job->assertReleased(delay: 30);
 ```
 
 Para obter mais informações sobre como testar trabalhos de fila, confira a
-[documentação sobre filas](../queues.md#testing).
+[documentação sobre filas](queues.md#testing).
 
 ### Novos Comandos do Artisan
 
@@ -445,7 +445,7 @@ protected function casts(): array
 ```
 
 Para obter mais informações sobre conversão de atributos, revise a
-[documentação do Eloquent](../eloquent-mutators.md#attribute-casting).
+[documentação do Eloquent](eloquent-mutators.md#attribute-casting).
 
 ### A Função `once`
 
@@ -472,7 +472,7 @@ random(); // 123 (resultado armazenado em cache)
 ```
 
 Para obter mais informações sobre a função auxiliar `once`, verifique a
-documentação das [funções auxiliares](../helpers.md#method-once).
+documentação das [funções auxiliares](helpers.md#method-once).
 
 ### Desempenho Aprimorado dos Testes com Banco de Dados em Memória
 
@@ -498,7 +498,7 @@ No entanto, o Laravel 11 agora inclui um _driver_ MariaDB dedicado que fornece
 melhores padrões para este sistema de banco de dados.
 
 Para mais informações sobre os _drivers_ de banco de dados do Laravel, confira a
-[documentação sobre banco de dados](../database.md).
+[documentação sobre banco de dados](database.md).
 
 ### Operação e Inspeção Aprimoradas de Esquemas de Bancos de Dados
 

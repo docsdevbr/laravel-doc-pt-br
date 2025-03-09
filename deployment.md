@@ -118,7 +118,7 @@ frankenphp php-server -r public/
 ```
 
 Para aproveitar os recursos mais poderosos suportados pelo FrankenPHP, como a
-integração com o [Laravel Octane](../octane.md), HTTP/3, compressão moderna ou a
+integração com o [Laravel Octane](octane.md), HTTP/3, compressão moderna ou a
 capacidade de empacotar aplicações Laravel como binários independentes, consulte
 a [documentação do Laravel](https://frankenphp.dev/docs/laravel/) do FrankenPHP.
 
@@ -242,7 +242,7 @@ aplicação:
 Quando requisições HTTP forem feitas a esta rota, o Laravel também despachará
 um evento `Illuminate\Foundation\Events\DiagnosingHealth`, permitindo que você
 execute verificações de saúde adicionais relevantes para sua aplicação.
-Em um [ouvinte](../events.md) para este evento, você pode verificar o banco de
+Em um [ouvinte](events.md) para este evento, você pode verificar o banco de
 dados ou o _status_ do _cache_ da sua aplicação.
 Se você detectar um problema com a sua aplicação, poderá simplesmente lançar uma
 exceção a partir do ouvinte.
