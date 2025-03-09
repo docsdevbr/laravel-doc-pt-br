@@ -430,7 +430,7 @@ Laravel's pre-crafted notification components:
     @endcomponent
 
     Thanks,<br>
-    {{ config('app.name') }}
+    \{\{ config('app.name') \}\}
     @endcomponent
 
 #### Button Component

@@ -417,11 +417,11 @@ Eloquent query:
 
     <div class="container">
         @foreach ($orders as $order)
-            {{ $order->price }}
+            \{\{ $order->price \}\}
         @endforeach
     </div>
 
-    {{ $orders->links() }}
+    \{\{ $orders->links() \}\}
 
 <a name="soft-deleting"></a>
 

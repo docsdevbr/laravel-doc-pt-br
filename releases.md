@@ -115,7 +115,7 @@ usuárias verificadas:
 
 > **Dica:**
 > Para saber mais sobre a verificação de _e-mail_, confira a
-> [documentação completa](../verification.md).
+> [documentação completa](verification.md).
 
 ### Políticas e Portões de Pessoas Usuárias Convidadas
 
@@ -230,7 +230,7 @@ principal.
 No entanto, você pode controlar esse número usando o método `onEachSide`:
 
 ```bladehtml
-{{ $paginator->onEachSide(5)->links() }}
+\{\{ $paginator->onEachSide(5)->links() \}\}
 ```
 
 ### Fluxos de Leitura e Escrita do Sistema de Arquivos

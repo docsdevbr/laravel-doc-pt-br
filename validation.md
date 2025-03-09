@@ -190,7 +190,7 @@ view:
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li>\{\{ $error \}\}</li>
                 @endforeach
             </ul>
         </div>
@@ -480,7 +480,7 @@ specific form. Pass a name as the second argument to `withErrors`:
 
 You may then access the named `MessageBag` instance from the `$errors` variable:
 
-    {{ $errors->login->first('email') }}
+    \{\{ $errors->login->first('email') \}\}
 
 <a name="after-validation-hook"></a>
 

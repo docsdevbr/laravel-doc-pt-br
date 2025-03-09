@@ -555,7 +555,7 @@ the `_method` field will be used as the HTTP request method:
 
     <form action="/foo/bar" method="POST">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_token" value="\{\{ csrf_token() \}\}">
     </form>
 
 You may use the `@method` Blade directive to generate the `_method` input:
@@ -580,6 +580,6 @@ incoming request:
     $action = Route::currentRouteAction();
 
 Refer to the API documentation for both
-the [underlying class of the Route facade](https://laravel.com/api/{{version}}/Illuminate/Routing/Router.html)
-and [Route instance](https://laravel.com/api/{{version}}/Illuminate/Routing/Route.html)
+the [underlying class of the Route facade](https://laravel.com/api/{{ version }}/Illuminate/Routing/Router.html)
+and [Route instance](https://laravel.com/api/{{ version }}/Illuminate/Routing/Route.html)
 to review all accessible methods.

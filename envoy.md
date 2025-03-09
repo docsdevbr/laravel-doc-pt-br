@@ -110,7 +110,7 @@ presence of the `$branch` variable before executing the `git pull` command:
         cd site
 
         @if ($branch)
-            git pull origin {{ $branch }}
+            git pull origin \{\{ $branch \}\}
         @endif
 
         php artisan migrate
@@ -157,7 +157,7 @@ of the servers in the task's `on` array:
 
     @task('deploy', ['on' => ['web-1', 'web-2']])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin \{\{ $branch \}\}
         php artisan migrate
     @endtask
 
@@ -172,7 +172,7 @@ parallel, add the `parallel` option to your task declaration:
 
     @task('deploy', ['on' => ['web-1', 'web-2'], 'parallel' => true])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin \{\{ $branch \}\}
         php artisan migrate
     @endtask
 
@@ -197,7 +197,7 @@ This option is particularly useful for destructive operations:
 
     @task('deploy', ['on' => 'web', 'confirm' => true])
         cd site
-        git pull origin {{ $branch }}
+        git pull origin \{\{ $branch \}\}
         php artisan migrate
     @endtask
 

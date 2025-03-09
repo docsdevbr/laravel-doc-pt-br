@@ -73,7 +73,7 @@ register the broadcast authorization routes and callbacks.
 session's CSRF token. You should verify that your application's `head` HTML
 element defines a `meta` tag containing the CSRF token:
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="\{\{ csrf_token() \}\}">
 
 <a name="driver-prerequisites"></a>
 

@@ -202,10 +202,10 @@ The Blade "or" operator has been removed in favor of PHP's built-in `??` "null
 coalesce" operator, which has the same purpose and functionality:
 
     // Laravel 5.6...
-    {{ $foo or 'default' }}
+    \{\{ $foo or 'default' \}\}
 
     // Laravel 5.7...
-    {{ $foo ?? 'default' }}
+    \{\{ $foo ?? 'default' \}\}
 
 ### Cache
 

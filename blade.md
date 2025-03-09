@@ -129,10 +129,10 @@ throughout our application:
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
-The `{{ $slot }}` variable will contain the content we wish to inject into the
+The `\{\{ $slot \}\}` variable will contain the content we wish to inject into the
 component. Now, to construct this component, we can use the `@component` Blade
 directive:
 
@@ -147,9 +147,9 @@ displayed by "echoing" the variable that matches their name:
     <!-- /resources/views/alert.blade.php -->
 
     <div class="alert alert-danger">
-        <div class="alert-title">{{ $title }}</div>
+        <div class="alert-title">\{\{ $title \}\}</div>
 
-        {{ $slot }}
+        \{\{ $slot \}\}
     </div>
 
 Now, we can inject content into the named slot using the `@slot` directive. Any
@@ -212,20 +212,20 @@ curly braces. For example, given the following route:
 
 You may display the contents of the `name` variable like so:
 
-    Hello, {{ $name }}.
+    Hello, \{\{ $name \}\}.
 
-> {tip} Blade `{{ }}` statements are automatically sent through
+> {tip} Blade `\{\{ \}\}` statements are automatically sent through
 > PHP's `htmlspecialchars` function to prevent XSS attacks.
 
 You are not limited to displaying the contents of the variables passed to the
 view. You may also echo the results of any PHP function. In fact, you can put
 any PHP code you wish inside of a Blade echo statement:
 
-    The current UNIX timestamp is {{ time() }}.
+    The current UNIX timestamp is \{\{ time() \}\}.
 
 #### Displaying Unescaped Data
 
-By default, Blade `{{ }}` statements are automatically sent through
+By default, Blade `\{\{ \}\}` statements are automatically sent through
 PHP's `htmlspecialchars` function to prevent XSS attacks. If you do not want
 your data to be escaped, you may use the following syntax:
 
@@ -289,9 +289,9 @@ example:
 
     <h1>Laravel</h1>
 
-    Hello, @{{ name }}.
+    Hello, @\{\{ name \}\}.
 
-In this example, the `@` symbol will be removed by Blade; however, `{{ name }}`
+In this example, the `@` symbol will be removed by Blade; however, `\{\{ name \}\}`
 expression will remain untouched by the Blade engine, allowing it to instead be
 rendered by your JavaScript framework.
 
@@ -303,7 +303,7 @@ prefix each Blade echo statement with an `@` symbol:
 
     @verbatim
         <div class="container">
-            Hello, {{ name }}.
+            Hello, \{\{ name \}\}.
         </div>
     @endverbatim
 
@@ -416,15 +416,15 @@ working with PHP's loop structures. Again, each of these directives functions
 identically to their PHP counterparts:
 
     @for ($i = 0; $i < 10; $i++)
-        The current value is {{ $i }}
+        The current value is \{\{ $i \}\}
     @endfor
 
     @foreach ($users as $user)
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
     @forelse ($users as $user)
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
     @empty
         <p>No users</p>
     @endforelse
@@ -444,7 +444,7 @@ When using loops you may also end the loop or skip the current iteration:
             @continue
         @endif
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @if ($user->number == 5)
             @break
@@ -456,7 +456,7 @@ You may also include the condition with the directive declaration in one line:
     @foreach ($users as $user)
         @continue($user->type == 1)
 
-        <li>{{ $user->name }}</li>
+        <li>\{\{ $user->name \}\}</li>
 
         @break($user->number == 5)
     @endforeach
@@ -478,7 +478,7 @@ loop index and whether this is the first or last iteration through the loop:
             This is the last iteration.
         @endif
 
-        <p>This is user {{ $user->id }}</p>
+        <p>This is user \{\{ $user->id \}\}</p>
     @endforeach
 
 If you are in a nested loop, you may access the parent loop's `$loop` variable
@@ -513,7 +513,7 @@ Blade also allows you to define comments in your views. However, unlike HTML
 comments, Blade comments are not included in the HTML returned by your
 application:
 
-    {{-- This comment will not be present in the rendered HTML --}}
+    \{\{-- This comment will not be present in the rendered HTML --\}\}
 
 <a name="php"></a>
 
@@ -609,7 +609,7 @@ If your Blade includes are stored in a sub-directory, you may wish to alias them
 for easier access. For example, imagine a Blade include that is stored
 at `resources/views/includes/input.blade.php` with the following content:
 
-    <input type="{{ $type ?? 'text' }}">
+    <input type="\{\{ $type ?? 'text' \}\}">
 
 You may use the `include` method to alias the include from `includes.input`
 to `input`. Typically, this should be done in the `boot` method of
@@ -696,7 +696,7 @@ resolve:
     @inject('metrics', 'App\Services\MetricsService')
 
     <div>
-        Monthly Revenue: {{ $metrics->monthlyRevenue() }}.
+        Monthly Revenue: \{\{ $metrics->monthlyRevenue() \}\}.
     </div>
 
 <a name="extending-blade"></a>

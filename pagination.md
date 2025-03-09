@@ -137,11 +137,11 @@ using [Blade](blade.md):
 
     <div class="container">
         @foreach ($users as $user)
-            {{ $user->name }}
+            \{\{ $user->name \}\}
         @endforeach
     </div>
 
-    {{ $users->links() }}
+    \{\{ $users->links() \}\}
 
 The `links` method will render the links to the rest of the pages in the result
 set. Each of these links will already contain the proper `page` query string
@@ -169,13 +169,13 @@ You may append to the query string of pagination links using the `appends`
 method. For example, to append `sort=votes` to each pagination link, you should
 make the following call to `appends`:
 
-    {{ $users->appends(['sort' => 'votes'])->links() }}
+    \{\{ $users->appends(['sort' => 'votes'])->links() \}\}
 
 If you wish to append a "hash fragment" to the paginator's URLs, you may use
 the `fragment` method. For example, to append `#foo` to the end of each
 pagination link, make the following call to the `fragment` method:
 
-    {{ $users->fragment('foo')->links() }}
+    \{\{ $users->fragment('foo')->links() \}\}
 
 #### Adjusting The Pagination Link Window
 
@@ -184,7 +184,7 @@ paginator's URL "window". By default, three links are displayed on each side of
 the primary paginator links. However, you may control this number using
 the `onEachSide` method:
 
-    {{ $users->onEachSide(5)->links() }}
+    \{\{ $users->onEachSide(5)->links() \}\}
 
 <a name="converting-results-to-json"></a>
 
@@ -237,10 +237,10 @@ are free to define your own views to render these links. When calling
 the `links` method on a paginator instance, pass the view name as the first
 argument to the method:
 
-    {{ $paginator->links('view.name') }}
+    \{\{ $paginator->links('view.name') \}\}
 
     // Passing data to the view...
-    {{ $paginator->links('view.name', ['foo' => 'bar']) }}
+    \{\{ $paginator->links('view.name', ['foo' => 'bar']) \}\}
 
 However, the easiest way to customize the pagination views is by exporting them
 to your `resources/views/vendor` directory using the `vendor:publish` command:

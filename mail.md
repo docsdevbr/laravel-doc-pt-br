@@ -280,7 +280,7 @@ available in your view, so you may access it like you would access any other
 data in your Blade templates:
 
     <div>
-        Price: {{ $order->price }}
+        Price: \{\{ $order->price \}\}
     </div>
 
 #### Via The `with` Method:
@@ -343,7 +343,7 @@ available in your view, so you may access it like you would access any other
 data in your Blade templates:
 
     <div>
-        Price: {{ $orderPrice }}
+        Price: \{\{ $orderPrice \}\}
     </div>
 
 <a name="attachments"></a>
@@ -465,7 +465,7 @@ need to worry about passing it in manually:
     <body>
         Here is an image:
 
-        <img src="{{ $message->embed($pathToImage) }}">
+        <img src="\{\{ $message->embed($pathToImage) \}\}">
     </body>
 
 > {note} `$message` variable is not available in markdown messages.
@@ -478,7 +478,7 @@ you may use the `embedData` method on the `$message` variable:
     <body>
         Here is an image from raw data:
 
-        <img src="{{ $message->embedData($data, $name) }}">
+        <img src="\{\{ $message->embedData($data, $name) \}\}">
     </body>
 
 <a name="customizing-the-swiftmailer-message"></a>
@@ -558,7 +558,7 @@ pre-crafted components:
     @endcomponent
 
     Thanks,<br>
-    {{ config('app.name') }}
+    \{\{ config('app.name') \}\}
     @endcomponent
 
 > {tip} Do not use excess indentation when writing Markdown emails. Markdown
