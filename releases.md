@@ -1,69 +1,111 @@
-# Release Notes
+---
+source_url: https://github.com/laravel/docs/blob/12.x/releases.md
+revision: 7589d0d3515172587ff625a48969afe6cb8056ae
+status: ready
+---
 
-- [Versioning Scheme](#versioning-scheme)
-- [Support Policy](#support-policy)
-- [Laravel 12](#laravel-12)
+# Notas de Versão
 
-<a name="versioning-scheme"></a>
-## Versioning Scheme
+## Esquema de Versionamento
 
-Laravel and its other first-party packages follow [Semantic Versioning](https://semver.org). Major framework releases are released every year (~Q1), while minor and patch releases may be released as often as every week. Minor and patch releases should **never** contain breaking changes.
+O Laravel e seus outros pacotes originais seguem o
+[Versionamento Semântico](https://semver.org/lang/pt-BR/).
+As versões maiores do _framework_ são lançadas todos os anos (por volta do 1º
+trimestre), enquanto as versões menores e de correções podem ser lançadas até
+semanalmente.
+Versões menores e de correções **nunca** devem conter alterações significativas.
 
-When referencing the Laravel framework or its components from your application or package, you should always use a version constraint such as `^11.0`, since major releases of Laravel do include breaking changes. However, we strive to always ensure you may update to a new major release in one day or less.
+Ao referenciar o _framework_ Laravel ou seus componentes a partir da sua
+aplicação ou pacote, você deve sempre usar uma restrição de versão como `^12.0`,
+uma vez que as versões maiores do Laravel incluem alterações significativas.
+No entanto, nos esforçamos para sempre garantir que você possa atualizar para
+uma nova versão maior em um dia ou menos.
 
-<a name="named-arguments"></a>
-#### Named Arguments
+#### Argumentos Nomeados
 
-[Named arguments](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments) are not covered by Laravel's backwards compatibility guidelines. We may choose to rename function arguments when necessary in order to improve the Laravel codebase. Therefore, using named arguments when calling Laravel methods should be done cautiously and with the understanding that the parameter names may change in the future.
+[Argumentos nomeados](https://www.php.net/manual/en/functions.arguments.php#functions.named-arguments)
+não são cobertos pelas diretrizes de compatibilidade com versões anteriores do
+Laravel.
+Podemos optar por renomear os argumentos de funções quando necessário para
+melhorar a base de código do Laravel.
+Portanto, o uso de argumentos nomeados ao chamar métodos do Laravel deve ser
+feito com cautela e com o entendimento de que os nomes dos parâmetros podem
+mudar no futuro.
 
-<a name="support-policy"></a>
-## Support Policy
+## Política de Suporte
 
-For all Laravel releases, bug fixes are provided for 18 months and security fixes are provided for 2 years. For all additional libraries, including Lumen, only the latest major release receives bug fixes. In addition, please review the database versions [supported by Laravel](database.md#introduction).
+Para todas as versões do Laravel, as correções de falhas são fornecidas por 18
+meses e as correções de segurança são fornecidas por 2 anos.
+Para todas as bibliotecas adicionais, incluindo Lumen, apenas a versão maior
+mais recente recebe correções de falhas.
+Além disso, revise as versões do banco de dados
+[suportadas pelo Laravel](database.md#introduction).
 
 <div class="overflow-auto">
 
-| Version | PHP (*) | Release | Bug Fixes Until | Security Fixes Until |
-| --- | --- | --- | --- | --- |
-| 9 | 8.0 - 8.2 | February 8th, 2022 | August 8th, 2023 | February 6th, 2024 |
-| 10 | 8.1 - 8.3 | February 14th, 2023 | August 6th, 2024 | February 4th, 2025 |
-| 11 | 8.2 - 8.4 | March 12th, 2024 | September 3rd, 2025 | March 12th, 2026 |
-| 12 | 8.2 - 8.4 | February 24th, 2025 | August 13th, 2026 | February 24th, 2027 |
+|       Versão        |  PHP (*)  |       Lançamento        | Correções de falhas até | Correções de segurança até |
+|:-------------------:|:---------:|:-----------------------:|:-----------------------:|:--------------------------:|
+| 9 {: .bg-red-500 }  | 8.0 - 8.2 | 8 de fevereiro de 2022  |   8 de agosto de 2023   |   6 de fevereiro de 2024   |
+| 10 {: .bg-red-500 } | 8.1 - 8.3 | 14 de fevereiro de 2023 |   6 de agosto de 2024   |   4 de fevereiro de 2025   |
+|         11          | 8.2 - 8.4 |   12 de março de 2024   |  3 de setembro de 2025  |    12 de março de 2026     |
+|         12          | 8.2 - 8.4 | 24 de fevereiro de 2025 |   13 de agosto de 2026  |  24 de fevereiro de 2027   |
 
 </div>
 
 <div class="version-colors">
     <div class="end-of-life">
-        <div class="color-box"></div>
-        <div>End of life</div>
+        <div class="bg-red-500 color-box"></div>
+        <div>Fim de vida</div>
     </div>
     <div class="security-fixes">
         <div class="color-box"></div>
-        <div>Security fixes only</div>
+        <div>Apenas correções de segurança</div>
     </div>
 </div>
 
-(*) Supported PHP versions
+(*) Versões suportadas do PHP
 
-<a name="laravel-12"></a>
 ## Laravel 12
 
-Laravel 12 continues the improvements made in Laravel 11.x by updating upstream dependencies and introducing new starter kits for React, Vue, and Livewire, including the option of using [WorkOS AuthKit](https://authkit.com) for user authentication. The WorkOS variant of our starter kits offers social authentication, passkeys, and SSO support.
+O Laravel 12 continua as melhorias feitas no Laravel 11.x atualizando
+dependências _upstream_ e introduzindo novos _kits_ para iniciantes React, Vue e
+Livewire, incluindo a opção de usar o [WorkOS AuthKit](https://authkit.com) para
+autenticação da pessoa usuária.
+A variante WorkOS dos nossos _kits_ para iniciantes oferece autenticação social,
+chaves de acesso e suporte a SSO.
 
-<a name="minimal-breaking-changes"></a>
-### Minimal Breaking Changes
+### Alterações Significativas Mínimas
 
-Much of our focus during this release cycle has been minimizing breaking changes. Instead, we have dedicated ourselves to shipping continuous quality-of-life improvements throughout the year that do not break existing applications.
+Grande parte do nosso foco durante este ciclo de lançamento tem sido minimizar
+alterações significativas.
+Em vez disso, nos dedicamos a distribuir melhorias contínuas de qualidade de
+vida ao longo do ano que não quebram as aplicações existentes.
 
-Therefore, the Laravel 12 release is a relatively minor "maintenance release" in order to upgrade existing dependencies. In light of this, most Laravel applications may upgrade to Laravel 12 without changing any application code.
+Portanto, o lançamento do Laravel 12 é um "lançamento de manutenção"
+relativamente menor para atualizar as dependências existentes.
+Diante disso, a maioria das aplicações Laravel pode ser atualizada para o
+Laravel 12 sem alterar nenhum código da aplicação.
 
-<a name="new-application-starter-kits"></a>
-### New Application Starter Kits
+### Novos _Kits_ de Aplicações para Iniciantes
 
-Laravel 12 introduces new [application starter kits](starter-kits.md) for React, Vue, and Livewire. The React and Vue starter kits utilize Inertia 2, TypeScript, [shadcn/ui](https://ui.shadcn.com), and Tailwind, while the Livewire starter kits utilize the Tailwind-based [Flux UI](https://fluxui.dev) component library and Laravel Volt.
+O Laravel 12 apresenta novos
+[_kits_ de aplicações para iniciantes](starter-kits.md) React, Vue e Livewire.
+Os _kits_ para iniciantes React e Vue utilizam Inertia 2, TypeScript,
+[shadcn/ui](https://ui.shadcn.com) e Tailwind, enquanto os _kits_ para
+iniciantes Livewire utilizam a biblioteca de componentes
+[Flux UI](https://fluxui.dev) baseada no Tailwind e no Laravel Volt.
 
-The React, Vue, and Livewire starter kits all utilize Laravel's built-in authentication system to offer login, registration, password reset, email verification, and more. In addition, we are introducing a [WorkOS AuthKit-powered](https://authkit.com) variant of each starter kit, offering social authentication, passkeys, and SSO support. WorkOS offers free authentication for applications up to 1 million monthly active users.
+Os _kits_ para iniciantes React, Vue e Livewire utilizam o sistema de
+autenticação integrado do Laravel para oferecer _login_, registro, redefinição
+de senha, verificação de e-mail e muito mais.
+Além disso, estamos introduzindo uma variante do
+[WorkOS AuthKit](https://authkit.com) de cada _kit_ para iniciantes, oferecendo
+autenticação social, chaves de acesso e suporte a SSO.
+O WorkOS oferece autenticação gratuita para aplicações de até 1 milhão de
+pessoas usuárias ativas mensais.
 
-With the introduction of our new application starter kits, Laravel Breeze and Laravel Jetstream will no longer receive additional updates.
+Com a introdução de nossos novos _kits_ de aplicações para iniciantes, o Laravel
+Breeze e o Laravel Jetstream não receberão mais atualizações adicionais.
 
-To get started with our new starter kits, check out the [starter kit documentation](starter-kits.md).
+Para começar a usar nossos novos _kits_ para iniciantes, confira a
+[documentação dos _kits_ para iniciantes](starter-kits.md).
