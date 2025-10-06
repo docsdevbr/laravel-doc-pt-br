@@ -33,7 +33,6 @@ Laravel é uma marca registrada da Laravel Holdings Inc.
 Documentação licenciada sob a [Licença MIT][license].<br>
 A obra original foi traduzida do inglês para o português brasileiro.
 
-
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/laravel-doc-pt-br
 
 [badge-github-sponsors]: https://img.shields.io/github/sponsors/docsdevbr

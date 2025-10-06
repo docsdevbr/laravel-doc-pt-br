@@ -28,7 +28,7 @@ You can support the project through [GitHub Sponsors][github-sponsors] or
 ## License
 
 Copyright (c) Taylor Otwell.<br>
-Laravel is a Trademark of Laravel Holdings Inc.
+Laravel is a trademark of Laravel Holdings Inc.
 
 Documentation licensed under the [MIT License][license].<br>
 The original work was translated from English into Brazilian Portuguese.
