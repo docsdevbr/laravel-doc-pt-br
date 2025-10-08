@@ -285,7 +285,7 @@ use Illuminate\Validation\Rules\File;
 ### Diversos
 
 Também recomendamos que você visualize as alterações no repositório
-`laravel/laravel` do [GitHub](https://github.com/laravel/laravel).
+[`laravel/laravel` do GitHub](https://github.com/laravel/laravel).
 Embora muitas dessas alterações não sejam obrigatórias, você pode querer manter
 esses arquivos sincronizados com sua aplicação.
 Algumas dessas alterações serão abordadas neste guia de atualização, mas outras,
