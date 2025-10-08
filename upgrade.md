@@ -32,10 +32,10 @@ status: ready
 - [Carbon 3](#carbon-3)
 - [Mapeamento do índice de resultados de concorrência](#mapeamento-do-índice-de-resultados-de-concorrência)
 - [Resolução de dependência de classe do contêiner](#resolução-de-dependência-de-classe-do-contêiner)
-- [Image Validation Now Excludes SVGs](#image-validation)
-- [Local Filesystem Disk Default Root Path](#local-filesystem-disk-default-root-path)
+- [A validação de imagem agora exclui SVGs](#a-validação-de-imagem-agora-exclui-svgs)
+- [Caminho raiz padrão do disco do sistema de arquivos local](#caminho-raiz-padrão-do-disco-do-sistema-de-arquivos-local)
 - [Inspeção de banco de dados multi-esquema](#inspeção-de-banco-de-dados-multi-esquema)
-- [Nested Array Request Merging](#nested-array-request-merging)
+- [Mesclagem de arrays aninhados da requisição](#mesclagem-de-arrays-aninhados-da-requisição)
 
 </div>
 
@@ -214,26 +214,33 @@ instância de `Illuminate\Database\Connection` como seu primeiro argumento.
 
 #### Modelos e UUIDv7
 
-**Likelihood Of Impact: Medium**
+**Probabilidade de impacto: média**
 
-The `HasUuids` trait now returns UUIDs that are compatible with version 7 of the UUID spec (ordered UUIDs). If you would like to continue using ordered UUIDv4 strings for your model's IDs, you should now use the `HasVersion4Uuids` trait:
+A trait `HasUuids` agora retorna UUIDs compatíveis com a versão 7 da
+especificação de UUIDs (UUIDs ordenados).
+Se você deseja continuar usando strings UUIDv4 ordenadas para os IDs do seu
+modelo, use a trait `HasVersion4Uuids`:
 
 ```php
 use Illuminate\Database\Eloquent\Concerns\HasUuids; // [tl! remove]
 use Illuminate\Database\Eloquent\Concerns\HasVersion4Uuids as HasUuids; // [tl! add]
 ```
 
-The `HasVersion7Uuids` trait has been removed. If you were previously using this trait, you should use the `HasUuids` trait instead, which now provides the same behavior.
+A trait `HasVersion7Uuids` foi removida.
+Se você usava essa trait anteriormente, use a trait `HasUuids`, que agora
+oferece o mesmo comportamento.
 
-<a name="requests"></a>
-### Requests
+### Requisições
 
-<a name="nested-array-request-merging"></a>
-#### Nested Array Request Merging
+#### Mesclagem de arrays aninhados da requisição
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: baixa**
 
-The `$request->mergeIfMissing()` method now allows merging nested array data using "dot" notation. If you were previously relying on this method to create a top-level array key containing the "dot" notation version of the key, you may need to adjust your application to account for this new behavior:
+O método `$request->mergeIfMissing()` agora permite mesclar dados de arrays
+aninhados usando a notação "ponto".
+Se você anteriormente utilizava esse método para criar uma chave de array de
+nível superior contendo a versão da chave em notação "ponto", talvez seja
+necessário ajustar sua aplicação para levar em conta esse novo comportamento:
 
 ```php
 $request->mergeIfMissing([
@@ -241,36 +248,48 @@ $request->mergeIfMissing([
 ]);
 ```
 
-<a name="storage"></a>
-### Storage
+### Armazenamento
 
-<a name="local-filesystem-disk-default-root-path"></a>
-#### Local Filesystem Disk Default Root Path
+#### Caminho raiz padrão do disco do sistema de arquivos local
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: baixa**
 
-If your application does not explicitly define a `local` disk in your filesystems configuration, Laravel will now default the local disk's root to `storage/app/private`. In previous releases, this defaulted to `storage/app`. As a result, calls to `Storage::disk('local')` will read from and write to `storage/app/private` unless otherwise configured. To restore the previous behavior, you may define the `local` disk manually and set the desired root path.
+Se sua aplicação não definir explicitamente um disco `local` na configuração do
+seu sistema de arquivos, o Laravel agora definirá como padrão a raiz do disco
+local como `storage/app/private`.
+Em versões anteriores, o padrão era `storage/app`.
+Como resultado, chamadas para `Storage::disk('local')` lerão e gravarão em
+`storage/app/private`, a menos que configurado de outra forma.
+Para restaurar o comportamento anterior, você pode definir o disco `local`
+manualmente e definir o caminho raiz desejado.
 
-<a name="validation"></a>
-### Validation
+### Validação
 
-<a name="image-validation"></a>
-#### Image Validation Now Excludes SVGs
+#### A validação de imagem agora exclui SVGs
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: baixa**
 
-The `image` validation rule no longer allows SVG images by default. If you would like to allow SVGs when using the `image` rule, you must explicitly allow them:
+A regra de validação `image` não permite mais imagens SVG por padrão.
+Se desejar permitir SVGs ao usar a regra `image`, você deve permiti-las
+explicitamente:
 
 ```php
 use Illuminate\Validation\Rules\File;
 
 'photo' => 'required|image:allow_svg'
 
-// Or...
+// Ou...
 'photo' => ['required', File::image(allowSvg: true)],
 ```
 
-<a name="miscellaneous"></a>
-### Miscellaneous
+### Diversos
 
-We also encourage you to view the changes in the `laravel/laravel` [GitHub repository](https://github.com/laravel/laravel). While many of these changes are not required, you may wish to keep these files in sync with your application. Some of these changes will be covered in this upgrade guide, but others, such as changes to configuration files or comments, will not be. You can easily view the changes with the [GitHub comparison tool](https://github.com/laravel/laravel/compare/11.x...12.x) and choose which updates are important to you.
+Também recomendamos que você visualize as alterações no repositório
+`laravel/laravel` do [GitHub](https://github.com/laravel/laravel).
+Embora muitas dessas alterações não sejam obrigatórias, você pode querer manter
+esses arquivos sincronizados com sua aplicação.
+Algumas dessas alterações serão abordadas neste guia de atualização, mas outras,
+como alterações em arquivos de configuração ou comentários, não serão.
+Você pode visualizar facilmente as alterações com a
+[ferramenta de comparação do GitHub](https://github.com/laravel/laravel/compare/11.x...12.x)
+e escolher quais atualizações são importantes para você.
