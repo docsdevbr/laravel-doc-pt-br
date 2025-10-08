@@ -1,86 +1,102 @@
-# Upgrade Guide
+---
+source_url: https://github.com/laravel/docs/blob/12.x/upgrade.md
+revision: 6bc6cd05d1b1754de15eb73e6160384c7aaa094f
+status: ready
+---
 
-- [Upgrading To 12.0 From 11.x](#upgrade-12.0)
+# Guia de atualização
 
-<a name="high-impact-changes"></a>
-## High Impact Changes
+- [Atualizando da versão 11.x para a versão 12.0](#atualizando-da-versão-11.x-para-a-versão-12.0)
 
-<div class="content-list" markdown="1">
-
-- [Updating Dependencies](#updating-dependencies)
-- [Updating the Laravel Installer](#updating-the-laravel-installer)
-
-</div>
-
-<a name="medium-impact-changes"></a>
-## Medium Impact Changes
+## Mudanças de alto impacto
 
 <div class="content-list" markdown="1">
 
-- [Models and UUIDv7](#models-and-uuidv7)
+- [Atualizando dependências](#atualizando-dependências)
+- [Atualizando o instalador do Laravel](#atualizando-o-instalador-do-laravel)
 
 </div>
 
-<a name="low-impact-changes"></a>
-## Low Impact Changes
+## Mudanças de médio impacto
+
+<div class="content-list" markdown="1">
+
+- [Modelos e UUIDv7](#modelos-e-uuidv7)
+
+</div>
+
+## Mudanças de baixo impacto
 
 <div class="content-list" markdown="1">
 
 - [Carbon 3](#carbon-3)
-- [Concurrency Result Index Mapping](#concurrency-result-index-mapping)
+- [Mapeamento do índice de resultados de concorrência](#mapeamento-do-índice-de-resultados-de-concorrência)
+- [Resolução de dependência de classe do contêiner](#resolução-de-dependência-de-classe-do-contêiner)
 - [Image Validation Now Excludes SVGs](#image-validation)
-- [Multi-Schema Database Inspecting](#multi-schema-database-inspecting)
+- [Local Filesystem Disk Default Root Path](#local-filesystem-disk-default-root-path)
+- [Inspeção de banco de dados multi-esquema](#inspeção-de-banco-de-dados-multi-esquema)
 - [Nested Array Request Merging](#nested-array-request-merging)
 
 </div>
 
-<a name="upgrade-12.0"></a>
-## Upgrading To 12.0 From 11.x
+## Atualizando da versão 11.x para a versão 12.0
 
-#### Estimated Upgrade Time: 5 Minutes
+#### Tempo estimado de atualização: 5 minutos
 
 > [!NOTE]
-> We attempt to document every possible breaking change. Since some of these breaking changes are in obscure parts of the framework only a portion of these changes may actually affect your application. Want to save time? You can use [Laravel Shift](https://laravelshift.com/) to help automate your application upgrades.
+> Tentamos documentar todas as possíveis alterações significativas.
+> Como algumas dessas alterações significativas estão em partes obscuras do
+> framework, apenas uma parte delas pode realmente afetar sua aplicação.
+> Quer economizar tempo?
+> Você pode usar o [Laravel Shift](https://laravelshift.com/) para ajudar a
+> automatizar as atualizações da sua aplicação.
 
-<a name="updating-dependencies"></a>
-### Updating Dependencies
+### Atualizando dependências
 
-**Likelihood Of Impact: High**
+**Probabilidade de impacto: alta**
 
-You should update the following dependencies in your application's `composer.json` file:
+Você deve atualizar as seguintes dependências no arquivo `composer.json` da sua
+aplicação:
 
 <div class="content-list" markdown="1">
 
-- `laravel/framework` to `^12.0`
-- `phpunit/phpunit` to `^11.0`
-- `pestphp/pest` to `^3.0`
+- `laravel/framework` para `^12.0`
+- `phpunit/phpunit` para `^11.0`
+- `pestphp/pest` para `^3.0`
 
 </div>
 
-<a name="carbon-3"></a>
 #### Carbon 3
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: baixa**
 
-Support for [Carbon 2.x](https://carbon.nesbot.com/docs/) has been removed. All Laravel 12 applications now require [Carbon 3.x](https://carbon.nesbot.com/docs/#api-carbon-3).
+O suporte para [Carbon 2.x](https://carbon.nesbot.com/docs/) foi removido.
+Todas as aplicações Laravel 12 agora requerem
+[Carbon 3.x](https://carbon.nesbot.com/docs/#api-carbon-3).
 
-<a name="updating-the-laravel-installer"></a>
-### Updating the Laravel Installer
+### Atualizando o instalador do Laravel
 
-If you are using the Laravel installer CLI tool to create new Laravel applications, you should update your installer installation to be compatible with Laravel 12.x and the [new Laravel starter kits](https://laravel.com/starter-kits). If you installed the Laravel installer via `composer global require`, you may update the installer using `composer global update`:
+Se você estiver usando a ferramenta CLI do instalador do Laravel para criar
+novas aplicações Laravel, atualize a instalação do seu instalador para que seja
+compatível com o Laravel 12.x e os
+[novos kits para iniciantes do Laravel](https://laravel.com/starter-kits).
+Se você instalou o instalador do Laravel via `composer global require`, pode
+atualizar o instalador usando `composer global update`:
 
 ```shell
 composer global update laravel/installer
 ```
 
-If you originally installed PHP and Laravel via `php.new`, you may simply re-run the `php.new` installation commands for your operating system to install the latest version of PHP and the Laravel installer:
+Se você instalou o PHP e o Laravel originalmente via `php.new`, basta executar
+novamente os comandos de instalação do `php.new` no seu sistema operacional para
+instalar a versão mais recente do PHP e do instalador do Laravel:
 
 ```shell tab=macOS
 /bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.4)"
 ```
 
 ```shell tab=Windows PowerShell
-# Run as administrator...
+# Executar como administrador...
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.4'))
 ```
 
@@ -88,68 +104,115 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 /bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
 ```
 
-Or, if you are using [Laravel Herd's](https://herd.laravel.com) bundled copy of the Laravel installer, you should update your Herd installation to the latest release.
+Ou, se você estiver usando a cópia do instalador que vem com o
+[Laravel Herd](https://herd.laravel.com), atualize sua instalação do Herd para a
+versão mais recente.
 
-<a name="concurrency"></a>
-### Concurrency
+### Autenticação
 
-<a name="concurrency-result-index-mapping"></a>
-#### Concurrency Result Index Mapping
+#### Assinatura do construtor de `DatabaseTokenRepository` atualizada
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: muito baixa**
 
-When invoking the `Concurrency::run` method with an associative array, the results of the concurrent operations are now returned with their associated keys:
+O construtor da classe `Illuminate\Auth\Passwords\DatabaseTokenRepository` agora
+espera que o parâmetro `$expires` seja informado em segundos, em vez de minutos.
+
+### Concorrência
+
+#### Mapeamento do índice de resultados de concorrência
+
+**Probabilidade de impacto: baixa**
+
+Ao invocar o método `Concurrency::run` com um array associativo, os resultados
+das operações concorrentes agora são retornados com suas chaves associadas:
 
 ```php
 $result = Concurrency::run([
-    'task-1' => fn () => 1 + 1,
-    'task-2' => fn () => 2 + 2,
+    'tarefa-1' => fn () => 1 + 1,
+    'tarefa-2' => fn () => 2 + 2,
 ]);
 
-// ['task-1' => 2, 'task-2' => 4]
+// ['tarefa-1' => 2, 'tarefa-2' => 4]
 ```
 
-<a name="database"></a>
-### Database
+### Contêiner
 
-<a name="multi-schema-database-inspecting"></a>
-#### Multi-Schema Database Inspecting
+#### Resolução de dependência de classe do contêiner
 
-**Likelihood Of Impact: Low**
+**Probabilidade de impacto: baixa**
 
-The `Schema::getTables()`, `Schema::getViews()`, and `Schema::getTypes()` methods now include the results from all schemas by default. You may pass the `schema` argument to retrieve the result for the given schema only:
+O contêiner de injeção de dependência agora respeita o valor padrão das
+propriedades da classe ao resolver uma instância de classe.
+Se você dependia anteriormente do contêiner para resolver uma instância de
+classe sem o valor padrão, talvez seja necessário ajustar sua aplicação para
+levar em conta este novo comportamento:
 
 ```php
-// All tables on all schemas...
-$tables = Schema::getTables();
+class Example
+{
+    public function __construct(public ?Carbon $date = null) {}
+}
 
-// All tables on the 'main' schema...
-$table = Schema::getTables(schema: 'main');
+$example = resolve(Example::class);
 
-// All tables on the 'main' and 'blog' schemas...
-$table = Schema::getTables(schema: ['main', 'blog']);
+// <= 11.x
+$example->date instanceof Carbon;
+
+// >= 12.x
+$example->date === null;
 ```
 
-The `Schema::getTableListing()` method now returns schema-qualified table names by default. You may pass the `schemaQualified` argument to change the behavior as desired:
+### Banco de dados
+
+#### Inspeção de banco de dados multi-esquema
+
+**Probabilidade de impacto: baixa**
+
+Os métodos `Schema::getTables()`, `Schema::getViews()` e `Schema::getTypes()`
+agora incluem os resultados de todos os esquemas por padrão.
+Você pode passar o argumento `schema` para recuperar o resultado apenas para o
+esquema fornecido:
+
+```php
+// Todas as tabelas em todos os esquemas...
+$tables = Schema::getTables();
+
+// Todas as tabelas no esquema "main"...
+$tables = Schema::getTables(schema: 'main');
+
+// Todas as tabelas nos esquemas "main" e "blog"...
+$tables = Schema::getTables(schema: ['main', 'blog']);
+```
+
+O método `Schema::getTableListing()` agora retorna nomes de tabela qualificados
+pelo esquema por padrão.
+Você pode passar o argumento `schemaQualified` para alterar o comportamento
+conforme desejado:
 
 ```php
 $tables = Schema::getTableListing();
 // ['main.migrations', 'main.users', 'blog.posts']
 
-$table = Schema::getTableListing(schema: 'main');
+$tables = Schema::getTableListing(schema: 'main');
 // ['main.migrations', 'main.users']
 
-$table = Schema::getTableListing(schema: 'main', schemaQualified: false);
+$tables = Schema::getTableListing(schema: 'main', schemaQualified: false);
 // ['migrations', 'users']
 ```
 
-The `db:table` and `db:show` commands now output the results of all schemas on MySQL, MariaDB, and SQLite, just like PostgreSQL and SQL Server.
+Os comandos `db:table` e `db:show` agora exibem os resultados de todos os
+esquemas no MySQL, MariaDB e SQLite, assim como no PostgreSQL e no SQL Server.
 
-<a name="eloquent"></a>
+#### Assinatura do construtor de `Blueprint` atualizada
+
+**Probabilidade de impacto: muito baixa**
+
+O construtor da classe `Illuminate\Database\Schema\Blueprint` agora espera uma
+instância de `Illuminate\Database\Connection` como seu primeiro argumento.
+
 ### Eloquent
 
-<a name="models-and-uuidv7"></a>
-#### Models and UUIDv7
+#### Modelos e UUIDv7
 
 **Likelihood Of Impact: Medium**
 
@@ -178,11 +241,23 @@ $request->mergeIfMissing([
 ]);
 ```
 
+<a name="storage"></a>
+### Storage
+
+<a name="local-filesystem-disk-default-root-path"></a>
+#### Local Filesystem Disk Default Root Path
+
+**Likelihood Of Impact: Low**
+
+If your application does not explicitly define a `local` disk in your filesystems configuration, Laravel will now default the local disk's root to `storage/app/private`. In previous releases, this defaulted to `storage/app`. As a result, calls to `Storage::disk('local')` will read from and write to `storage/app/private` unless otherwise configured. To restore the previous behavior, you may define the `local` disk manually and set the desired root path.
+
 <a name="validation"></a>
 ### Validation
 
 <a name="image-validation"></a>
 #### Image Validation Now Excludes SVGs
+
+**Likelihood Of Impact: Low**
 
 The `image` validation rule no longer allows SVG images by default. If you would like to allow SVGs when using the `image` rule, you must explicitly allow them:
 
