@@ -10,7 +10,6 @@ status: ready
 - [Política de suporte](#support-policy)
 - [Laravel 12](#laravel-12)
 
-<a name="versioning-scheme"></a>
 ## Esquema de versionamento
 
 O Laravel e seus outros pacotes originais seguem o
@@ -26,7 +25,6 @@ que as versões maiores do Laravel incluem alterações significativas.
 No entanto, nos esforçamos para sempre garantir que você possa atualizar para
 uma nova versão maior em um dia ou menos.
 
-<a name="named-arguments"></a>
 #### Argumentos nomeados
 
 [Argumentos nomeados](https://www.php.net/manual/pt_BR/functions.arguments.php#functions.named-arguments)
@@ -38,7 +36,6 @@ Portanto, o uso de argumentos nomeados ao chamar métodos do Laravel deve ser
 feito com cautela e com a compreensão de que os nomes dos parâmetros podem mudar
 no futuro.
 
-<a name="support-policy"></a>
 ## Política de suporte
 
 Para todas as versões do Laravel, as correções de falhas são fornecidas por 18
@@ -72,7 +69,6 @@ Além disso, revise as versões do banco de dados
 
 (*) Versões suportadas do PHP
 
-<a name="laravel-12"></a>
 ## Laravel 12
 
 O Laravel 12 dá continuidade às melhorias feitas no Laravel 11.x, atualizando
@@ -82,7 +78,6 @@ autenticação da pessoa usuária.
 A variante WorkOS dos nossos kits para iniciantes oferece autenticação social,
 chaves de acesso e suporte a SSO.
 
-<a name="minimal-breaking-changes"></a>
 ### Alterações significativas mínimas
 
 Grande parte do nosso foco durante este ciclo de lançamento tem sido minimizar
@@ -95,7 +90,6 @@ relativamente menor, a fim de atualizar as dependências existentes.
 Diante disso, a maioria das aplicações Laravel pode ser atualizada para o
 Laravel 12 sem alterar nenhum código da aplicação.
 
-<a name="new-application-starter-kits"></a>
 ### Novos kits de aplicações para iniciantes
 
 O Laravel 12 apresenta novos
