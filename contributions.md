@@ -64,7 +64,7 @@ dos projetos do Laravel:
 - [Laravel Envoy](https://github.com/laravel/envoy)
 - [Laravel Folio](https://github.com/laravel/folio)
 - [Laravel Framework](https://github.com/laravel/framework)
-- [Laravel Homestead](https://github.com/laravel/homestead) ([Build Scripts](https://github.com/laravel/settler))
+- [Laravel Homestead](https://github.com/laravel/homestead) ([Scripts de construção](https://github.com/laravel/settler))
 - [Laravel Horizon](https://github.com/laravel/horizon)
 - [Laravel Passport](https://github.com/laravel/passport)
 - [Laravel Pennant](https://github.com/laravel/pennant)
@@ -76,7 +76,7 @@ dos projetos do Laravel:
 - [Laravel Scout](https://github.com/laravel/scout)
 - [Laravel Socialite](https://github.com/laravel/socialite)
 - [Laravel Telescope](https://github.com/laravel/telescope)
-- [Laravel Livewire Starter Kit](https://github.com/laravel/livewire-starter-kit)
+- [Kit para iniciantes Laravel Livewire](https://github.com/laravel/livewire-starter-kit)
 - [Kit para iniciantes Laravel React](https://github.com/laravel/react-starter-kit)
 - [Kit para iniciantes Laravel Vue](https://github.com/laravel/vue-starter-kit)
 
