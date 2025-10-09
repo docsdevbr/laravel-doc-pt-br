@@ -1,4 +1,11 @@
 ---
+# Copyright (c) Taylor Otwell.
+# Laravel is a trademark of Laravel Holdings Inc.
+
+# Documentation licensed under the MIT License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/laravel/docs/blob/-/license.md
+
 source_url: https://github.com/laravel/docs/blob/12.x/releases.md
 revision: ee8f2805e6ef75d877eb8ffa20110e3b6e08b647
 status: ready
