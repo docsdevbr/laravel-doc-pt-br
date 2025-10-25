@@ -5,73 +5,113 @@
 # Documentation licensed under the MIT License.
 # The original work was translated from English into Brazilian Portuguese.
 # https://github.com/laravel/docs/blob/-/license.md
+
+source_url: https://github.com/laravel/docs/blob/12.x/installation.md
+revision: 8721ef259eaf131d5859498d64a6868ee9899b7e
+status: ready
 ---
 
-# Installation
+# Instalação
 
-- [Meet Laravel](#meet-laravel)
-    - [Why Laravel?](#why-laravel)
-- [Creating a Laravel Application](#creating-a-laravel-project)
-    - [Installing PHP and the Laravel Installer](#installing-php)
-    - [Creating an Application](#creating-an-application)
-- [Initial Configuration](#initial-configuration)
-    - [Environment Based Configuration](#environment-based-configuration)
-    - [Databases and Migrations](#databases-and-migrations)
-    - [Directory Configuration](#directory-configuration)
-- [Installation Using Herd](#installation-using-herd)
-    - [Herd on macOS](#herd-on-macos)
-    - [Herd on Windows](#herd-on-windows)
-- [IDE Support](#ide-support)
-- [Next Steps](#next-steps)
-    - [Laravel the Full Stack Framework](#laravel-the-fullstack-framework)
-    - [Laravel the API Backend](#laravel-the-api-backend)
+- [Conheça o Laravel](#conheça-o-laravel)
+  - [Por que Laravel?](#por-que-laravel)
+- [Criando uma aplicação Laravel](#criando-uma-aplicação-laravel)
+  - [Instalando o PHP e o instalador do Laravel](#instalando-o-php-e-o-instalador-do-laravel)
+  - [Criando uma aplicação](#criando-uma-aplicação)
+- [Configuração inicial](#configuração-inicial)
+  - [Configuração baseada em ambiente](#configuração-baseada-em-ambiente)
+  - [Bancos de dados e migrações](#bancos-de-dados-e-migrações)
+  - [Configuração de diretório](#configuração-de-diretório)
+- [Instalação usando o Herd](#instalação-usando-o-herd)
+  - [Herd no macOS](#herd-no-macos)
+  - [Herd no Windows](#herd-no-windows)
+- [Suporte para IDE](#suporte-para-ide)
+- [Próximos Passos](#próximos-passos)
+  - [Laravel, o framework full-stack](#laravel-o-framework-full-stack)
+  - [Laravel, o Backend de API](#laravel-o-backend-de-api)
 
-<a name="meet-laravel"></a>
-## Meet Laravel
+## Conheça o Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. A web framework provides a structure and starting point for creating your application, allowing you to focus on creating something amazing while we sweat the details.
+Laravel é um framework para aplicações web com sintaxe expressiva e elegante.
+Um framework web fornece uma estrutura e um ponto de partida para a criação da
+sua aplicação, permitindo que você se concentre em criar algo incrível enquanto
+nós cuidamos dos detalhes.
 
-Laravel strives to provide an amazing developer experience while providing powerful features such as thorough dependency injection, an expressive database abstraction layer, queues and scheduled jobs, unit and integration testing, and more.
+O Laravel se esforça para proporcionar uma experiência incrível à pessoa
+desenvolvedora, ao mesmo tempo em que oferece recursos poderosos, como injeção
+completa de dependência, uma camada expressiva de abstração de banco de dados,
+filas e trabalhos agendados, testes unitários e de integração e muito mais.
 
-Whether you are new to PHP web frameworks or have years of experience, Laravel is a framework that can grow with you. We'll help you take your first steps as a web developer or give you a boost as you take your expertise to the next level. We can't wait to see what you build.
+Quer você seja iniciante em frameworks web PHP ou tenha anos de experiência, o
+Laravel é um framework que pode crescer com você.
+Ajudaremos você a dar seus primeiros passos como pessoa desenvolvedora web ou
+lhe daremos um impulso para que você leve sua experiência para o próximo nível.
+Mal podemos esperar para ver o que você construirá.
 
-<a name="why-laravel"></a>
-### Why Laravel?
+### Por que Laravel?
 
-There are a variety of tools and frameworks available to you when building a web application. However, we believe Laravel is the best choice for building modern, full-stack web applications.
+Há uma variedade de ferramentas e frameworks disponíveis para você criar uma
+aplicação web.
+No entanto, acreditamos que o Laravel é a melhor escolha para criar aplicações
+web modernas e completas.
 
-#### A Progressive Framework
+#### Um framework progressivo
 
-We like to call Laravel a "progressive" framework. By that, we mean that Laravel grows with you. If you're just taking your first steps into web development, Laravel's vast library of documentation, guides, and [video tutorials](https://laracasts.com) will help you learn the ropes without becoming overwhelmed.
+Gostamos de chamar o Laravel de framework "progressivo".
+Com isso, queremos dizer que o Laravel cresce com você.
+Se você está apenas dando os primeiros passos no desenvolvimento web, a vasta
+biblioteca de documentação, guias e [tutoriais em vídeo](https://laracasts.com)
+do Laravel ajudará você a aprender o básico sem se sobrecarregar.
 
-If you're a senior developer, Laravel gives you robust tools for [dependency injection](container.md), [unit testing](testing.md), [queues](queues.md), [real-time events](broadcasting.md), and more. Laravel is fine-tuned for building professional web applications and ready to handle enterprise work loads.
+Se você é uma pessoa desenvolvedora sênior, o Laravel oferece ferramentas
+robustas para [injeção de dependência](container.md),
+[testes unitários](testing.md), [filas](queues.md),
+[eventos em tempo real](broadcasting.md) e muito mais.
+O Laravel é otimizado para a construção de aplicações web profissionais e está
+pronto para lidar com cargas de trabalho corporativas.
 
-#### A Scalable Framework
+#### Um framework escalável
 
-Laravel is incredibly scalable. Thanks to the scaling-friendly nature of PHP and Laravel's built-in support for fast, distributed cache systems like Redis, horizontal scaling with Laravel is a breeze. In fact, Laravel applications have been easily scaled to handle hundreds of millions of requests per month.
+O Laravel é incrivelmente escalável.
+Graças à natureza amigável ao escalonamento do PHP e ao suporte integrado do
+Laravel para sistemas de cache rápidos e distribuídos, como o Redis, o
+escalonamento horizontal com o Laravel é muito fácil.
+De fato, aplicações Laravel foram facilmente escaladas para lidar com centenas
+de milhões de requisições por mês.
 
-Need extreme scaling? Platforms like [Laravel Cloud](https://cloud.laravel.com) allow you to run your Laravel application at nearly limitless scale.
+Precisa de escalonamento extremo?
+Plataformas como a [Laravel Cloud](https://cloud.laravel.com) permitem que você
+execute sua aplicação Laravel em escala quase ilimitada.
 
-#### A Community Framework
+#### Um framework da comunidade
 
-Laravel combines the best packages in the PHP ecosystem to offer the most robust and developer friendly framework available. In addition, thousands of talented developers from around the world have [contributed to the framework](https://github.com/laravel/framework). Who knows, maybe you'll even become a Laravel contributor.
+O Laravel combina os melhores pacotes do ecossistema PHP para oferecer o
+framework mais robusto e amigável disponível para pessoas desenvolvedoras.
+Além disso, milhares de pessoas desenvolvedoras talentosas de todo o mundo
+[contribuíram para o framework](https://github.com/laravel/framework).
+Quem sabe você até se torna uma pessoa contribuidora do Laravel.
 
-<a name="creating-a-laravel-project"></a>
-## Creating a Laravel Application
+## Criando uma aplicação Laravel
 
-<a name="installing-php"></a>
-### Installing PHP and the Laravel Installer
+### Instalando o PHP e o instalador do Laravel
 
-Before creating your first Laravel application, make sure that your local machine has [PHP](https://php.net), [Composer](https://getcomposer.org), and [the Laravel installer](https://github.com/laravel/installer) installed. In addition, you should install either [Node and NPM](https://nodejs.org) or [Bun](https://bun.sh/) so that you can compile your application's frontend assets.
+Antes de criar sua primeira aplicação Laravel, certifique-se de que sua máquina
+local tenha o [PHP](https://php.net), o [Composer](https://getcomposer.org) e o
+[instalador do Laravel](https://github.com/laravel/installer) instalados.
+Além disso, você deve instalar o [Node e o NPM](https://nodejs.org) ou o
+[Bun](https://bun.sh/) para poder compilar os assets de front-end da sua
+aplicação.
 
-If you don't have PHP and Composer installed on your local machine, the following commands will install PHP, Composer, and the Laravel installer on macOS, Windows, or Linux:
+Se você não tiver o PHP e o Composer instalados na sua máquina local, os
+seguintes comandos instalarão o PHP, o Composer e o instalador do Laravel no
+macOS, Windows ou Linux:
 
 ```shell tab=macOS
 /bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.4)"
 ```
 
 ```shell tab=Windows PowerShell
-# Run as administrator...
+# Executar como administrador...
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.4'))
 ```
 
@@ -79,64 +119,103 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 /bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
 ```
 
-After running one of the commands above, you should restart your terminal session. To update PHP, Composer, and the Laravel installer after installing them via `php.new`, you can re-run the command in your terminal.
+Após executar um dos comandos acima, reinicie sua sessão de terminal.
+Para atualizar o PHP, o Composer e o instalador do Laravel após instalá-los via
+`php.new`, você pode executar o comando novamente no seu terminal.
 
-If you already have PHP and Composer installed, you may install the Laravel installer via Composer:
+Se você já tem o PHP e o Composer instalados, pode instalar o instalador do
+Laravel via Composer:
 
 ```shell
 composer global require laravel/installer
 ```
 
 > [!NOTE]
-> For a fully-featured, graphical PHP installation and management experience, check out [Laravel Herd](#installation-using-herd).
+> Para uma experiência completa e gráfica de instalação e gerenciamento do PHP,
+> confira [Laravel Herd](#instalação-usando-o-herd).
 
-<a name="creating-an-application"></a>
-### Creating an Application
+### Criando uma aplicação
 
-After you have installed PHP, Composer, and the Laravel installer, you're ready to create a new Laravel application. The Laravel installer will prompt you to select your preferred testing framework, database, and starter kit:
+Após instalar o PHP, o Composer e o instalador do Laravel, você estará pronta
+para criar uma nova aplicação Laravel.
+O instalador do Laravel solicitará que você selecione seu framework de testes,
+banco de dados e kit para iniciantes preferido:
 
 ```shell
-laravel new example-app
+laravel new app-exemplo
 ```
 
-Once the application has been created, you can start Laravel's local development server, queue worker, and Vite development server using the `dev` Composer script:
+Depois que a aplicação for criada, você pode iniciar o servidor de
+desenvolvimento local do Laravel, o worker de filas e o servidor de
+desenvolvimento Vite usando o script `dev` do Composer:
 
 ```shell
-cd example-app
+cd app-exemplo
 npm install && npm run build
 composer run dev
 ```
 
-Once you have started the development server, your application will be accessible in your web browser at [http://localhost:8000](http://localhost:8000). Next, you're ready to [start taking your next steps into the Laravel ecosystem](#next-steps). Of course, you may also want to [configure a database](#databases-and-migrations).
+Após iniciar o servidor de desenvolvimento, sua aplicação estará acessível no
+seu navegador em [http://localhost:8000](http://localhost:8000).
+Em seguida, você estará pronta para
+[começar a dar os próximos passos no ecossistema Laravel](#próximos-passos).
+Claro, você também pode querer
+[configurar um banco de dados](#bancos-de-dados-e-migrações).
 
 > [!NOTE]
-> If you would like a head start when developing your Laravel application, consider using one of our [starter kits](starter-kits.md). Laravel's starter kits provide backend and frontend authentication scaffolding for your new Laravel application.
+> Se você quiser uma vantagem inicial no desenvolvimento da sua aplicação
+> Laravel, considere usar um dos nossos [kits para iniciantes](starter-kits.md).
+> Os kits para iniciantes do Laravel fornecem uma estrutura de autenticação de
+> back-end e front-end para sua nova aplicação Laravel.
 
-<a name="initial-configuration"></a>
-## Initial Configuration
+## Configuração inicial
 
-All of the configuration files for the Laravel framework are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
+Todos os arquivos de configuração do framework Laravel são armazenados no
+diretório `config`.
+Cada opção está documentada, então sinta-se à vontade para examinar os arquivos
+e se familiarizar com as opções disponíveis.
 
-Laravel needs almost no additional configuration out of the box. You are free to get started developing! However, you may wish to review the `config/app.php` file and its documentation. It contains several options such as `url` and `locale` that you may wish to change according to your application.
+O Laravel praticamente não precisa de configuração adicional.
+Você está livre para começar a desenvolver!
+No entanto, você pode revisar o arquivo `config/app.php` e sua documentação.
+Ele contém diversas opções, como `url` e `locale`, que você pode alterar de
+acordo com sua aplicação.
 
-<a name="environment-based-configuration"></a>
-### Environment Based Configuration
+### Configuração baseada em ambiente
 
-Since many of Laravel's configuration option values may vary depending on whether your application is running on your local machine or on a production web server, many important configuration values are defined using the `.env` file that exists at the root of your application.
+Como muitos dos valores das opções de configuração do Laravel podem variar
+dependendo se sua aplicação está sendo executada na sua máquina local ou em um
+servidor web de produção, muitos valores de configuração importantes são
+definidos usando o arquivo `.env` que existe na raiz da sua aplicação.
 
-Your `.env` file should not be committed to your application's source control, since each developer / server using your application could require a different environment configuration. Furthermore, this would be a security risk in the event an intruder gains access to your source control repository, since any sensitive credentials would be exposed.
+Seu arquivo `.env` não deve ser enviado para o controle de versão da sua
+aplicação, pois cada pessoa desenvolvedora ou servidor que utiliza sua aplicação
+pode exigir uma configuração de ambiente diferente.
+Além disso, isso representaria um risco à segurança caso uma pessoa invasora
+obtivesse acesso ao seu repositório de controle de origem, já que quaisquer
+credenciais confidenciais seriam expostas.
 
 > [!NOTE]
-> For more information about the `.env` file and environment based configuration, check out the full [configuration documentation](configuration.md#environment-configuration).
+> Para obter mais informações sobre o arquivo `.env` e a configuração baseada em
+> ambiente, consulte a
+> [documentação de configuração completa](configuration.md#environment-configuration).
 
-<a name="databases-and-migrations"></a>
-### Databases and Migrations
+### Bancos de dados e migrações
 
-Now that you have created your Laravel application, you probably want to store some data in a database. By default, your application's `.env` configuration file specifies that Laravel will be interacting with an SQLite database.
+Agora que você criou sua aplicação Laravel, provavelmente deseja armazenar
+alguns dados em um banco de dados.
+Por padrão, o arquivo de configuração `.env` da sua aplicação especifica que o
+Laravel irá interagir com um banco de dados SQLite.
 
-During the creation of the application, Laravel created a `database/database.sqlite` file for you, and ran the necessary migrations to create the application's database tables.
+Durante a criação da aplicação, o Laravel criou um arquivo
+`database/database.sqlite` para você e executou as migrações necessárias para
+criar as tabelas de banco de dados da aplicação.
 
-If you prefer to use another database driver such as MySQL or PostgreSQL, you can update your `.env` configuration file to use the appropriate database. For example, if you wish to use MySQL, update your `.env` configuration file's `DB_*` variables like so:
+Se preferir usar outro driver de banco de dados, como MySQL ou PostgreSQL, você
+pode atualizar seu arquivo de configuração `.env` para usar o banco de dados
+apropriado.
+Por exemplo, se desejar usar MySQL, atualize as variáveis `DB_*` do seu arquivo
+de configuração `.env` da seguinte forma:
 
 ```ini
 DB_CONNECTION=mysql
@@ -147,112 +226,190 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-If you choose to use a database other than SQLite, you will need to create the database and run your application's [database migrations](migrations.md):
+Se você optar por usar um banco de dados diferente do SQLite, será necessário
+criar o banco de dados e executar as
+[migrações de banco de dados](migrations.md) da sua aplicação:
 
 ```shell
 php artisan migrate
 ```
 
 > [!NOTE]
-> If you are developing on macOS or Windows and need to install MySQL, PostgreSQL, or Redis locally, consider using [Herd Pro](https://herd.laravel.com/#plans) or [DBngin](https://dbngin.com/).
+> Se você estiver desenvolvendo no macOS ou Windows e precisar instalar MySQL,
+> PostgreSQL ou Redis localmente, considere usar o
+> [Herd Pro](https://herd.laravel.com/#plans) ou o
+> [DBngin](https://dbngin.com/).
 
-<a name="directory-configuration"></a>
-### Directory Configuration
+### Configuração de diretório
 
-Laravel should always be served out of the root of the "web directory" configured for your web server. You should not attempt to serve a Laravel application out of a subdirectory of the "web directory". Attempting to do so could expose sensitive files present within your application.
+O Laravel deve sempre ser servido a partir da raiz do "diretório web"
+configurado para o seu servidor web.
+Você não deve tentar servir uma aplicação Laravel a partir de um subdiretório do
+"diretório web".
+Tentar fazer isso pode expor arquivos confidenciais presentes na sua aplicação.
 
-<a name="installation-using-herd"></a>
-## Installation Using Herd
+## Instalação usando o Herd
 
-[Laravel Herd](https://herd.laravel.com) is a blazing fast, native Laravel and PHP development environment for macOS and Windows. Herd includes everything you need to get started with Laravel development, including PHP and Nginx.
+[Laravel Herd](https://herd.laravel.com) é um ambiente de desenvolvimento nativo
+e rápido em Laravel e PHP para macOS e Windows.
+O Herd inclui tudo o que você precisa para começar a desenvolver com Laravel,
+incluindo PHP e Nginx.
 
-Once you install Herd, you're ready to start developing with Laravel. Herd includes command line tools for `php`, `composer`, `laravel`, `expose`, `node`, `npm`, and `nvm`.
+Após instalar o Herd, você estará pronta para começar a desenvolver com o
+Laravel.
+O Herd inclui ferramentas de linha de comando para `php`, `composer`, `laravel`,
+`expose`, `node`, `npm` e `nvm`.
 
 > [!NOTE]
-> [Herd Pro](https://herd.laravel.com/#plans) augments Herd with additional powerful features, such as the ability to create and manage local MySQL, Postgres, and Redis databases, as well as local mail viewing and log monitoring.
+> O [Herd Pro](https://herd.laravel.com/#plans) complementa o Herd com recursos
+> adicionais poderosos, como a capacidade de criar e gerenciar bancos de dados
+> MySQL, Postgres e Redis locais, além de visualização de e-mails e
+> monitoramento de logs locais.
 
-<a name="herd-on-macos"></a>
-### Herd on macOS
+### Herd no macOS
 
-If you develop on macOS, you can download the Herd installer from the [Herd website](https://herd.laravel.com). The installer automatically downloads the latest version of PHP and configures your Mac to always run [Nginx](https://www.nginx.com/) in the background.
+Se você desenvolve no macOS, pode baixar o instalador do Herd no
+[site do Herd](https://herd.laravel.com).
+O instalador baixa automaticamente a versão mais recente do PHP e configura seu
+Mac para sempre executar o [Nginx](https://www.nginx.com/) em segundo plano.
 
-Herd for macOS uses [dnsmasq](https://en.wikipedia.org/wiki/Dnsmasq) to support "parked" directories. Any Laravel application in a parked directory will automatically be served by Herd. By default, Herd creates a parked directory at `~/Herd` and you can access any Laravel application in this directory on the `.test` domain using its directory name.
+O Herd para macOS usa o [dnsmasq](https://en.wikipedia.org/wiki/Dnsmasq) para
+oferecer suporte a diretórios "estacionados".
+Qualquer aplicação Laravel em um diretório estacionado será automaticamente
+atendida pelo Herd.
+Por padrão, o Herd cria um diretório estacionado em `~/Herd` e você pode acessar
+qualquer aplicação Laravel neste diretório no domínio `.test` usando o nome do
+diretório.
 
-After installing Herd, the fastest way to create a new Laravel application is using the Laravel CLI, which is bundled with Herd:
+Após instalar o Herd, a maneira mais rápida de criar uma nova aplicação Laravel
+é usar a CLI do Laravel, que está incluída no Herd:
 
 ```shell
 cd ~/Herd
-laravel new my-app
-cd my-app
+laravel new minha-aplicacao
+cd minha-aplicacao
 herd open
 ```
 
-Of course, you can always manage your parked directories and other PHP settings via Herd's UI, which can be opened from the Herd menu in your system tray.
+Claro, você sempre pode gerenciar seus diretórios estacionados e outras
+configurações do PHP através da interface do Herd, que pode ser aberta no menu
+do Herd na bandeja do sistema.
 
-You can learn more about Herd by checking out the [Herd documentation](https://herd.laravel.com/docs).
+Você pode aprender mais sobre o Herd consultando a
+[documentação do Herd](https://herd.laravel.com/docs).
 
-<a name="herd-on-windows"></a>
-### Herd on Windows
+### Herd no Windows
 
-You can download the Windows installer for Herd on the [Herd website](https://herd.laravel.com/windows). After the installation finishes, you can start Herd to complete the onboarding process and access the Herd UI for the first time.
+Você pode baixar o instalador do Herd para Windows no
+[site do Herd](https://herd.laravel.com/windows).
+Após a conclusão da instalação, você pode iniciar o Herd para concluir o
+processo de integração e acessar a interface do Herd pela primeira vez.
 
-The Herd UI is accessible by left-clicking on Herd's system tray icon. A right-click opens the quick menu with access to all tools that you need on a daily basis.
+A interface do Herd pode ser acessada clicando com o botão esquerdo do mouse no
+ícone do Herd na bandeja do sistema.
+Um clique com o botão direito do mouse abre o menu rápido com acesso a todas as
+ferramentas que você precisa no dia a dia.
 
-During installation, Herd creates a "parked" directory in your home directory at `%USERPROFILE%\Herd`. Any Laravel application in a parked directory will automatically be served by Herd, and you can access any Laravel application in this directory on the `.test` domain using its directory name.
+Durante a instalação, o Herd cria um diretório "estacionado" no seu diretório
+inicial em `%USERPROFILE%\Herd`.
+Qualquer aplicação Laravel em um diretório estacionado será automaticamente
+atendida pelo Herd, e você poderá acessar qualquer aplicação Laravel neste
+diretório no domínio `.test` usando seu nome de diretório.
 
-After installing Herd, the fastest way to create a new Laravel application is using the Laravel CLI, which is bundled with Herd. To get started, open Powershell and run the following commands:
+Após instalar o Herd, a maneira mais rápida de criar uma nova aplicação Laravel
+é usar a CLI do Laravel, que vem com o Herd.
+Para começar, abra o PowerShell e execute os seguintes comandos:
 
 ```shell
 cd ~\Herd
-laravel new my-app
-cd my-app
+laravel new minha-aplicacao
+cd minha-aplicacao
 herd open
 ```
 
-You can learn more about Herd by checking out the [Herd documentation for Windows](https://herd.laravel.com/docs/windows).
+Você pode aprender mais sobre o Herd consultando a
+[documentação do Herd para Windows](https://herd.laravel.com/docs/windows).
 
-<a name="ide-support"></a>
-## IDE Support
+## Suporte para IDE
 
-You are free to use any code editor you wish when developing Laravel applications; however, [PhpStorm](https://www.jetbrains.com/phpstorm/laravel/) offers extensive support for Laravel and its ecosystem, including [Laravel Pint](https://www.jetbrains.com/help/phpstorm/using-laravel-pint.html).
+Você pode usar qualquer editor de código que desejar ao desenvolver aplicações
+Laravel; no entanto, o [PhpStorm](https://www.jetbrains.com/phpstorm/laravel/)
+oferece amplo suporte para o Laravel e seu ecossistema, incluindo o
+[Laravel Pint](https://www.jetbrains.com/help/phpstorm/using-laravel-pint.html).
 
-In addition, the community maintained [Laravel Idea](https://laravel-idea.com/) PhpStorm plugin offers a variety of helpful IDE augmentations, including code generation, Eloquent syntax completion, validation rule completion, and more.
+Além disso, o plugin PhpStorm [Laravel Idea](https://laravel-idea.com/) mantido
+pela comunidade oferece uma variedade de melhorias úteis para o IDE, incluindo
+geração de código, complementação de sintaxe do Eloquent, complementação de
+regras de validação e muito mais.
 
-If you develop in [Visual Studio Code (VS Code)](https://code.visualstudio.com), the official [Laravel VS Code Extension](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel) is now available. This extension brings Laravel-specific tools directly into your VS Code environment, enhancing productivity.
+Se você desenvolve no
+[Visual Studio Code (VS Code)](https://code.visualstudio.com), a
+[Extensão VS Code do Laravel](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel)
+oficial já está disponível.
+Esta extensão traz ferramentas específicas do Laravel diretamente para o seu
+ambiente VS Code, aumentando a produtividade.
 
-<a name="next-steps"></a>
-## Next Steps
+## Próximos Passos
 
-Now that you have created your Laravel application, you may be wondering what to learn next. First, we strongly recommend becoming familiar with how Laravel works by reading the following documentation:
+Agora que você criou sua aplicação Laravel, pode estar se perguntando o que
+aprender em seguida.
+Primeiramente, recomendamos fortemente que você se familiarize com o
+funcionamento do Laravel lendo a seguinte documentação:
 
 <div class="content-list" markdown="1">
 
-- [Request Lifecycle](lifecycle.md)
-- [Configuration](configuration.md)
-- [Directory Structure](structure)
-- [Frontend](frontend.md)
-- [Service Container](container.md)
-- [Facades](facades.md)
+- [Ciclo de vida da requisição](lifecycle.md)
+- [Configuração](configuration.md)
+- [Estrutura de diretório](structure.md)
+- [Front-end](frontend.md)
+- [Contêiner de serviços](container.md)
+- [Fachadas](facades.md)
 
 </div>
 
-How you want to use Laravel will also dictate the next steps on your journey. There are a variety of ways to use Laravel, and we'll explore two primary use cases for the framework below.
+A maneira como você deseja usar o Laravel também determinará os próximos passos
+em sua jornada.
+Há diversas maneiras de usar o Laravel, e exploraremos dois casos de uso
+principais para o framework a seguir.
 
-<a name="laravel-the-fullstack-framework"></a>
-### Laravel the Full Stack Framework
+### Laravel, o framework full-stack
 
-Laravel may serve as a full stack framework. By "full stack" framework we mean that you are going to use Laravel to route requests to your application and render your frontend via [Blade templates](blade.md) or a single-page application hybrid technology like [Inertia](https://inertiajs.com). This is the most common way to use the Laravel framework, and, in our opinion, the most productive way to use Laravel.
+O Laravel pode servir como um framework full-stack.
+Por framework "full-stack", queremos dizer que você usará o Laravel para rotear
+requisições para sua aplicação e renderizar seu front-end por meio de
+[templates Blade](blade.md) ou de uma tecnologia híbrida de aplicação de página
+única como o [Inertia](https://inertiajs.com).
+Esta é a maneira mais comum de usar o framework Laravel e, em nossa opinião, a
+maneira mais produtiva de usar o Laravel.
 
-If this is how you plan to use Laravel, you may want to check out our documentation on [frontend development](frontend.md), [routing](routing.md), [views](views.md), or the [Eloquent ORM](eloquent.md). In addition, you might be interested in learning about community packages like [Livewire](https://livewire.laravel.com) and [Inertia](https://inertiajs.com). These packages allow you to use Laravel as a full-stack framework while enjoying many of the UI benefits provided by single-page JavaScript applications.
+Se você planeja usar o Laravel dessa forma, talvez queira conferir nossa
+documentação sobre [desenvolvimento frontend](frontend.md),
+[roteamento](routing.md), [visualizações](views.md) ou o
+[ORM Eloquent](eloquent.md).
+Além disso, você pode se interessar em aprender sobre pacotes da comunidade como
+[Livewire](https://livewire.laravel.com) e [Inertia](https://inertiajs.com).
+Esses pacotes permitem que você use o Laravel como um framework full-stack
+enquanto aproveita muitos dos benefícios de interface da pessoa usuária
+oferecidos por aplicações JavaScript de página única.
 
-If you are using Laravel as a full stack framework, we also strongly encourage you to learn how to compile your application's CSS and JavaScript using [Vite](vite.md).
+Se você estiver usando o Laravel como um framework full-stack, também
+recomendamos fortemente que você aprenda a compilar o CSS e o JavaScript da sua
+aplicação usando [Vite](vite.md).
 
 > [!NOTE]
-> If you want to get a head start building your application, check out one of our official [application starter kits](starter-kits.md).
+> Se você quiser começar a construir sua aplicação, confira um dos nossos
+> [kits de aplicações para iniciantes](starter-kits.md) oficiais.
 
-<a name="laravel-the-api-backend"></a>
-### Laravel the API Backend
+### Laravel, o Backend de API
 
-Laravel may also serve as an API backend to a JavaScript single-page application or mobile application. For example, you might use Laravel as an API backend for your [Next.js](https://nextjs.org) application. In this context, you may use Laravel to provide [authentication](sanctum.md) and data storage / retrieval for your application, while also taking advantage of Laravel's powerful services such as queues, emails, notifications, and more.
+O Laravel também pode servir como um backend de API para uma aplicação
+JavaScript de página única ou aplicativo móvel.
+Por exemplo, você pode usar o Laravel como backend de API para sua aplicação
+[Next.js](https://nextjs.org).
+Nesse contexto, você pode usar o Laravel para fornecer autenticação e
+armazenamento/recuperação de dados para sua aplicação, além de aproveitar os
+poderosos serviços do Laravel, como filas, e-mails, notificações e muito mais.
 
-If this is how you plan to use Laravel, you may want to check out our documentation on [routing](routing.md), [Laravel Sanctum](sanctum.md), and the [Eloquent ORM](eloquent.md).
+Se você planeja usar o Laravel dessa forma, pode consultar nossa documentação
+sobre [roteamento](routing.md), [Laravel Sanctum](sanctum.md) e
+[Eloquent ORM](eloquent.md).

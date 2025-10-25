@@ -32,7 +32,7 @@ While you are welcome to use these starter kits, they are not required. You are 
 <a name="creating-an-application"></a>
 ## Creating an Application Using a Starter Kit
 
-To create a new Laravel application using one of our starter kits, you should first [install PHP and the Laravel CLI tool](installation.md#installing-php). If you already have PHP and Composer installed, you may install the Laravel installer CLI tool via Composer:
+To create a new Laravel application using one of our starter kits, you should first [install PHP and the Laravel CLI tool](installation.md#instalando-o-php-e-o-instalador-do-laravel). If you already have PHP and Composer installed, you may install the Laravel installer CLI tool via Composer:
 
 ```shell
 composer global require laravel/installer
