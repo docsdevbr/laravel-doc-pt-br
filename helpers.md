@@ -2222,7 +2222,7 @@ $secret = encrypt('my-secret-value');
 <a name="method-env"></a>
 #### `env()` {.collection-method}
 
-The `env` function retrieves the value of an [environment variable](configuration.md#environment-configuration) or returns a default value:
+The `env` function retrieves the value of an [environment variable](configuration.md#configuração-do-ambiente) or returns a default value:
 
 ```php
 $env = env('APP_ENV');

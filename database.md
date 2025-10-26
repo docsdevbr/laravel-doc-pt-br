@@ -43,7 +43,7 @@ Additionally, MongoDB is supported via the `mongodb/laravel-mongodb` package, wh
 
 The configuration for Laravel's database services is located in your application's `config/database.php` configuration file. In this file, you may define all of your database connections, as well as specify which connection should be used by default. Most of the configuration options within this file are driven by the values of your application's environment variables. Examples for most of Laravel's supported database systems are provided in this file.
 
-By default, Laravel's sample [environment configuration](configuration.md#environment-configuration) is ready to use with [Laravel Sail](sail.md), which is a Docker configuration for developing Laravel applications on your local machine. However, you are free to modify your database configuration as needed for your local database.
+By default, Laravel's sample [environment configuration](configuration.md#configuração-do-ambiente) is ready to use with [Laravel Sail](sail.md), which is a Docker configuration for developing Laravel applications on your local machine. However, you are free to modify your database configuration as needed for your local database.
 
 <a name="sqlite-configuration"></a>
 #### SQLite Configuration
