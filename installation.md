@@ -26,6 +26,8 @@ status: ready
   - [Herd no macOS](#herd-no-macos)
   - [Herd no Windows](#herd-no-windows)
 - [Suporte para IDE](#suporte-para-ide)
+- [Laravel e AI](#laravel-e-ai)
+  - [Instalando Laravel Boost](#instalando-laravel-boost)
 - [Próximos Passos](#próximos-passos)
   - [Laravel, o framework full-stack](#laravel-o-framework-full-stack)
   - [Laravel, o Backend de API](#laravel-o-backend-de-api)
@@ -198,7 +200,7 @@ credenciais confidenciais seriam expostas.
 > [!NOTE]
 > Para obter mais informações sobre o arquivo `.env` e a configuração baseada em
 > ambiente, consulte a
-> [documentação de configuração completa](configuration.md#environment-configuration).
+> [documentação de configuração completa](configuration.md#configuração-do-ambiente).
 
 ### Bancos de dados e migrações
 
@@ -333,21 +335,79 @@ Você pode aprender mais sobre o Herd consultando a
 ## Suporte para IDE
 
 Você pode usar qualquer editor de código que desejar ao desenvolver aplicações
-Laravel; no entanto, o [PhpStorm](https://www.jetbrains.com/phpstorm/laravel/)
-oferece amplo suporte para o Laravel e seu ecossistema, incluindo o
-[Laravel Pint](https://www.jetbrains.com/help/phpstorm/using-laravel-pint.html).
-
-Além disso, o plugin PhpStorm [Laravel Idea](https://laravel-idea.com/) mantido
-pela comunidade oferece uma variedade de melhorias úteis para o IDE, incluindo
-geração de código, complementação de sintaxe do Eloquent, complementação de
-regras de validação e muito mais.
-
-Se você desenvolve no
-[Visual Studio Code (VS Code)](https://code.visualstudio.com), a
+Laravel.
+Se você procura editores leves e extensíveis, o
+[VS Code](https://code.visualstudio.com) ou o [Cursor](https://cursor.com)
+combinados com a
 [Extensão VS Code do Laravel](https://marketplace.visualstudio.com/items?itemName=laravel.vscode-laravel)
-oficial já está disponível.
-Esta extensão traz ferramentas específicas do Laravel diretamente para o seu
-ambiente VS Code, aumentando a produtividade.
+oficial oferecem excelente suporte ao Laravel com recursos como destaque de
+sintaxe, snippets, integração de comandos Artisan e autocompletar inteligente
+para modelos do Eloquent, rotas, middleware, assets, configuração e Inertia.js.
+
+Para suporte abrangente e robusto ao Laravel, confira o
+[PhpStorm](https://www.jetbrains.com/phpstorm/laravel/?utm_source=laravel.com&utm_medium=link&utm_campaign=laravel-2025&utm_content=partner&ref=laravel-2025),
+um IDE da JetBrains.
+Com o [plugin Laravel Idea](https://laravel-idea.com/), ele oferece suporte
+preciso ao Laravel e seu ecossistema, incluindo Laravel Pint, Pest, Larastan e
+muito mais.
+O suporte ao framework Laravel Idea inclui templates Blade, autocompletar
+inteligente para modelos do Eloquent, rotas, visualizações, traduções e
+componentes, além de geração de código e navegação avançadas em projetos
+Laravel.
+
+Para quem busca uma experiência de desenvolvimento baseada em nuvem, o
+[Firebase Studio](https://firebase.studio/) oferece acesso instantâneo à criação
+com Laravel diretamente no seu navegador.
+Sem necessidade de configuração, o Firebase Studio facilita a criação de
+aplicações Laravel a partir de qualquer dispositivo.
+
+## Laravel e IA
+
+[Laravel Boost](https://github.com/laravel/boost) é uma ferramenta poderosa que
+preenche a lacuna entre agentes de codificação de IA e aplicações Laravel.
+O Boost fornece aos agentes de IA contexto, ferramentas e diretrizes específicos
+do Laravel para que eles possam gerar código mais preciso e específico para cada
+versão, seguindo as convenções do Laravel.
+
+Ao instalar o Boost em sua aplicação Laravel, os agentes de IA obtêm acesso a
+mais de 15 ferramentas especializadas, incluindo a capacidade de saber quais
+pacotes você está usando, consultar seu banco de dados, pesquisar a documentação
+do Laravel, ler logs do navegador, gerar testes e executar código via Tinker.
+
+Além disso, o Boost oferece aos agentes de IA acesso a mais de 17.000 documentos
+vetorizados do ecossistema Laravel, específicos para as versões dos pacotes
+instalados.
+Isso significa que os agentes podem fornecer orientações direcionadas às versões
+exatas que seu projeto utiliza.
+
+O Boost também inclui diretrizes de IA mantidas pelo Laravel que ajudam os
+agentes a seguir as convenções do framework, escrever testes apropriados e
+evitar armadilhas comuns ao gerar código Laravel.
+
+### Instalando o Laravel Boost
+
+O Boost pode ser instalado em aplicações Laravel 10, 11 e 12 executando PHP 8.1
+ou superior.
+Para começar, instale o Boost como uma dependência de desenvolvimento:
+
+```shell
+composer require laravel/boost --dev
+```
+
+Após a instalação, execute o instalador interativo:
+
+```shell
+php artisan boost:install
+```
+
+O instalador detectará automaticamente seus agentes de IDE e IA, permitindo que
+você opte pelos recursos que fazem sentido para o seu projeto.
+O Boost respeita as convenções de projeto existentes e não impõe regras de
+estilo opinativas por padrão.
+
+> [!NOTE]
+> Para saber mais sobre o Boost, confira o
+> [repositório do Laravel Boost no GitHub](https://github.com/laravel/boost).
 
 ## Próximos Passos
 
