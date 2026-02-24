@@ -6,7 +6,7 @@
 [![Contributors][badge-contributors]][contributors]
 [![GitHub Sponsors][badge-github-sponsors]][github-sponsors]
 
-Translation of the Laravel Documentation into Brazilian Portuguese.
+Translation of the Laravel documentation into Brazilian Portuguese.
 
 ## Contributing
 
@@ -20,17 +20,17 @@ We are committed to providing a welcoming community.
 Please read our [Code of Conduct][code-of-conduct] to understand our community
 standards.
 
-## Support
+## Sponsor
 
-You can support the project through [GitHub Sponsors][github-sponsors] or
-[Pix][sponsor].
+Please visit our [sponsor page][sponsor] to know how you can support the
+project.
 
 ## License
 
-Copyright (c) Taylor Otwell.<br>
+Copyright (c) Taylor Otwell.<br/>
 Laravel is a trademark of Laravel Holdings Inc.
 
-Documentation licensed under the [MIT License][license].<br>
+Documentation licensed under the [MIT License][license].<br/>
 The original work was translated from English into Brazilian Portuguese.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/laravel-doc-pt-br
@@ -53,10 +53,10 @@ The original work was translated from English into Brazilian Portuguese.
 
 [license]: LICENSE
 
-[page]: https://pt.docs.dev.br/p/laravel/docs/
+[page]: https://pt.docs.dev.br/tech/l/laravel/index.html
 
 [readme-en]: README.EN.md
 
 [readme-pt-br]: README.md
 
-[sponsor]: https://pt.docs.dev.br/sponsor
+[sponsor]: https://pt.docs.dev.br/sponsor.html
