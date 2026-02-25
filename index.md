@@ -1,137 +1,151 @@
 ---
-source_url: https://github.com/laravel/docs/blob/12.x/documentation.md
-revision: 1b0efc2e03b470a3e8f5b95c43475caa9b2f469b
+# Copyright (c) Taylor Otwell.
+# Laravel is a trademark of Laravel Holdings Inc.
+
+# Documentation licensed under the MIT License.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/laravel/docs/blob/-/license.md
+
+source_url: https://github.com/laravel/docs/blob/master/documentation.md
+revision: 14b73a2779db1fa2e013f58ca9d84f4066e4dba5
 status: ready
 ---
 
-# Documentação do Laravel 12.x
+# Documentação do Laravel 13.x
 
 ## Prólogo
 
-- [Notas de Versão](releases.md)
-- [Guia de Atualização](upgrade.md)
-- [Guia de Contribuição](contributions.md)
+- [Notas de versão](/docs/{{version}}/releases)
+- [Guia de atualização](/docs/{{version}}/upgrade)
+- [Guia de contribuição](/docs/{{version}}/contributions)
 
 ## Começando
 
-- [Instalação](installation.md)
-- [Configuração](configuration.md)
-- [Estrutura de Diretório](structure.md)
-- [_Front-end_](frontend.md)
-- [_Kits_ para Iniciantes](starter-kits.md)
-- [Implantação](deployment.md)
+- [Instalação](/docs/{{version}}/installation)
+- [Configuração](/docs/{{version}}/configuration)
+- [Desenvolvimento agêntico](/docs/{{version}}/ai)
+- [Estrutura de diretório](/docs/{{version}}/structure)
+- [Front-end](/docs/{{version}}/frontend)
+- [Kits para iniciantes](/docs/{{version}}/starter-kits)
+- [Implantação](/docs/{{version}}/deployment)
 
-## Conceitos de Arquitetura
+## Conceitos de arquitetura
 
-- [Ciclo de Vida da Requisição](lifecycle.md)
-- [Contêiner de Serviços](container.md)
-- [Provedores de Serviços](providers.md)
-- [Fachadas](facades.md)
+- [Ciclo de vida da requisição](/docs/{{version}}/lifecycle)
+- [Contêiner de serviços](/docs/{{version}}/container)
+- [Provedores de serviços](/docs/{{version}}/providers)
+- [Fachadas](/docs/{{version}}/facades)
 
-## O Básico
+## O básico
 
-- [Roteamento](routing.md)
-- [Middleware](middleware.md)
-- [Proteção contra CSRF](csrf.md)
-- [Controladores](controllers.md)
-- [Requisições](requests.md)
-- [Respostas](responses.md)
-- [Visualizações](views.md)
-- [Modelos Blade](blade.md)
-- [Empacotamento de recursos](vite.md)
-- [Geração de URL](urls.md)
-- [Sessão](session.md)
-- [Validação](validation.md)
-- [Tratamento de erros](errors.md)
-- [Logging](logging.md)
+- [Roteamento](/docs/{{version}}/routing)
+- [Middleware](/docs/{{version}}/middleware)
+- [Proteção contra CSRF](/docs/{{version}}/csrf)
+- [Controladores](/docs/{{version}}/controllers)
+- [Requisições](/docs/{{version}}/requests)
+- [Respostas](/docs/{{version}}/responses)
+- [Visualizações](/docs/{{version}}/views)
+- [Templates Blade](/docs/{{version}}/blade)
+- [Empacotamento de recursos](/docs/{{version}}/vite)
+- [Geração de URL](/docs/{{version}}/urls)
+- [Sessão](/docs/{{version}}/session)
+- [Validação](/docs/{{version}}/validation)
+- [Tratamento de erros](/docs/{{version}}/errors)
+- [Logging](/docs/{{version}}/logging)
 
 ## Indo mais fundo
 
-- [Console Artisan](artisan.md)
-- [Transmissão](broadcasting.md)
-- [Cache](cache.md)
-- [Coleções](collections.md)
-- [Contexto](context.md)
-- [Contratos](contracts.md)
-- [Eventos](events.md)
-- [Armazenamento de arquivos](filesystem.md)
-- [Auxiliares](helpers.md)
-- [Cliente HTTP](http-client.md)
-- [Localização](localization.md)
-- [E-mail](mail.md)
-- [Notificações](notifications.md)
-- [Desenvolvimento de pacotes](packages.md)
-- [Processos](processes.md)
-- [Filas](queues.md)
-- [Limitação de taxa](rate-limiting.md)
-- [Strings](strings.md)
-- [Agendamento de tarefas](scheduling.md)
+- [Console Artisan](/docs/{{version}}/artisan)
+- [Transmissão](/docs/{{version}}/broadcasting)
+- [Cache](/docs/{{version}}/cache)
+- [Coleções](/docs/{{version}}/collections)
+- [Concorrência](/docs/{{version}}/concurrency)
+- [Contexto](/docs/{{version}}/context)
+- [Contratos](/docs/{{version}}/contracts)
+- [Eventos](/docs/{{version}}/events)
+- [Armazenamento de arquivos](/docs/{{version}}/filesystem)
+- [Auxiliares](/docs/{{version}}/helpers)
+- [Cliente HTTP](/docs/{{version}}/http-client)
+- [Localização](/docs/{{version}}/localization)
+- [E-mail](/docs/{{version}}/mail)
+- [Notificações](/docs/{{version}}/notifications)
+- [Desenvolvimento de pacotes](/docs/{{version}}/packages)
+- [Processos](/docs/{{version}}/processes)
+- [Filas](/docs/{{version}}/queues)
+- [Limitação de taxa](/docs/{{version}}/rate-limiting)
+- [Strings](/docs/{{version}}/strings)
+- [Agendamento de tarefas](/docs/{{version}}/scheduling)
 
 ## Segurança
 
-- [Autenticação](authentication.md)
-- [Autorização](authorization.md)
-- [Verificação de e-mail](verification.md)
-- [Encriptação](encryption.md)
-- [Hashing](hashing.md)
-- [Redefinição de senha](passwords.md)
+- [Autenticação](/docs/{{version}}/authentication)
+- [Autorização](/docs/{{version}}/authorization)
+- [Verificação de e-mail](/docs/{{version}}/verification)
+- [Encriptação](/docs/{{version}}/encryption)
+- [Hashing](/docs/{{version}}/hashing)
+- [Redefinição de senha](/docs/{{version}}/passwords)
 
 ## Banco de dados
 
-- [Começando](database.md)
-- [Construtor de consultas](queries.md)
-- [Paginação](pagination.md)
-- [Migrações](migrations.md)
-- [Seeding](seeding.md)
-- [Redis](redis.md)
+- [Começando](/docs/{{version}}/database)
+- [Construtor de consultas](/docs/{{version}}/queries)
+- [Paginação](/docs/{{version}}/pagination)
+- [Migrações](/docs/{{version}}/migrations)
+- [Seeding](/docs/{{version}}/seeding)
+- [Redis](/docs/{{version}}/redis)
+- [MongoDB](/docs/{{version}}/mongodb)
 
 ## ORM Eloquent
 
-- [Começando](eloquent.md)
-- [Relacionamentos](eloquent-relationships.md)
-- [Coleções](eloquent-collections.md)
-- [Modificadores / Moldadores](eloquent-mutators.md)
-- [Recursos de API](eloquent-resources.md)
-- [Serialização](eloquent-serialization.md)
-- [Fábricas](eloquent-factories.md)
+- [Começando](/docs/{{version}}/eloquent)
+- [Relacionamentos](/docs/{{version}}/eloquent-relationships)
+- [Coleções](/docs/{{version}}/eloquent-collections)
+- [Modificadores / Moldadores](/docs/{{version}}/eloquent-mutators)
+- [Recursos de API](/docs/{{version}}/eloquent-resources)
+- [Serialização](/docs/{{version}}/eloquent-serialization)
+- [Fábricas](/docs/{{version}}/eloquent-factories)
+
+## AI
+
+- [AI SDK](/docs/{{version}}/ai-sdk)
+- [MCP](/docs/{{version}}/mcp)
+- [Boost](/docs/{{version}}/boost)
 
 ## Testes
 
-- [Começando](testing.md)
-- [Testes HTTP](http-tests.md)
-- [Testes de console](console-tests.md)
-- [Testes de navegador](dusk.md)
-- [Banco de dados](database-testing.md)
-- [Simulação](mocking.md)
+- [Começando](/docs/{{version}}/testing)
+- [Testes HTTP](/docs/{{version}}/http-tests)
+- [Testes de console](/docs/{{version}}/console-tests)
+- [Testes de navegador](/docs/{{version}}/dusk)
+- [Banco de dados](/docs/{{version}}/database-testing)
+- [Simulação](/docs/{{version}}/mocking)
 
 ## Pacotes
 
-- [Breeze](starter-kits.md#laravel-breeze)
-- [Cashier (Stripe)](billing.md)
-- [Cashier (Paddle)](cashier-paddle.md)
-- [Dusk](dusk.md)
-- [Envoy](envoy.md)
-- [Fortify](fortify.md)
-- [Folio](folio.md)
-- [Homestead](homestead.md)
-- [Horizon](horizon.md)
-- [Jetstream](https://jetstream.laravel.com)
-- [Mix](mix.md)
-- [Octane](octane.md)
-- [Passport](passport.md)
-- [Pennant](pennant.md)
-- [Pint](pint.md)
-- [Precognition](precognition.md)
-- [Prompts](prompts.md)
-- [Pulse](pulse.md)
-- [Reverb](reverb.md)
-- [Sail](sail.md)
-- [Sanctum](sanctum.md)
-- [Scout](scout.md)
-- [Socialite](socialite.md)
-- [Telescope](telescope.md)
-- [Valet](valet.md)
+- [Cashier (Stripe)](/docs/{{version}}/billing)
+- [Cashier (Paddle)](/docs/{{version}}/cashier-paddle)
+- [Dusk](/docs/{{version}}/dusk)
+- [Envoy](/docs/{{version}}/envoy)
+- [Fortify](/docs/{{version}}/fortify)
+- [Folio](/docs/{{version}}/folio)
+- [Homestead](/docs/{{version}}/homestead)
+- [Horizon](/docs/{{version}}/horizon)
+- [Mix](/docs/{{version}}/mix)
+- [Octane](/docs/{{version}}/octane)
+- [Passport](/docs/{{version}}/passport)
+- [Pennant](/docs/{{version}}/pennant)
+- [Pint](/docs/{{version}}/pint)
+- [Precognition](/docs/{{version}}/precognition)
+- [Prompts](/docs/{{version}}/prompts)
+- [Pulse](/docs/{{version}}/pulse)
+- [Reverb](/docs/{{version}}/reverb)
+- [Sail](/docs/{{version}}/sail)
+- [Sanctum](/docs/{{version}}/sanctum)
+- [Scout](/docs/{{version}}/scout)
+- [Socialite](/docs/{{version}}/socialite)
+- [Telescope](/docs/{{version}}/telescope)
+- [Valet](/docs/{{version}}/valet)
 
 ## API
 
-- [Documentação da API](https://laravel.com/api/12.x)
+- [Documentação da API](https://api.laravel.com/docs/master/index.html)
